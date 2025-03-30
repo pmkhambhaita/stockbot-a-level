@@ -28,15 +28,15 @@ def visualize_path(path, start, end):
     # Create a grid for visualization
     visual_grid = [['[ ]' for _ in range(cols)] for _ in range(rows)]
 
+    # Mark the path taken, including the first step
+    for (x, y) in path:
+        visual_grid[x][y] = '[=]'
+
     # Mark the start and end points
     sx, sy = start
     ex, ey = end
     visual_grid[sx][sy] = '[*]'
     visual_grid[ex][ey] = '[*]'
-
-    # Mark the path taken, including the first step
-    for (x, y) in path:
-        visual_grid[x][y] = '[=]'
 
     # Print the visual grid
     for row in visual_grid:
