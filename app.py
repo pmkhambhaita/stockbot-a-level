@@ -28,5 +28,5 @@ def bfs(graph_in, start, end):
 start_node = (0, 0)
 end_node = (4, 8)
 
-path = bfs(graph, start_node, end_node)
-print(path)
+path_in = bfs(graph, start_node, end_node)
+print(path_in)
