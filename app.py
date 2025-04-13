@@ -7,20 +7,26 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Grid class represents the game board structure
 class Grid:
     def __init__(self, rows, cols):
         self.rows = rows
         self.cols = cols
+        # Initialise empty grid with specified dimensions
         self.grid = [[0 for _ in range(cols)] for _ in range(rows)]
 
+# PathFinder class implements the pathfinding algorithm
 class PathFinder:
     def __init__(self, grid):
         self.grid = grid
+        # Define possible movement directions (up, down, left, right)
         self.directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
         logger.info(f"PathFinder initialised with grid size {grid.rows}x{grid.cols}")
 
     def bfs(self, start, end):
+        # Implements Breadth-First Search algorithm to find shortest path
         logger.info(f"Starting BFS search from {start} to {end}")
+        # Validate start and end positions are within grid boundaries
         if not (0 <= start[0] < self.grid.rows and 0 <= start[1] < self.grid.cols):
             logger.error(f"Start position {start} is out of bounds")
             return None
@@ -52,6 +58,7 @@ class PathFinder:
         return None
 
     def find_path_through_points(self, start, points, end):
+        # Finds a path that visits all intermediate points in order
         logger.info(f"Finding path through {len(points)} intermediate points")
         if not points:
             logger.warning("No intermediate points provided")
@@ -79,12 +86,17 @@ class PathFinder:
             logger.error(f"Failed to find final path segment to end point {end}")
             return None
 
+# PathVisualiser class handles the visual representation of the path
 class PathVisualiser:
     def __init__(self, grid):
         self.grid = grid
         logger.info(f"PathVisualiser initialised with grid size {grid.rows}x{grid.cols}")
 
     def visualise_path(self, path, start, end, points=[]):
+        # Creates a visual representation of the path using ASCII characters
+        # [ ] represents empty cells
+        # [=] represents path segments
+        # [*] represents start, end, and intermediate points
         if not path:
             logger.error("Cannot visualise: path is empty or None")
             return
@@ -115,12 +127,16 @@ class PathVisualiser:
             logger.error(f"Error during visualisation: {str(e)}")
 
 def get_valid_coordinate(prompt, max_rows, max_cols):
+    # Helper function to get and validate coordinate input from user
+    # Ensures coordinates are within grid boundaries and properly formatted
     while True:
         try:
             coord_input = input(prompt)
+            # Remove parentheses and whitespace from input
             coord_input = coord_input.strip('()').replace(' ', '')
             x, y = map(int, coord_input.split(','))
             
+            # Validate coordinates are within grid boundaries
             if 0 <= x < max_rows and 0 <= y < max_cols:
                 return (x, y)
             else:
@@ -129,6 +145,7 @@ def get_valid_coordinate(prompt, max_rows, max_cols):
             logger.error("Invalid input format. Please use 'x,y' format with numbers")
 
 def get_points(rows, cols):
+    # Handles the collection of intermediate points from user input
     try:
         while True:
             num_points = input("Enter the number of intermediate points (0 or more): ")
@@ -140,6 +157,7 @@ def get_points(rows, cols):
             except ValueError:
                 logger.error("Please enter a valid number")
 
+        # Collect all intermediate points
         points = []
         for i in range(num_points):
             logger.info(f"Entering point {i+1} of {num_points}")
@@ -157,27 +175,31 @@ def get_points(rows, cols):
         logger.warning("\nInput cancelled by user")
         return None
 
-# Update the example usage with user input
+# Main programme execution
 try:
+    # Initialise grid with fixed dimensions
     rows, cols = 10, 10
     grid = Grid(rows, cols)
     path_finder = PathFinder(grid)
     path_visualiser = PathVisualiser(grid)
 
-    # Fixed start and end points
+    # Set fixed start and end points
     start_node = (0, 0)
     end_node = (rows - 1, cols - 1)
     
+    # Display programme information
     logger.info(f"Grid size: {rows}x{cols}")
     logger.info(f"Start point: {start_node}")
     logger.info(f"End point: {end_node}")
     print("\nEnter coordinates in the format: x,y or (x,y)")
     print(f"Valid coordinate ranges: x: 0-{rows-1}, y: 0-{cols-1}")
 
+    # Collect intermediate points from user
     intermediate_points = get_points(rows, cols)
     if intermediate_points is None:
         raise ValueError("Failed to get intermediate points")
 
+    # Find and visualise the path
     logger.info("Starting pathfinding process")
     path_in = path_finder.find_path_through_points(start_node, intermediate_points, end_node)
     
