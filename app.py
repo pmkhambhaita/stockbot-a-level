@@ -80,7 +80,8 @@ class PathFinder:
         final_segment = self.bfs(current_start, end)
         if final_segment:
             full_path.extend(final_segment)
-            logger.info(f"Complete path found with length {len(full_path)}")
+            # The actual path length is the number of steps, which is len(full_path) - 1
+            logger.info(f"Complete path found with length {len(full_path) - 1}")
             return full_path
         else:
             logger.error(f"Failed to find final path segment to end point {end}")
