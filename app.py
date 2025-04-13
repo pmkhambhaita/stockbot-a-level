@@ -55,19 +55,21 @@ class PathVisualiser:
     def __init__(self, grid):
         self.grid = grid
 
-    def visualise_path(self, path, start, end):
+    def visualise_path(self, path, start, end, points=[]):
         # Create a grid for visualisation
         visual_grid = [['[ ]' for _ in range(self.grid.cols)] for _ in range(self.grid.rows)]
 
-        # Mark the path taken, including the first step
+        # Mark the path taken
         for (x, y) in path:
             visual_grid[x][y] = '[=]'
 
-        # Mark the start and end points
+        # Mark all points (start, end, and intermediate) with *
         sx, sy = start
         ex, ey = end
         visual_grid[sx][sy] = '[*]'
         visual_grid[ex][ey] = '[*]'
+        for x, y in points:
+            visual_grid[x][y] = '[*]'
 
         # Print the visual grid
         for row in visual_grid:
@@ -83,8 +85,9 @@ start_node = (0, 0)
 end_node = (rows - 1, cols - 1)
 intermediate_points = [(2, 2), (5, 5), (7, 7)]  # Example intermediate points
 
+# Update the example usage
 path_in = path_finder.find_path_through_points(start_node, intermediate_points, end_node)
 if path_in:
-    path_visualiser.visualise_path(path_in, start_node, end_node)
+    path_visualiser.visualise_path(path_in, start_node, end_node, intermediate_points)
 else:
     print("No path found")
