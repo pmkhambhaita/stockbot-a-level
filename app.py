@@ -42,7 +42,8 @@ class PathFinder:
             x, y = path[-1]
 
             if (x, y) == end:
-                logger.info(f"Path found with length {len(path)}")
+                # Fix: Report the correct path length (steps between nodes)
+                logger.info(f"Path found with length {len(path) - 1}")
                 return path
 
             if (x, y) not in visited:
