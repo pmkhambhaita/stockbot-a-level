@@ -17,7 +17,7 @@ class PathFinder:
     def __init__(self, grid):
         self.grid = grid
         self.directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        logger.info(f"PathFinder initialized with grid size {grid.rows}x{grid.cols}")
+        logger.info(f"PathFinder initialised with grid size {grid.rows}x{grid.cols}")
 
     def bfs(self, start, end):
         logger.info(f"Starting BFS search from {start} to {end}")
@@ -82,14 +82,14 @@ class PathFinder:
 class PathVisualiser:
     def __init__(self, grid):
         self.grid = grid
-        logger.info(f"PathVisualiser initialized with grid size {grid.rows}x{grid.cols}")
+        logger.info(f"PathVisualiser initialised with grid size {grid.rows}x{grid.cols}")
 
     def visualise_path(self, path, start, end, points=[]):
         if not path:
-            logger.error("Cannot visualize: path is empty or None")
+            logger.error("Cannot visualise: path is empty or None")
             return
 
-        logger.info("Starting path visualization")
+        logger.info("Starting path visualisation")
         try:
             visual_grid = [['[ ]' for _ in range(self.grid.cols)] for _ in range(self.grid.rows)]
 
@@ -110,20 +110,73 @@ class PathVisualiser:
             for row in visual_grid:
                 print(' '.join(row))
             
-            logger.info("Path visualization completed")
+            logger.info("Path visualisation completed")
         except Exception as e:
-            logger.error(f"Error during visualization: {str(e)}")
+            logger.error(f"Error during visualisation: {str(e)}")
 
-# Update the example usage with error handling
+def get_valid_coordinate(prompt, max_rows, max_cols):
+    while True:
+        try:
+            coord_input = input(prompt)
+            coord_input = coord_input.strip('()').replace(' ', '')
+            x, y = map(int, coord_input.split(','))
+            
+            if 0 <= x < max_rows and 0 <= y < max_cols:
+                return (x, y)
+            else:
+                logger.warning(f"Coordinates ({x},{y}) out of bounds. Must be within (0-{max_rows-1}, 0-{max_cols-1})")
+        except ValueError:
+            logger.error("Invalid input format. Please use 'x,y' format with numbers")
+
+def get_points(rows, cols):
+    try:
+        while True:
+            num_points = input("Enter the number of intermediate points (0 or more): ")
+            try:
+                num_points = int(num_points)
+                if num_points >= 0:
+                    break
+                logger.warning("Number of points must be non-negative")
+            except ValueError:
+                logger.error("Please enter a valid number")
+
+        points = []
+        for i in range(num_points):
+            logger.info(f"Entering point {i+1} of {num_points}")
+            point = get_valid_coordinate(
+                f"Enter point {i+1} coordinates (x,y): ",
+                rows,
+                cols
+            )
+            points.append(point)
+            logger.info(f"Added point {point}")
+
+        return points
+
+    except KeyboardInterrupt:
+        logger.warning("\nInput cancelled by user")
+        return None
+
+# Update the example usage with user input
 try:
     rows, cols = 10, 10
     grid = Grid(rows, cols)
     path_finder = PathFinder(grid)
     path_visualiser = PathVisualiser(grid)
 
+    # Fixed start and end points
     start_node = (0, 0)
     end_node = (rows - 1, cols - 1)
-    intermediate_points = [(2, 2), (5, 5), (7, 7)]
+    
+    logger.info(f"Grid size: {rows}x{cols}")
+    logger.info(f"Start point: {start_node}")
+    logger.info(f"End point: {end_node}")
+    print("\nEnter coordinates in the format: x,y or (x,y)")
+    print(f"Valid coordinate ranges: x: 0-{rows-1}, y: 0-{cols-1}")
+
+    intermediate_points = get_points(rows, cols)
+    if intermediate_points is None:
+        raise ValueError("Failed to get intermediate points")
 
     logger.info("Starting pathfinding process")
     path_in = path_finder.find_path_through_points(start_node, intermediate_points, end_node)
@@ -132,5 +185,6 @@ try:
         path_visualiser.visualise_path(path_in, start_node, end_node, intermediate_points)
     else:
         logger.error("Failed to find a valid path through all points")
+
 except Exception as e:
     logger.error(f"An unexpected error occurred: {str(e)}")
