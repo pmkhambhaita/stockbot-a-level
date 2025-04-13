@@ -16,87 +16,121 @@ class Grid:
 class PathFinder:
     def __init__(self, grid):
         self.grid = grid
-        self.directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]  # Up, Down, Left, Right
+        self.directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        logger.info(f"PathFinder initialized with grid size {grid.rows}x{grid.cols}")
 
     def bfs(self, start, end):
-        queue = [[start]]  # Start with the start node
-        visited = set()  # Keep track of visited nodes
+        logger.info(f"Starting BFS search from {start} to {end}")
+        if not (0 <= start[0] < self.grid.rows and 0 <= start[1] < self.grid.cols):
+            logger.error(f"Start position {start} is out of bounds")
+            return None
+        if not (0 <= end[0] < self.grid.rows and 0 <= end[1] < self.grid.cols):
+            logger.error(f"End position {end} is out of bounds")
+            return None
 
+        queue = [[start]]
+        visited = set()
+        
         while queue:
-            path = queue.pop(0)  # Get the first path in the queue
-            x, y = path[-1]  # Get the last node in the path
+            path = queue.pop(0)
+            x, y = path[-1]
 
             if (x, y) == end:
-                return path  # Return the path if we reach the end
+                logger.info(f"Path found with length {len(path)}")
+                return path
 
-            if (x, y) not in visited:  # If the node has not been visited
-                visited.add((x, y))  # Mark the node as visited
-                for dx, dy in self.directions:  # Check all possible directions
-                    nx, ny = x + dx, y + dy  # Calculate the new node
-                    if 0 <= nx < self.grid.rows and 0 <= ny < self.grid.cols:  # Check if the new node is within bounds
-                        if (nx, ny) not in visited:  # Check if the new node is not visited
-                            new_path = list(path) + [(nx, ny)]  # Add the new node to the path
-                            queue.append(new_path)  # Add the new path to the queue
+            if (x, y) not in visited:
+                visited.add((x, y))
+                for dx, dy in self.directions:
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < self.grid.rows and 0 <= ny < self.grid.cols:
+                        if (nx, ny) not in visited:
+                            new_path = list(path) + [(nx, ny)]
+                            queue.append(new_path)
 
-        return None  # Return None if no path is found
+        logger.warning(f"No path found between {start} and {end}")
+        return None
 
     def find_path_through_points(self, start, points, end):
+        logger.info(f"Finding path through {len(points)} intermediate points")
+        if not points:
+            logger.warning("No intermediate points provided")
+            return self.bfs(start, end)
+
         full_path = []
         current_start = start
 
-        for point in points:
+        for i, point in enumerate(points, 1):
+            logger.debug(f"Finding path segment {i} to point {point}")
             path_segment = self.bfs(current_start, point)
             if path_segment:
-                full_path.extend(path_segment[:-1])  # Exclude the last point to avoid duplication
+                full_path.extend(path_segment[:-1])
                 current_start = point
             else:
-                return None  # Return None if any segment is not found
+                logger.error(f"Failed to find path segment to point {point}")
+                return None
 
         final_segment = self.bfs(current_start, end)
         if final_segment:
             full_path.extend(final_segment)
+            logger.info(f"Complete path found with length {len(full_path)}")
+            return full_path
         else:
+            logger.error(f"Failed to find final path segment to end point {end}")
             return None
-
-        return full_path
 
 class PathVisualiser:
     def __init__(self, grid):
         self.grid = grid
+        logger.info(f"PathVisualiser initialized with grid size {grid.rows}x{grid.cols}")
 
     def visualise_path(self, path, start, end, points=[]):
-        # Create a grid for visualisation
-        visual_grid = [['[ ]' for _ in range(self.grid.cols)] for _ in range(self.grid.rows)]
+        if not path:
+            logger.error("Cannot visualize: path is empty or None")
+            return
 
-        # Mark the path taken
-        for (x, y) in path:
-            visual_grid[x][y] = '[=]'
+        logger.info("Starting path visualization")
+        try:
+            visual_grid = [['[ ]' for _ in range(self.grid.cols)] for _ in range(self.grid.rows)]
 
-        # Mark all points (start, end, and intermediate) with *
-        sx, sy = start
-        ex, ey = end
-        visual_grid[sx][sy] = '[*]'
-        visual_grid[ex][ey] = '[*]'
-        for x, y in points:
-            visual_grid[x][y] = '[*]'
+            for (x, y) in path:
+                visual_grid[x][y] = '[=]'
 
-        # Print the visual grid
-        for row in visual_grid:
-            print(' '.join(row))
+            sx, sy = start
+            ex, ey = end
+            visual_grid[sx][sy] = '[*]'
+            visual_grid[ex][ey] = '[*]'
+            
+            for x, y in points:
+                if 0 <= x < self.grid.rows and 0 <= y < self.grid.cols:
+                    visual_grid[x][y] = '[*]'
+                else:
+                    logger.warning(f"Point ({x}, {y}) is out of bounds and will be skipped")
 
-# Example usage
-rows, cols = 10, 10
-grid = Grid(rows, cols)
-path_finder = PathFinder(grid)
-path_visualiser = PathVisualiser(grid)
+            for row in visual_grid:
+                print(' '.join(row))
+            
+            logger.info("Path visualization completed")
+        except Exception as e:
+            logger.error(f"Error during visualization: {str(e)}")
 
-start_node = (0, 0)
-end_node = (rows - 1, cols - 1)
-intermediate_points = [(2, 2), (5, 5), (7, 7)]  # Example intermediate points
+# Update the example usage with error handling
+try:
+    rows, cols = 10, 10
+    grid = Grid(rows, cols)
+    path_finder = PathFinder(grid)
+    path_visualiser = PathVisualiser(grid)
 
-# Update the example usage
-path_in = path_finder.find_path_through_points(start_node, intermediate_points, end_node)
-if path_in:
-    path_visualiser.visualise_path(path_in, start_node, end_node, intermediate_points)
-else:
-    print("No path found")
+    start_node = (0, 0)
+    end_node = (rows - 1, cols - 1)
+    intermediate_points = [(2, 2), (5, 5), (7, 7)]
+
+    logger.info("Starting pathfinding process")
+    path_in = path_finder.find_path_through_points(start_node, intermediate_points, end_node)
+    
+    if path_in:
+        path_visualiser.visualise_path(path_in, start_node, end_node, intermediate_points)
+    else:
+        logger.error("Failed to find a valid path through all points")
+except Exception as e:
+    logger.error(f"An unexpected error occurred: {str(e)}")
