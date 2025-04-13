@@ -7,7 +7,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Grid class represents the game board structure
+# Grid class represents the warehouse structure
 class Grid:
     def __init__(self, rows, cols):
         self.rows = rows
