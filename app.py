@@ -1,3 +1,12 @@
+import logging
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 class Grid:
     def __init__(self, rows, cols):
         self.rows = rows
