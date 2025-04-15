@@ -7,6 +7,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Configure logging to both file and terminal
+file_handler = logging.FileHandler('stockbot_log.txt')
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+logger.addHandler(file_handler)
+
 # Grid class represents the warehouse structure
 class Grid:
     def __init__(self, rows_grid, cols_grid):

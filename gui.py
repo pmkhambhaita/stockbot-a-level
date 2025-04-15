@@ -56,13 +56,14 @@ class PathfinderGUI:
                 self.points.append((x, y))
                 self.point_entry.delete(0, tk.END)
                 self.output_text.insert(tk.END, f"Added point: ({x}, {y})\n")
-            
+            else:
+                self.output_text.insert(tk.END, f"Error: Cannot add point ({x}, {y}). Must not be start/end point and must be within bounds.\n")
         except ValueError:
-            spa.logger.error("Invalid input format. Please use 'x,y' format")
+            self.output_text.insert(tk.END, "Error: Invalid input format. Please use 'x,y' format\n")
 
     def find_path(self):
         if not self.points:
-            spa.logger.warning("No points added")
+            self.output_text.insert(tk.END, "Error: No points added\n")
             return
 
         start_node = (0, 0)
@@ -82,8 +83,9 @@ class PathfinderGUI:
             visualization = result.getvalue()
             
             self.output_text.insert(tk.END, visualization)
+            self.output_text.insert(tk.END, f"\nTotal path length: {len(path) - 1} steps\n")
         else:
-            self.output_text.insert(tk.END, "No valid path found\n")
+            self.output_text.insert(tk.END, "Error: No valid path found through all points\n")
 
     def clear_all(self):
         self.points = []
