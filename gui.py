@@ -4,6 +4,8 @@ from tkinter import ttk  # Themed widgets for enhanced GUI appearance
 import spa              # Custom module for pathfinding algorithms
 import io              # For redirecting stdout to capture visualisation
 import sys             # For system-level operations like stdout manipulation
+import threading       # For multi-threading support
+import queue           # For thread-safe data exchange
 
 class PathfinderGUI:
     def __init__(self, root):
@@ -11,6 +13,10 @@ class PathfinderGUI:
         self.root = root
         self.root.title("StockBot")
         self.root.geometry("600x400")  # Set initial window dimensions
+        
+        # Initialize threading components
+        self.processing = False
+        self.result_queue = queue.Queue()
         
         # Configure grid weights to enable proper resising
         self.root.grid_rowconfigure(1, weight=1)
@@ -75,43 +81,94 @@ class PathfinderGUI:
             self.output_text.insert(tk.END, "Error: Invalid format. Please use 'x,y' format (e.g., '2,3' or '(2,3)')\n")
 
     def find_path(self):
+        # Prevent multiple concurrent pathfinding operations
+        if self.processing:
+            self.output_text.insert(tk.END, "Already processing a path request. Please wait.\n")
+            return
+
         # Check if there are any points to process
         if not self.points:
             self.output_text.insert(tk.END, "Error: No intermediate points added. Please add at least one point.\n")
             return
 
-        # Define start and end points of the grid
-        start_node = (0, 0)
-        end_node = (self.grid.rows - 1, self.grid.cols - 1)
-        
         # Clear previous output
         self.output_text.delete(1.0, tk.END)
+        self.output_text.insert(tk.END, "Processing path...\n")
         
-        # Find path through all points
-        path = self.path_finder.find_path_through_points(start_node, self.points, end_node)
+        # Set processing flag
+        self.processing = True
         
-        if path:
-            # Temporarily redirect stdout to capture the visualisation
-            old_stdout = sys.stdout
-            result = io.StringIO()
-            sys.stdout = result
+        # Create and start pathfinding thread
+        path_thread = threading.Thread(target=self._find_path_thread)
+        path_thread.daemon = True  # Thread will be terminated when main program exits
+        path_thread.start()
+        
+        # Start checking for results
+        self.root.after(100, self._check_path_results)
+
+    def _find_path_thread(self):
+        try:
+            # Define start and end points of the grid
+            start_node = (0, 0)
+            end_node = (self.grid.rows - 1, self.grid.cols - 1)
             
-            # Generate the path visualisation
-            self.path_visualiser.visualise_path(path, start_node, end_node, self.points)
+            # Find path through all points
+            path = self.path_finder.find_path_through_points(start_node, self.points, end_node)
             
-            # Restore stdout and get the visualisation
-            sys.stdout = old_stdout
-            visualization = result.getvalue()
+            if path:
+                # Capture visualization in a string
+                old_stdout = sys.stdout
+                result = io.StringIO()
+                sys.stdout = result
+                
+                # Generate the path visualisation
+                self.path_visualiser.visualise_path(path, start_node, end_node, self.points)
+                
+                # Restore stdout and get the visualisation
+                sys.stdout = old_stdout
+                visualization = result.getvalue()
+                
+                # Put results in queue
+                self.result_queue.put({
+                    'success': True,
+                    'visualization': visualization,
+                    'path': path
+                })
+            else:
+                self.result_queue.put({
+                    'success': False,
+                    'error': "No valid path found through all points"
+                })
+        except Exception as e:
+            self.result_queue.put({
+                'success': False,
+                'error': str(e)
+            })
+
+    def _check_path_results(self):
+        try:
+            # Check if results are available
+            result = self.result_queue.get_nowait()
             
-            # Display the results in the output area
-            self.output_text.insert(tk.END, visualization)
-            self.output_text.insert(tk.END, f"\nTotal path length: {len(path) - 1} steps\n")
+            if result['success']:
+                # Display the results in the output area
+                self.output_text.delete(1.0, tk.END)
+                self.output_text.insert(tk.END, result['visualization'])
+                self.output_text.insert(tk.END, f"\nTotal path length: {len(result['path']) - 1} steps\n")
+                
+                # Add detailed path sequence
+                path_str = " -> ".join([f"({x},{y})" for x, y in result['path']])
+                self.output_text.insert(tk.END, f"Path sequence: {path_str}\n")
+            else:
+                self.output_text.delete(1.0, tk.END)
+                self.output_text.insert(tk.END, f"Error: {result['error']}\n")
             
-            # Add detailed path sequence
-            path_str = " -> ".join([f"({x},{y})" for x, y in path])
-            self.output_text.insert(tk.END, f"Path sequence: {path_str}\n")
-        else:
-            self.output_text.insert(tk.END, "Error: No valid path found through all points\n")
+            # Reset processing flag
+            self.processing = False
+            
+        except queue.Empty:
+            # No results yet, check again in 100ms
+            self.root.after(100, self._check_path_results)
 
     def clear_all(self):
         # Reset all components to initial state
