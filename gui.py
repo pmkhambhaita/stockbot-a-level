@@ -92,6 +92,10 @@ class PathfinderGUI:
             
             self.output_text.insert(tk.END, visualization)
             self.output_text.insert(tk.END, f"\nTotal path length: {len(path) - 1} steps\n")
+            
+            # Add path sequence visualization
+            path_str = " -> ".join([f"({x},{y})" for x, y in path])
+            self.output_text.insert(tk.END, f"Path sequence: {path_str}\n")
         else:
             self.output_text.insert(tk.END, "Error: No valid path found through all points\n")
 

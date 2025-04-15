@@ -1,3 +1,27 @@
 2025-04-15 14:52:01,401 - INFO - PathFinder initialised with grid size 10x10
 2025-04-15 14:52:01,401 - INFO - PathVisualiser initialised with grid size 10x10
 2025-04-15 14:52:07,212 - WARNING - Coordinates (-1,-1) out of bounds
+2025-04-15 14:53:01,806 - INFO - PathFinder initialised with grid size 10x10
+2025-04-15 14:53:01,806 - INFO - PathVisualiser initialised with grid size 10x10
+2025-04-15 14:53:26,541 - INFO - Finding path through 3 intermediate points
+2025-04-15 14:53:26,541 - INFO - Starting BFS search from (0, 0) to (3, 8)
+2025-04-15 14:53:26,542 - INFO - Path found with length 11
+2025-04-15 14:53:26,547 - INFO - Starting BFS search from (3, 8) to (4, 7)
+2025-04-15 14:53:26,548 - INFO - Path found with length 2
+2025-04-15 14:53:26,548 - INFO - Starting BFS search from (4, 7) to (9, 0)
+2025-04-15 14:53:26,549 - INFO - Path found with length 12
+2025-04-15 14:53:26,549 - INFO - Starting BFS search from (9, 0) to (9, 9)
+2025-04-15 14:53:26,550 - INFO - Path found with length 9
+2025-04-15 14:53:26,550 - INFO - Complete path found with length 34
+2025-04-15 14:53:26,550 - INFO - Starting path visualisation
+2025-04-15 14:53:26,550 - INFO - Path visualisation completed
+2025-04-15 14:54:55,119 - INFO - PathFinder initialised with grid size 10x10
+2025-04-15 14:54:55,120 - INFO - PathVisualiser initialised with grid size 10x10
+2025-04-15 14:54:59,040 - INFO - Finding path through 1 intermediate points
+2025-04-15 14:54:59,040 - INFO - Starting BFS search from (0, 0) to (6, 6)
+2025-04-15 14:54:59,041 - INFO - Path found with length 12
+2025-04-15 14:54:59,041 - INFO - Starting BFS search from (6, 6) to (9, 9)
+2025-04-15 14:54:59,042 - INFO - Path found with length 6
+2025-04-15 14:54:59,042 - INFO - Complete path found with length 18
+2025-04-15 14:54:59,042 - INFO - Starting path visualisation
+2025-04-15 14:54:59,043 - INFO - Path visualisation completed
