@@ -130,55 +130,6 @@ class PathVisualiser:
         except Exception as _e_:
             logger.error(f"Error during visualisation: {str(_e_)}")
 
-def get_valid_coordinate(prompt, max_rows, max_cols):
-    # Helper function to get and validate coordinate input from user
-    # Ensures coordinates are within grid boundaries and properly formatted
-    while True:
-        try:
-            coord_input = input(prompt)
-            # Remove parentheses and whitespace from input
-            coord_input = coord_input.strip('()').replace(' ', '')
-            x, y = map(int, coord_input.split(','))
-            
-            # Validate coordinates are within grid boundaries
-            if 0 <= x < max_rows and 0 <= y < max_cols:
-                return x, y
-            else:
-                logger.warning(f"Coordinates ({x},{y}) out of bounds. Must be within (0-{max_rows-1}, 0-{max_cols-1})")
-        except ValueError:
-            logger.error("Invalid input format. Please use 'x,y' format with numbers")
-
-def get_points(rows_in, cols_in):
-    # Handles the collection of intermediate points from user input
-    try:
-        while True:
-            num_points = input("Enter the number of intermediate points (0 or more): ")
-            try:
-                num_points = int(num_points)
-                if num_points >= 0:
-                    break
-                logger.warning("Number of points must be non-negative")
-            except ValueError:
-                logger.error("Please enter a valid number")
-
-        # Collect all intermediate points
-        points = []
-        for i in range(num_points):
-            logger.info(f"Entering point {i+1} of {num_points}")
-            point = get_valid_coordinate(
-                f"Enter point {i+1} coordinates (x,y): ",
-                rows_in,
-                cols_in
-            )
-            points.append(point)
-            logger.info(f"Added point {point}")
-
-        return points
-
-    except KeyboardInterrupt:
-        logger.warning("\nInput cancelled by user")
-        return None
-
 def validate_point(x, y, rows, cols):
     """Validates if a point is within bounds and not a start/end point"""
     if (x, y) == (0, 0) or (x, y) == (rows - 1, cols - 1):
@@ -191,38 +142,4 @@ def validate_point(x, y, rows, cols):
     logger.warning(f"Coordinates ({x},{y}) out of bounds")
     return False
 
-# Main programme execution
-try:
-    # Initialise grid with fixed dimensions
-    rows, cols = 10, 10
-    grid = Grid(rows, cols)
-    path_finder = PathFinder(grid)
-    path_visualiser = PathVisualiser(grid)
-
-    # Set fixed start and end points
-    start_node = (0, 0)
-    end_node = (rows - 1, cols - 1)
-    
-    # Display programme information
-    logger.info(f"Grid size: {rows}x{cols}")
-    logger.info(f"Start point: {start_node}")
-    logger.info(f"End point: {end_node}")
-    print("\nEnter coordinates in the format: x,y or (x,y)")
-    print(f"Valid coordinate ranges: x: 0-{rows-1}, y: 0-{cols-1}")
-
-    # Collect intermediate points from user
-    intermediate_points = get_points(rows, cols)
-    if intermediate_points is None:
-        raise ValueError("Failed to get intermediate points")
-
-    # Find and visualise the path
-    logger.info("Starting pathfinding process")
-    path_in = path_finder.find_path_through_points(start_node, intermediate_points, end_node)
-    
-    if path_in:
-        path_visualiser.visualise_path(path_in, start_node, end_node, intermediate_points)
-    else:
-        logger.error("Failed to find a valid path through all points")
-
-except Exception as e:
-    logger.error(f"An unexpected error occurred: {str(e)}")
+# Remove everything below this point (get_valid_coordinate, get_points, and the main execution block)
