@@ -1,5 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+import spa
+import io
+import sys
 
 class PathfinderGUI:
     def __init__(self, root):
@@ -35,15 +38,59 @@ class PathfinderGUI:
         
         clear_button = ttk.Button(button_frame, text="Clear", command=self.clear_all)
         clear_button.grid(row=0, column=1, padx=5)
+        
+        # Initialize pathfinding components
+        self.grid = spa.Grid(10, 10)
+        self.path_finder = spa.PathFinder(self.grid)
+        self.path_visualiser = spa.PathVisualiser(self.grid)
+        
+        # Store points
+        self.points = []
 
     def add_point(self):
-        pass
+        point_str = self.point_entry.get().strip()
+        try:
+            x, y = map(int, point_str.strip('()').replace(' ', '').split(','))
+            
+            if 0 <= x < self.grid.rows and 0 <= y < self.grid.cols:
+                self.points.append((x, y))
+                self.point_entry.delete(0, tk.END)
+                self.output_text.insert(tk.END, f"Added point: ({x}, {y})\n")
+            else:
+                spa.logger.warning(f"Coordinates ({x},{y}) out of bounds")
+        except ValueError:
+            spa.logger.error("Invalid input format. Please use 'x,y' format")
 
     def find_path(self):
-        pass
+        if not self.points:
+            spa.logger.warning("No points added")
+            return
+
+        start_node = (0, 0)
+        end_node = (self.grid.rows - 1, self.grid.cols - 1)
+        
+        self.output_text.delete(1.0, tk.END)
+        path = self.path_finder.find_path_through_points(start_node, self.points, end_node)
+        
+        if path:
+            old_stdout = sys.stdout
+            result = io.StringIO()
+            sys.stdout = result
+            
+            self.path_visualiser.visualise_path(path, start_node, end_node, self.points)
+            
+            sys.stdout = old_stdout
+            visualization = result.getvalue()
+            
+            self.output_text.insert(tk.END, visualization)
+        else:
+            self.output_text.insert(tk.END, "No valid path found\n")
 
     def clear_all(self):
-        pass
+        self.points = []
+        self.point_entry.delete(0, tk.END)
+        self.output_text.delete(1.0, tk.END)
+        self.output_text.insert(tk.END, "Cleared all points\n")
 
 def main():
     root = tk.Tk()
