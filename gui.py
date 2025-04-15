@@ -52,12 +52,11 @@ class PathfinderGUI:
         try:
             x, y = map(int, point_str.strip('()').replace(' ', '').split(','))
             
-            if 0 <= x < self.grid.rows and 0 <= y < self.grid.cols:
+            if spa.validate_point(x, y, self.grid.rows, self.grid.cols):
                 self.points.append((x, y))
                 self.point_entry.delete(0, tk.END)
                 self.output_text.insert(tk.END, f"Added point: ({x}, {y})\n")
-            else:
-                spa.logger.warning(f"Coordinates ({x},{y}) out of bounds")
+            
         except ValueError:
             spa.logger.error("Invalid input format. Please use 'x,y' format")
 

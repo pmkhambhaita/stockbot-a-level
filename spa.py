@@ -179,6 +179,18 @@ def get_points(rows_in, cols_in):
         logger.warning("\nInput cancelled by user")
         return None
 
+def validate_point(x, y, rows, cols):
+    """Validates if a point is within bounds and not a start/end point"""
+    if (x, y) == (0, 0) or (x, y) == (rows - 1, cols - 1):
+        logger.warning(f"Cannot use start point (0,0) or end point ({rows-1},{cols-1})")
+        return False
+    
+    if 0 <= x < rows and 0 <= y < cols:
+        return True
+    
+    logger.warning(f"Coordinates ({x},{y}) out of bounds")
+    return False
+
 # Main programme execution
 try:
     # Initialise grid with fixed dimensions
