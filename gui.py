@@ -52,18 +52,26 @@ class PathfinderGUI:
         try:
             x, y = map(int, point_str.strip('()').replace(' ', '').split(','))
             
-            if spa.validate_point(x, y, self.grid.rows, self.grid.cols):
-                self.points.append((x, y))
-                self.point_entry.delete(0, tk.END)
-                self.output_text.insert(tk.END, f"Added point: ({x}, {y})\n")
-            else:
-                self.output_text.insert(tk.END, f"Error: Cannot add point ({x}, {y}). Must not be start/end point and must be within bounds.\n")
+            # Check for start/end points first
+            if (x, y) == (0, 0) or (x, y) == (self.grid.rows - 1, self.grid.cols - 1):
+                self.output_text.insert(tk.END, f"Error: Cannot add ({x}, {y}) as it is a start/end point\n")
+                return
+            
+            # Check boundaries
+            if not (0 <= x < self.grid.rows and 0 <= y < self.grid.cols):
+                self.output_text.insert(tk.END, f"Error: Point ({x}, {y}) is out of bounds. Must be within (0-{self.grid.rows-1}, 0-{self.grid.cols-1})\n")
+                return
+            
+            self.points.append((x, y))
+            self.point_entry.delete(0, tk.END)
+            self.output_text.insert(tk.END, f"Added point: ({x}, {y})\n")
+            
         except ValueError:
-            self.output_text.insert(tk.END, "Error: Invalid input format. Please use 'x,y' format\n")
+            self.output_text.insert(tk.END, "Error: Invalid format. Please use 'x,y' format (e.g., '2,3' or '(2,3)')\n")
 
     def find_path(self):
         if not self.points:
-            self.output_text.insert(tk.END, "Error: No points added\n")
+            self.output_text.insert(tk.END, "Error: No intermediate points added. Please add at least one point.\n")
             return
 
         start_node = (0, 0)
