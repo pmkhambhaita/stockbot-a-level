@@ -22,11 +22,12 @@ class Grid:
 
 # PathFinder class implements the pathfinding algorithm
 class PathFinder:
-    def __init__(self, grid_in):
+    def __init__(self, grid_in=None):
         self.grid = grid_in
         # Define possible movement directions (up, down, left, right)
         self.directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        logger.info(f"PathFinder initialised with grid size {grid_in.rows}x{grid_in.cols}")
+        if grid_in:
+            logger.info(f"PathFinder initialised with grid size {grid_in.rows}x{grid_in.cols}")
 
     def bfs(self, start, end):
         # Implements Breadth-First Search algorithm to find shortest path
@@ -123,7 +124,8 @@ class PathVisualiser:
             visual_grid[ex][ey] = '[*]'
             
             for x, y in points:
-                if 0 <= x < self.grid.rows and 0 <= y < self.grid.cols:
+                valid, _ = validate_point(x, y, self.grid.rows, self.grid.cols, True)
+                if valid:
                     visual_grid[x][y] = '[*]'
                 else:
                     logger.warning(f"Point ({x}, {y}) is out of bounds and will be skipped")
@@ -135,16 +137,13 @@ class PathVisualiser:
         except Exception as _e_:
             logger.error(f"Error during visualisation: {str(_e_)}")
 
-def validate_point(x, y, rows, cols):
-    """Validates if a point is within bounds and not a start/end point"""
-    if (x, y) == (0, 0) or (x, y) == (rows - 1, cols - 1):
-        logger.warning(f"Cannot use start point (0,0) or end point ({rows-1},{cols-1})")
-        return False
+def validate_point(x, y, rows, cols, allow_start_end=False):
+    """Validates if a point is within bounds and optionally checks for start/end points
+    Returns: (bool, str) - (is_valid, error_message)"""
+    if not allow_start_end and ((x, y) == (0, 0) or (x, y) == (rows - 1, cols - 1)):
+        return False, f"Cannot use start point (0,0) or end point ({rows-1},{cols-1})"
     
-    if 0 <= x < rows and 0 <= y < cols:
-        return True
+    if not (0 <= x < rows and 0 <= y < cols):
+        return False, f"Coordinates ({x},{y}) out of bounds"
     
-    logger.warning(f"Coordinates ({x},{y}) out of bounds")
-    return False
-
-# Remove everything below this point (get_valid_coordinate, get_points, and the main execution block)
+    return True, ""

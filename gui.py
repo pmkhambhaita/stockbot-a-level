@@ -52,14 +52,9 @@ class PathfinderGUI:
         try:
             x, y = map(int, point_str.strip('()').replace(' ', '').split(','))
             
-            # Check for start/end points first
-            if (x, y) == (0, 0) or (x, y) == (self.grid.rows - 1, self.grid.cols - 1):
-                self.output_text.insert(tk.END, f"Error: Cannot add ({x}, {y}) as it is a start/end point\n")
-                return
-            
-            # Check boundaries
-            if not (0 <= x < self.grid.rows and 0 <= y < self.grid.cols):
-                self.output_text.insert(tk.END, f"Error: Point ({x}, {y}) is out of bounds. Must be within (0-{self.grid.rows-1}, 0-{self.grid.cols-1})\n")
+            valid, error = spa.validate_point(x, y, self.grid.rows, self.grid.cols)
+            if not valid:
+                self.output_text.insert(tk.END, f"Error: {error}\n")
                 return
             
             self.points.append((x, y))
