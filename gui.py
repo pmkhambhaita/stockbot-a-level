@@ -6,19 +6,20 @@ import io              # For redirecting stdout to capture visualisation
 import sys             # For system-level operations like stdout manipulation
 import threading       # For multi-threading support
 import queue           # For thread-safe data exchange
+import config
 
 class PathfinderGUI:
-    def __init__(self, root):
+    def __init__(self, root, rows=10, cols=10):  # Modified to accept dimensions
         # Store the root window and configure basic window properties
         self.root = root
         self.root.title("StockBot")
-        self.root.geometry("600x400")  # Set initial window dimensions
+        self.root.geometry("600x400")
         
         # Initialize threading components
         self.processing = False
         self.result_queue = queue.Queue()
         
-        # Configure grid weights to enable proper resising
+        # Configure grid weights to enable proper resizing
         self.root.grid_rowconfigure(1, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
         
@@ -50,8 +51,8 @@ class PathfinderGUI:
         clear_button = ttk.Button(button_frame, text="Clear", command=self.clear_all)
         clear_button.grid(row=0, column=1, padx=5)
         
-        # Initialise the pathfinding components with a 10x10 grid
-        self.grid = spa.Grid(10, 10)
+        # Initialise the pathfinding components with configured grid size
+        self.grid = spa.Grid(rows, cols)
         self.path_finder = spa.PathFinder(self.grid)
         self.path_visualiser = spa.PathVisualiser(self.grid)
         
@@ -178,9 +179,14 @@ class PathfinderGUI:
         self.output_text.insert(tk.END, "Cleared all points\n")
 
 def main():
+    # Get grid dimensions from config window
+    rows, cols = config.get_grid_config()
+    if rows is None or cols is None:
+        return  # User closed the config window
+        
     # Create and start the main application window
     root = tk.Tk()
-    app = PathfinderGUI(root)
+    app = PathfinderGUI(root, rows, cols)  # Modified to accept dimensions
     root.mainloop()
 
 if __name__ == "__main__":
