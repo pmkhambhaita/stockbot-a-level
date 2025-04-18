@@ -1,14 +1,16 @@
 import sqlite3
 import random
+import config
 
 class InventoryDB:
-    def __init__(self, rows=10, cols=10):
-        """Initialize database with grid dimensions"""
-        self.rows = rows
-        self.cols = cols
+    def __init__(self):
+        """Initialize database with grid dimensions from config"""
+        # Get grid dimensions from config
+        self.rows, self.cols = config.get_grid_config()
+        if self.rows is None or self.cols is None:
+            raise ValueError("Grid configuration not provided")
+            
         self.db_path = "inventory.db"
-        
-        # Create database and tables
         self._init_database()
     
     def _init_database(self):
@@ -99,15 +101,16 @@ class InventoryDB:
 
 if __name__ == "__main__":
     try:
-        # Initialize database with default dimensions
-        db = InventoryDB(rows=10, cols=10)
+        # Initialize database using config dimensions
+        db = InventoryDB()
         
         # Populate with random data
         db.populate_random_data()
         
         # Test: Print quantities for all positions
         print("Initial Database State:")
-        for i in range(1, 101):  # 10x10 grid = 100 positions
+        total_positions = db.rows * db.cols
+        for i in range(1, total_positions + 1):
             try:
                 qty = db.get_quantity(i)
                 pos = db.get_position(i)
