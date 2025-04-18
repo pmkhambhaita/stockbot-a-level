@@ -106,7 +106,30 @@ class InventoryDB:
         except Exception as e:
             logger.error(f"Error updating quantity for ItemID {item_id}: {str(e)}")
             raise
-    
+
+    def decrement_quantity(self, item_id):
+        """Decrement quantity by 1 for a specific item"""
+        try:
+            self.validate_item_id(item_id)
+            current_qty = self.get_quantity(item_id)
+            if current_qty is None or current_qty <= 0:
+                logger.warning(f"Cannot decrement: ItemID {item_id} has no stock")
+                return False
+                
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('''
+                    UPDATE items 
+                    SET Quantity = Quantity - 1
+                    WHERE ItemID = ? AND Quantity > 0
+                ''', (item_id,))
+                conn.commit()
+                logger.info(f"Decremented quantity for ItemID {item_id}")
+                return cursor.rowcount > 0
+        except Exception as e:
+            logger.error(f"Error decrementing quantity for ItemID {item_id}: {str(e)}")
+            raise
+
     def get_position(self, item_id):
         """Get grid position (row, col) for an item"""
         with sqlite3.connect(self.db_path) as conn:

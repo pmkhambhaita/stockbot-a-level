@@ -152,6 +152,11 @@ class PathfinderGUI:
             path = self.path_finder.find_path_through_points(start_node, self.points, end_node)
             
             if path:
+                # Decrement stock for each intermediate point
+                for x, y in self.points:
+                    item_id = spa.coordinates_to_index(x, y, self.grid.cols)
+                    self.db.decrement_quantity(item_id)
+                
                 # Capture visualization in a string
                 old_stdout = sys.stdout
                 result = io.StringIO()
