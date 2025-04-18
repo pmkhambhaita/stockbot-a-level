@@ -32,6 +32,10 @@ class PathfinderGUI:
         self.point_entry = ttk.Entry(input_frame)
         self.point_entry.grid(row=0, column=0, padx=(0, 10), sticky='ew')
         
+        # Add range label after point entry
+        self.range_label = ttk.Label(input_frame, text=f"Enter position (1-{rows*cols})")
+        self.range_label.grid(row=1, column=0, columnspan=2, pady=(5,0))
+        
         # Create button to add points to the path
         add_button = ttk.Button(input_frame, text="Add Point", command=self.add_point)
         add_button.grid(row=0, column=1)
@@ -63,23 +67,29 @@ class PathfinderGUI:
         # Get and clean the input string from the entry field
         point_str = self.point_entry.get().strip()
         try:
-            # Convert input string to x,y coordinates
-            x, y = map(int, point_str.strip('()').replace(' ', '').split(','))
+            # Convert input string to single number
+            index = int(point_str)
             
-            # Validate the point using centralised validation function
+            # Validate index range
+            if not (1 <= index <= self.grid.rows * self.grid.cols):
+                self.output_text.insert(tk.END, f"Error: Position {index} out of range (1-{self.grid.rows * self.grid.cols})\n")
+                return
+            
+            # Convert to coordinates (0-based)
+            x, y = spa.index_to_coordinates(index, self.grid.cols)
+            
+            # Validate the point
             valid, error = spa.validate_point(x, y, self.grid.rows, self.grid.cols)
             if not valid:
                 self.output_text.insert(tk.END, f"Error: {error}\n")
                 return
             
-            # Add valid point to the list and clear input field
             self.points.append((x, y))
             self.point_entry.delete(0, tk.END)
-            self.output_text.insert(tk.END, f"Added point: ({x}, {y})\n")
+            self.output_text.insert(tk.END, f"Added position {index}\n")
             
         except ValueError:
-            # Handle invalid input format
-            self.output_text.insert(tk.END, "Error: Invalid format. Please use 'x,y' format (e.g., '2,3' or '(2,3)')\n")
+            self.output_text.insert(tk.END, "Error: Please enter a valid number\n")
 
     def find_path(self):
         # Prevent multiple concurrent pathfinding operations
@@ -148,18 +158,21 @@ class PathfinderGUI:
 
     def _check_path_results(self):
         try:
-            # Check if results are available
             result = self.result_queue.get_nowait()
             
             if result['success']:
-                # Display the results in the output area
                 self.output_text.delete(1.0, tk.END)
                 self.output_text.insert(tk.END, result['visualization'])
                 self.output_text.insert(tk.END, f"\nTotal path length: {len(result['path']) - 1} steps\n")
                 
-                # Add detailed path sequence
-                path_str = " -> ".join([f"({x},{y})" for x, y in result['path']])
-                self.output_text.insert(tk.END, f"Path sequence: {path_str}\n")
+                # Convert path to position numbers
+                path_indices = [spa.coordinates_to_index(x, y, self.grid.cols) 
+                              for x, y in result['path']]
+                
+                # Show path as position numbers
+                path_str = " -> ".join([str(idx) for idx in path_indices])
+                self.output_text.insert(tk.END, f"Path: {path_str}\n")
+                
             else:
                 self.output_text.delete(1.0, tk.END)
                 self.output_text.insert(tk.END, f"Error: {result['error']}\n")

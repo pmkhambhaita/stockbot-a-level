@@ -153,14 +153,25 @@ class PathVisualiser:
             logger.error(f"Error during visualisation: {str(_e_)}")
 
 def validate_point(x, y, rows, cols, allow_start_end=False):
-    """Validates if a point is within bounds and optionally checks for start/end points
-    Returns: (bool, str) - (is_valid, error_message)"""
+    """Validates if a point is within bounds and optionally checks for start/end points"""
     # Check if point is start/end when not allowed
     if not allow_start_end and ((x, y) == (0, 0) or (x, y) == (rows - 1, cols - 1)):
-        return False, f"Cannot use start point (0,0) or end point ({rows-1},{cols-1})"
+        return False, f"Cannot use start point (index 1) or end point (index {rows * cols})"
     
     # Check if point is within grid boundaries
     if not (0 <= x < rows and 0 <= y < cols):
-        return False, f"Coordinates ({x},{y}) out of bounds"
+        return False, f"Position out of bounds"
     
     return True, ""
+
+# Add after the existing imports
+def index_to_coordinates(index, cols):
+    """Convert 1-based index to 0-based coordinates"""
+    index -= 1  # Convert to 0-based
+    row = index // cols
+    col = index % cols
+    return row, col
+
+def coordinates_to_index(row, col, cols):
+    """Convert 0-based coordinates to 1-based index"""
+    return (row * cols) + col + 1
