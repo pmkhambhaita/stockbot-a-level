@@ -1,55 +1,60 @@
 import sqlite3
 import random
-import config
+import logging
+
+# Get the main logger
+logger = logging.getLogger(__name__)
 
 class InventoryDB:
-    def __init__(self):
-        """Initialize database with grid dimensions from config"""
-        # Get grid dimensions from config
-        self.rows, self.cols = config.get_grid_config()
-        if self.rows is None or self.cols is None:
-            raise ValueError("Grid configuration not provided")
-            
+    def __init__(self, rows, cols):
+        """Initialize database with grid dimensions"""
+        self.rows = rows
+        self.cols = cols
         self.db_path = "inventory.db"
+        logger.info(f"Initializing database with dimensions {rows}x{cols}")
         self._init_database()
     
     def _init_database(self):
         """Create the database and required tables if they don't exist"""
-        with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            
-            # Create items table with required fields
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS items (
-                    ItemID INTEGER PRIMARY KEY,
-                    row INTEGER NOT NULL,
-                    col INTEGER NOT NULL,
-                    Quantity INTEGER NOT NULL,
-                    UNIQUE(row, col)
-                )
-            ''')
-            conn.commit()
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('''
+                    CREATE TABLE IF NOT EXISTS items (
+                        ItemID INTEGER PRIMARY KEY,
+                        row INTEGER NOT NULL,
+                        col INTEGER NOT NULL,
+                        Quantity INTEGER NOT NULL,
+                        UNIQUE(row, col)
+                    )
+                ''')
+                conn.commit()
+                logger.info("Database table created successfully")
+        except Exception as e:
+            logger.error(f"Error creating database: {str(e)}")
+            raise
     
     def populate_random_data(self):
         """Fill the database with random quantities for each grid position"""
-        with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            
-            # Clear existing data
-            cursor.execute('DELETE FROM items')
-            
-            # Generate data for each position
-            for row in range(self.rows):
-                for col in range(self.cols):
-                    item_id = row * self.cols + col + 1  # 1-based index
-                    quantity = random.randint(1, 10)
-                    
-                    cursor.execute('''
-                        INSERT INTO items (ItemID, row, col, Quantity)
-                        VALUES (?, ?, ?, ?)
-                    ''', (item_id, row, col, quantity))
-            
-            conn.commit()
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('DELETE FROM items')
+                logger.info("Cleared existing inventory data")
+                
+                for row in range(self.rows):
+                    for col in range(self.cols):
+                        item_id = row * self.cols + col + 1
+                        quantity = random.randint(1, 10)
+                        cursor.execute('''
+                            INSERT INTO items (ItemID, row, col, Quantity)
+                            VALUES (?, ?, ?, ?)
+                        ''', (item_id, row, col, quantity))
+                conn.commit()
+                logger.info(f"Populated database with random data for {self.rows*self.cols} positions")
+        except Exception as e:
+            logger.error(f"Error populating database: {str(e)}")
+            raise
     
     def validate_item_id(self, item_id):
         """Validate if item_id exists and is within bounds"""
@@ -66,30 +71,41 @@ class InventoryDB:
     
     def get_quantity(self, item_id):
         """Get quantity for a specific item"""
-        self.validate_item_id(item_id)
-        with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute('SELECT Quantity FROM items WHERE ItemID = ?', (item_id,))
-            result = cursor.fetchone()
-            return result[0] if result else None
-    
+        try:
+            self.validate_item_id(item_id)
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('SELECT Quantity FROM items WHERE ItemID = ?', (item_id,))
+                result = cursor.fetchone()
+                quantity = result[0] if result else None
+                logger.debug(f"Retrieved quantity {quantity} for ItemID {item_id}")
+                return quantity
+        except Exception as e:
+            logger.error(f"Error getting quantity for ItemID {item_id}: {str(e)}")
+            raise
+
     def update_quantity(self, item_id, new_quantity):
         """Update quantity for a specific item"""
-        self.validate_item_id(item_id)
-        if not isinstance(new_quantity, int):
-            raise TypeError("Quantity must be an integer")
-        if new_quantity < 0:
-            raise ValueError("Quantity cannot be negative")
-            
-        with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute('''
-                UPDATE items 
-                SET Quantity = ?
-                WHERE ItemID = ?
-            ''', (new_quantity, item_id))
-            conn.commit()
-            return cursor.rowcount > 0
+        try:
+            self.validate_item_id(item_id)
+            if not isinstance(new_quantity, int):
+                raise TypeError("Quantity must be an integer")
+            if new_quantity < 0:
+                raise ValueError("Quantity cannot be negative")
+                
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('''
+                    UPDATE items 
+                    SET Quantity = ?
+                    WHERE ItemID = ?
+                ''', (new_quantity, item_id))
+                conn.commit()
+                logger.info(f"Updated quantity to {new_quantity} for ItemID {item_id}")
+                return cursor.rowcount > 0
+        except Exception as e:
+            logger.error(f"Error updating quantity for ItemID {item_id}: {str(e)}")
+            raise
     
     def get_position(self, item_id):
         """Get grid position (row, col) for an item"""

@@ -7,6 +7,7 @@ import sys             # For system-level operations like stdout manipulation
 import threading       # For multi-threading support
 import queue           # For thread-safe data exchange
 import config
+import database
 
 class PathfinderGUI:
     def __init__(self, root, rows=10, cols=10):  # Modified to accept dimensions
@@ -63,6 +64,21 @@ class PathfinderGUI:
         # Initialise empty list to store intermediate points
         self.points = []
 
+        # Initialize database with the same dimensions as the grid
+        self.db = database.InventoryDB(rows, cols)
+        self.db.populate_random_data()  # Initialize with random stock levels
+        
+        # Create stock management frame
+        stock_frame = ttk.Frame(root)
+        stock_frame.grid(row=3, column=0, pady=5)
+        
+        # Add stock management buttons
+        query_button = ttk.Button(stock_frame, text="Query Stock", command=self.query_stock)
+        query_button.grid(row=0, column=0, padx=5)
+        
+        update_button = ttk.Button(stock_frame, text="Update Stock", command=self.update_stock)
+        update_button.grid(row=0, column=1, padx=5)
+
     def add_point(self):
         # Get and clean the input string from the entry field
         point_str = self.point_entry.get().strip()
@@ -73,6 +89,15 @@ class PathfinderGUI:
             # Validate index range
             if not (1 <= index <= self.grid.rows * self.grid.cols):
                 self.output_text.insert(tk.END, f"Error: Position {index} out of range (1-{self.grid.rows * self.grid.cols})\n")
+                return
+            
+            # Check stock before adding point
+            quantity = self.db.get_quantity(index)
+            if quantity is None:
+                self.output_text.insert(tk.END, f"Error: Position {index} not found\n")
+                return
+            if quantity <= 0:
+                self.output_text.insert(tk.END, f"Warning: Skipping position {index} - Out of stock\n")
                 return
             
             # Convert to coordinates (0-based)
@@ -86,7 +111,7 @@ class PathfinderGUI:
             
             self.points.append((x, y))
             self.point_entry.delete(0, tk.END)
-            self.output_text.insert(tk.END, f"Added position {index}\n")
+            self.output_text.insert(tk.END, f"Added position {index} (Stock: {quantity})\n")
             
         except ValueError:
             self.output_text.insert(tk.END, "Error: Please enter a valid number\n")
@@ -191,15 +216,68 @@ class PathfinderGUI:
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Cleared all points\n")
 
+    def query_stock(self):
+        try:
+            point_str = self.point_entry.get().strip()
+            if not point_str:
+                self.output_text.insert(tk.END, "Please enter a position to query\n")
+                return
+                
+            index = int(point_str)
+            quantity = self.db.get_quantity(index)
+            
+            if quantity is not None:
+                pos = self.db.get_position(index)
+                self.output_text.insert(tk.END, f"Position {index} (row={pos[0]}, col={pos[1]}): Stock = {quantity}\n")
+            else:
+                self.output_text.insert(tk.END, f"Position {index} not found\n")
+                
+        except ValueError:
+            self.output_text.insert(tk.END, "Error: Please enter a valid number\n")
+
+    def update_stock(self):
+        try:
+            point_str = self.point_entry.get().strip()
+            if not point_str:
+                self.output_text.insert(tk.END, "Please enter a position to update\n")
+                return
+                
+            index = int(point_str)
+            
+            # Create popup for quantity input
+            popup = tk.Toplevel(self.root)
+            popup.title("Update Stock")
+            popup.geometry("200x100")
+            
+            ttk.Label(popup, text="Enter new quantity:").pack(pady=5)
+            qty_entry = ttk.Entry(popup)
+            qty_entry.pack(pady=5)
+            
+            def do_update():
+                try:
+                    new_qty = int(qty_entry.get())
+                    self.db.update_quantity(index, new_qty)
+                    self.output_text.insert(tk.END, f"Updated stock for position {index} to {new_qty}\n")
+                    popup.destroy()
+                except ValueError:
+                    self.output_text.insert(tk.END, "Error: Please enter a valid number\n")
+                except Exception as e:
+                    self.output_text.insert(tk.END, f"Error: {str(e)}\n")
+            
+            ttk.Button(popup, text="Update", command=do_update).pack(pady=5)
+            
+        except ValueError:
+            self.output_text.insert(tk.END, "Error: Please enter a valid position number\n")
+
 def main():
-    # Get grid dimensions from config window
+    # Get grid dimensions from config window (will only show once)
     rows, cols = config.get_grid_config()
     if rows is None or cols is None:
         return  # User closed the config window
         
     # Create and start the main application window
     root = tk.Tk()
-    app = PathfinderGUI(root, rows, cols)  # Modified to accept dimensions
+    app = PathfinderGUI(root, rows, cols)
     root.mainloop()
 
 if __name__ == "__main__":
