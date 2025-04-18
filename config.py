@@ -52,13 +52,35 @@ class ConfigWizard:
         y = (self.root.winfo_screenheight() // 2) - (height // 2)
         self.root.geometry(f'{width}x{height}+{x}+{y}')
     
+    def show_placeholder(self):
+        # Just a temporary placeholder until we implement real pages
+        placeholder = ttk.Label(self.content_frame, text="Page content will go here")
+        placeholder.grid(row=0, column=0, pady=20)
+    
+    def show_page(self, page_index):
+        # Clear current page
+        for widget in self.content_frame.winfo_children():
+            widget.destroy()
+        
+        if 0 <= page_index < len(self.pages):
+            # Create new page
+            self.pages[page_index](self.content_frame)
+            self.current_page = page_index
+            
+            # Update button states
+            self.back_button.config(state=tk.NORMAL if page_index > 0 else tk.DISABLED)
+            self.next_button.config(state=tk.NORMAL if page_index < len(self.pages) - 1 else tk.DISABLED)
+            self.finish_button.config(state=tk.NORMAL if page_index == len(self.pages) - 1 else tk.DISABLED)
+        else:
+            self.show_placeholder()
+    
     def go_back(self):
-        # Placeholder for back button functionality
-        pass
+        if self.current_page > 0:
+            self.show_page(self.current_page - 1)
     
     def go_next(self):
-        # Placeholder for next button functionality
-        pass
+        if self.current_page < len(self.pages) - 1:
+            self.show_page(self.current_page + 1)
     
     def finish(self):
         # Placeholder for finish button functionality
