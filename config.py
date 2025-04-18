@@ -1,39 +1,48 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-class ConfigWindow:
+class ConfigWizard:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("Grid Configuration")
-        self.root.geometry("300x200")
+        self.root.title("StockBot Setup")
+        self.root.geometry("500x400")
         self.root.resizable(False, False)
         
         # Initialize result variables
         self.rows = None
         self.cols = None
+        self.current_page = 0
+        
+        # Configure root grid
+        self.root.grid_columnconfigure(0, weight=1)
+        self.root.grid_rowconfigure(0, weight=1)
         
         # Create main frame
-        main_frame = ttk.Frame(self.root, padding="20")
-        main_frame.grid(row=0, column=0, sticky="nsew")
+        self.main_frame = ttk.Frame(self.root, padding="20")
+        self.main_frame.grid(row=0, column=0, sticky="nsew")
         
-        # Create and configure grid inputs
-        ttk.Label(main_frame, text="Grid Dimensions").grid(row=0, column=0, columnspan=2, pady=(0, 20))
+        # Configure main frame grid
+        self.main_frame.grid_columnconfigure(0, weight=1)
+        self.main_frame.grid_rowconfigure(0, weight=1)
+        self.main_frame.grid_rowconfigure(1, weight=0)
         
-        # Rows input
-        ttk.Label(main_frame, text="Rows:").grid(row=1, column=0, padx=5, pady=5)
-        self.rows_spinbox = ttk.Spinbox(main_frame, from_=1, to=50, width=10)
-        self.rows_spinbox.grid(row=1, column=1, padx=5, pady=5)
-        self.rows_spinbox.set(10)  # Default value
+        # Create content frame (will hold different pages)
+        self.content_frame = ttk.Frame(self.main_frame)
+        self.content_frame.grid(row=0, column=0, sticky="nsew")
         
-        # Columns input
-        ttk.Label(main_frame, text="Columns:").grid(row=2, column=0, padx=5, pady=5)
-        self.cols_spinbox = ttk.Spinbox(main_frame, from_=1, to=50, width=10)
-        self.cols_spinbox.grid(row=2, column=1, padx=5, pady=5)
-        self.cols_spinbox.set(10)  # Default value
+        # Create button frame
+        self.button_frame = ttk.Frame(self.main_frame)
+        self.button_frame.grid(row=1, column=0, sticky="se", pady=(20, 0))
         
-        # Confirm button
-        ttk.Button(main_frame, text="Confirm", command=self.validate_and_save).grid(
-            row=3, column=0, columnspan=2, pady=20)
+        # Create navigation buttons
+        self.back_button = ttk.Button(self.button_frame, text="Back", command=self.go_back, state=tk.DISABLED)
+        self.next_button = ttk.Button(self.button_frame, text="Next", command=self.go_next)
+        self.finish_button = ttk.Button(self.button_frame, text="Finish", command=self.finish, state=tk.DISABLED)
+        
+        # Grid buttons (right-aligned)
+        self.back_button.grid(row=0, column=0, padx=5)
+        self.next_button.grid(row=0, column=1, padx=5)
+        self.finish_button.grid(row=0, column=2, padx=5)
         
         # Center the window
         self.root.update_idletasks()
@@ -43,30 +52,22 @@ class ConfigWindow:
         y = (self.root.winfo_screenheight() // 2) - (height // 2)
         self.root.geometry(f'{width}x{height}+{x}+{y}')
     
-    def validate_and_save(self):
-        try:
-            rows = int(self.rows_spinbox.get())
-            cols = int(self.cols_spinbox.get())
-            
-            if rows <= 0 or cols <= 0:
-                messagebox.showerror("Invalid Input", "Rows and columns must be positive numbers.")
-                return
-            
-            if rows > 50 or cols > 50:
-                messagebox.showerror("Invalid Input", "Maximum grid size is 50x50.")
-                return
-            
-            self.rows = rows
-            self.cols = cols
-            self.root.destroy()
-            
-        except ValueError:
-            messagebox.showerror("Invalid Input", "Please enter valid numbers.")
+    def go_back(self):
+        # Placeholder for back button functionality
+        pass
+    
+    def go_next(self):
+        # Placeholder for next button functionality
+        pass
+    
+    def finish(self):
+        # Placeholder for finish button functionality
+        self.root.destroy()
     
     def get_dimensions(self):
         self.root.mainloop()
         return self.rows, self.cols
 
 def get_grid_config():
-    config_window = ConfigWindow()
-    return config_window.get_dimensions()
+    config_wizard = ConfigWizard()
+    return config_wizard.get_dimensions()
