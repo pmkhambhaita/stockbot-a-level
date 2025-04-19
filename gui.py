@@ -238,9 +238,10 @@ class PathfinderGUI:
             result = self.result_queue.get_nowait()
             
             if result['success']:
+                # Update the main output text with basic information
                 self.output_text.delete(1.0, tk.END)
-                self.output_text.insert(tk.END, result['visualization'])
-                self.output_text.insert(tk.END, f"\nTotal path length: {len(result['path']) - 1} steps\n")
+                self.output_text.insert(tk.END, "Path found successfully!\n")
+                self.output_text.insert(tk.END, f"Total path length: {len(result['path']) - 1} steps\n")
                 
                 # Convert path to position numbers
                 path_indices = [spa.coordinates_to_index(x, y, self.grid.cols) 
@@ -249,6 +250,13 @@ class PathfinderGUI:
                 # Show path as position numbers
                 path_str = " -> ".join([str(idx) for idx in path_indices])
                 self.output_text.insert(tk.END, f"Path: {path_str}\n")
+                self.output_text.insert(tk.END, "\nOpen Grid Visualisation to see the path map.")
+                
+                # Update the visualisation window
+                self.viz_window.update_visualisation(result['visualization'])
+                
+                # Show the visualisation window
+                self.viz_window.show()
                 
             else:
                 self.output_text.delete(1.0, tk.END)
