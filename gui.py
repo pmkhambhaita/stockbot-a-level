@@ -171,7 +171,7 @@ class PathfinderGUI:
         # Store the root window and configure basic window properties
         self.root = root
         self.root.title("StockBot")
-        self.root.geometry("800x600")  # Increased size to accommodate new layout
+        self.root.geometry("600x500")  # Adjusted size for cleaner layout
         
         # Initialize threading components
         self.processing = False
@@ -187,29 +187,13 @@ class PathfinderGUI:
         input_frame.grid_columnconfigure(1, weight=1)  # Allow input field to expand
         
         # Create label and text entry field for points
-        ttk.Label(input_frame, text="Enter points (space-separated):").grid(row=0, column=0, padx=(0, 10), sticky='w')
+        ttk.Label(input_frame, text="Enter points:").grid(row=0, column=0, padx=(0, 10), sticky='w')
         self.point_entry = ttk.Entry(input_frame, width=50)
         self.point_entry.grid(row=0, column=1, sticky='ew')
         
-        # Create row/column display frame
-        dim_frame = ttk.Frame(root)
-        dim_frame.grid(row=1, column=0, pady=5, padx=10, sticky='ew')
-        
-        # Row display
-        ttk.Label(dim_frame, text="Rows:").grid(row=0, column=0, padx=(0, 5), sticky='w')
-        row_var = tk.StringVar(value=str(rows))
-        row_entry = ttk.Entry(dim_frame, textvariable=row_var, width=5, state='readonly')
-        row_entry.grid(row=0, column=1, padx=(0, 20), sticky='w')
-        
-        # Column display
-        ttk.Label(dim_frame, text="Columns:").grid(row=0, column=2, padx=(0, 5), sticky='w')
-        col_var = tk.StringVar(value=str(cols))
-        col_entry = ttk.Entry(dim_frame, textvariable=col_var, width=5, state='readonly')
-        col_entry.grid(row=0, column=3, sticky='w')
-        
         # Create legend frame
         legend_frame = ttk.LabelFrame(root, text="Legend:")
-        legend_frame.grid(row=2, column=0, pady=10, padx=10, sticky='nw')
+        legend_frame.grid(row=1, column=0, pady=5, padx=10, sticky='nw')
         
         # Add legend items
         ttk.Label(legend_frame, text="B", foreground="#4287f5", font=("Arial", 10, "bold")).grid(row=0, column=0, padx=5, pady=2, sticky='w')
@@ -227,21 +211,13 @@ class PathfinderGUI:
         ttk.Label(legend_frame, text="O", foreground="#ff9933", font=("Arial", 10, "bold")).grid(row=4, column=0, padx=5, pady=2, sticky='w')
         ttk.Label(legend_frame, text="Low Stock (<2)").grid(row=4, column=1, padx=5, pady=2, sticky='w')
         
-        # Create path distance display
-        path_frame = ttk.Frame(root)
-        path_frame.grid(row=3, column=0, pady=10, padx=10, sticky='w')
-        
-        ttk.Label(path_frame, text="Total path distance:").grid(row=0, column=0, padx=(0, 5), sticky='w')
-        self.path_distance = ttk.Entry(path_frame, width=5, state='readonly')
-        self.path_distance.grid(row=0, column=1, sticky='w')
-        
         # Create main output area for displaying messages
         self.output_text = tk.Text(root, height=5, width=50)
-        self.output_text.grid(row=4, column=0, pady=10, padx=10, sticky='nsew')
+        self.output_text.grid(row=2, column=0, pady=10, padx=10, sticky='nsew')
         
         # Create bottom frame for control buttons in a 2x2 grid
         button_frame = ttk.Frame(root)
-        button_frame.grid(row=5, column=0, pady=10, padx=10, sticky='ew')
+        button_frame.grid(row=3, column=0, pady=10, padx=10, sticky='ew')
         button_frame.grid_columnconfigure(0, weight=1)
         button_frame.grid_columnconfigure(1, weight=1)
         
@@ -260,7 +236,7 @@ class PathfinderGUI:
         
         # Add Find Path button separately
         find_path_button = ttk.Button(root, text="Find Path", command=self.find_path, width=20)
-        find_path_button.grid(row=6, column=0, pady=10)
+        find_path_button.grid(row=4, column=0, pady=10)
         
         # Initialise the pathfinding components with configured grid size
         self.grid = spa.Grid(rows, cols)
@@ -376,9 +352,9 @@ class PathfinderGUI:
                 self.output_text.delete(1.0, tk.END)
                 self.output_text.insert(tk.END, f"Total path length: {path_length} steps\n")
                 
-                # Update path distance display
-                path_distance_var = tk.StringVar(value=str(path_length))
-                self.path_distance.config(textvariable=path_distance_var)
+                # No longer need to update path distance display
+                # path_distance_var = tk.StringVar(value=str(path_length))
+                # self.path_distance.config(textvariable=path_distance_var)
                 
                 # Convert path to position numbers
                 path_indices = [spa.coordinates_to_index(x, y, self.grid.cols) 
@@ -425,7 +401,6 @@ class PathfinderGUI:
         self.points = []
         self.point_entry.delete(0, tk.END)
         self.output_text.delete(1.0, tk.END)
-        self.path_distance.config(textvariable=tk.StringVar(value=""))
         self.output_text.insert(tk.END, "Cleared all points\n")
         
         # Clear visualization but keep window open
@@ -434,82 +409,95 @@ class PathfinderGUI:
 
     # Update query_stock and update_stock methods to work with the new interface
     def query_stock(self):
-        try:
-            point_str = self.point_entry.get().strip()
-            if not point_str:
-                self.output_text.insert(tk.END, "Please enter a position to query\n")
-                return
+        # Create popup for position input
+        popup = tk.Toplevel(self.root)
+        popup.title("Query Stock")
+        popup.geometry("200x100")
+        
+        ttk.Label(popup, text="Enter position number:").pack(pady=5)
+        pos_entry = ttk.Entry(popup)
+        pos_entry.pack(pady=5)
+        
+        def do_query():
+            try:
+                index = int(pos_entry.get())
+                quantity = self.db.get_quantity(index)
                 
-            index = int(point_str)
-            quantity = self.db.get_quantity(index)
-            
-            if quantity is not None:
-                pos = self.db.get_position(index)
-                self.output_text.insert(tk.END, f"Position {index} (row={pos[0]}, col={pos[1]}): Stock = {quantity}\n")
-            else:
-                self.output_text.insert(tk.END, f"Position {index} not found\n")
-                
-        except ValueError:
-            self.output_text.insert(tk.END, "Error: Please enter a valid number\n")
+                if quantity is not None:
+                    pos = self.db.get_position(index)
+                    self.output_text.insert(tk.END, f"Position {index} (row={pos[0]}, col={pos[1]}): Stock = {quantity}\n")
+                else:
+                    self.output_text.insert(tk.END, f"Position {index} not found\n")
+                popup.destroy()
+                    
+            except ValueError:
+                self.output_text.insert(tk.END, "Error: Please enter a valid number\n")
+                popup.destroy()
+        
+        ttk.Button(popup, text="Query", command=do_query).pack(pady=5)
 
     def update_stock(self):
-        try:
-            point_str = self.point_entry.get().strip()
-            if not point_str:
-                self.output_text.insert(tk.END, "Please enter a position to update\n")
-                return
+        # Create popup for position input
+        pos_popup = tk.Toplevel(self.root)
+        pos_popup.title("Update Stock")
+        pos_popup.geometry("200x100")
+        
+        ttk.Label(pos_popup, text="Enter position number:").pack(pady=5)
+        pos_entry = ttk.Entry(pos_popup)
+        pos_entry.pack(pady=5)
+        
+        def get_quantity():
+            try:
+                index = int(pos_entry.get())
+                pos_popup.destroy()
                 
-            index = int(point_str)
-            
-            # Create popup for quantity input
-            popup = tk.Toplevel(self.root)
-            popup.title("Update Stock")
-            popup.geometry("200x100")
-            
-            ttk.Label(popup, text="Enter new quantity:").pack(pady=5)
-            qty_entry = ttk.Entry(popup)
-            qty_entry.pack(pady=5)
-            
-            def do_update():
-                try:
-                    new_qty = int(qty_entry.get())
-                    self.db.update_quantity(index, new_qty)
-                    self.output_text.insert(tk.END, f"Updated stock for position {index} to {new_qty}\n")                    
-                    # Update visualization if window exists
-                    if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
-                        # Get coordinates from index
-                        x, y = spa.index_to_coordinates(index, self.grid.cols)
+                # Create second popup for quantity input
+                qty_popup = tk.Toplevel(self.root)
+                qty_popup.title("Update Stock")
+                qty_popup.geometry("200x100")
+                
+                ttk.Label(qty_popup, text="Enter new quantity:").pack(pady=5)
+                qty_entry = ttk.Entry(qty_popup)
+                qty_entry.pack(pady=5)
+                
+                def do_update():
+                    try:
+                        new_qty = int(qty_entry.get())
+                        self.db.update_quantity(index, new_qty)
+                        self.output_text.insert(tk.END, f"Updated stock for position {index} to {new_qty}\n")
                         
-                        # Update out-of-stock tracking
-                        if new_qty == 0:
-                            self.viz_window.out_of_stock_positions.add((x, y))
-                        else:
-                            # Remove from out-of-stock if it was there
-                            self.viz_window.out_of_stock_positions.discard((x, y))
+                        # Update visualization if window exists
+                        if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
+                            x, y = spa.index_to_coordinates(index, self.grid.cols)
+                            
+                            if new_qty == 0:
+                                self.viz_window.out_of_stock_positions.add((x, y))
+                            else:
+                                self.viz_window.out_of_stock_positions.discard((x, y))
+                            
+                            if self.viz_window.path:
+                                self.viz_window.clear_visualization()
+                                self.viz_window.visualize_path(
+                                    self.viz_window.path,
+                                    self.viz_window.start,
+                                    self.viz_window.end,
+                                    self.viz_window.points
+                                )
+                            else:
+                                self.viz_window.clear_visualization()
                         
-                        # Refresh visualization if path exists
-                        if self.viz_window.path:
-                            self.viz_window.clear_visualization()
-                            self.viz_window.visualize_path(
-                                self.viz_window.path,
-                                self.viz_window.start,
-                                self.viz_window.end,
-                                self.viz_window.points
-                            )
-                        else:
-                            # Just refresh the grid with out-of-stock items
-                            self.viz_window.clear_visualization()
-                    
-                    popup.destroy()
-                except ValueError:
-                    self.output_text.insert(tk.END, "Error: Please enter a valid number\n")
-                except Exception as e:
-                    self.output_text.insert(tk.END, f"Error: {str(e)}\n")
-            
-            ttk.Button(popup, text="Update", command=do_update).pack(pady=5)
-            
-        except ValueError:
-            self.output_text.insert(tk.END, "Error: Please enter a valid position number\n")
+                        qty_popup.destroy()
+                    except ValueError:
+                        self.output_text.insert(tk.END, "Error: Please enter a valid number\n")
+                        qty_popup.destroy()
+                
+                ttk.Button(qty_popup, text="Update", command=do_update).pack(pady=5)
+                
+            except ValueError:
+                self.output_text.insert(tk.END, "Error: Please enter a valid position number\n")
+                pos_popup.destroy()
+        
+        ttk.Button(pos_popup, text="Next", command=get_quantity).pack(pady=5)
 
     def show_grid(self):
         # Create or show visualization window
