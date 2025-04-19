@@ -41,8 +41,105 @@ class VisualisationWindow:
         self.cols = 0
         self.cell_size = 60  # Default cell size in pixels
         
+        # Prevent window from being destroyed when closed
+        self.window.protocol("WM_DELETE_WINDOW", self.window.withdraw)
+        
         # Initially hide the window
         self.window.withdraw()
+
+    def draw_grid(self, rows, cols, path=None, start=None, end=None, points=None):
+        # Store grid dimensions
+        self.rows = rows
+        self.cols = cols
+        
+        # Clear previous drawings
+        self.canvas.delete("all")
+        
+        # Calculate total grid size
+        grid_width = self.cols * self.cell_size
+        grid_height = self.rows * self.cell_size
+        
+        # Configure canvas scrolling region
+        self.canvas.configure(scrollregion=(0, 0, grid_width, grid_height))
+        
+        # Draw grid cells
+        for i in range(rows):
+            for j in range(cols):
+                # Calculate cell coordinates
+                x1 = j * self.cell_size
+                y1 = i * self.cell_size
+                x2 = x1 + self.cell_size
+                y2 = y1 + self.cell_size
+                
+                # Calculate position ID (1-based)
+                pos_id = (i * cols) + j + 1
+                
+                # Default cell color
+                cell_color = "white"
+                
+                # Check if this cell is in the path
+                if path and (i, j) in path:
+                    cell_color = "#CCFFCC"  # Green for path
+                
+                # Check if this cell is a special point
+                if points and (i, j) in points:
+                    cell_color = "#FFFF00"  # Yellow for intermediate points
+                
+                # Check if this is start or end
+                if start and (i, j) == start:
+                    cell_color = "#99CCFF"  # Blue for start
+                
+                if end and (i, j) == end:
+                    cell_color = "#99CCFF"  # Blue for end
+                
+                # Draw cell rectangle with appropriate color
+                self.canvas.create_rectangle(x1, y1, x2, y2, fill=cell_color, outline="black")
+                
+                # Calculate cell center
+                x_center = x1 + self.cell_size // 2
+                y_center = y1 + self.cell_size // 2
+                
+                # Draw position ID
+                self.canvas.create_text(x_center, y_center, text=str(pos_id), font=("Arial", 10))
+        
+        # Draw path lines if available
+        if path:
+            for i in range(len(path) - 1):
+                # Get current and next point
+                current = path[i]
+                next_point = path[i + 1]
+                
+                # Calculate centers
+                x1 = current[1] * self.cell_size + self.cell_size // 2
+                y1 = current[0] * self.cell_size + self.cell_size // 2
+                x2 = next_point[1] * self.cell_size + self.cell_size // 2
+                y2 = next_point[0] * self.cell_size + self.cell_size // 2
+                
+                # Draw line
+                self.canvas.create_line(x1, y1, x2, y2, fill="blue", width=2, arrow=tk.LAST)
+        
+        # Draw grid lines
+        for i in range(rows + 1):
+            y = i * self.cell_size
+            self.canvas.create_line(0, y, grid_width, y, fill="black")
+        
+        for j in range(cols + 1):
+            x = j * self.cell_size
+            self.canvas.create_line(x, 0, x, grid_height, fill="black")
+        
+        # Draw cell IDs
+        for i in range(rows):
+            for j in range(cols):
+                # Calculate position ID (1-based)
+                pos_id = (i * cols) + j + 1
+                
+                # Calculate cell center
+                x = j * self.cell_size + self.cell_size // 2
+                y = i * self.cell_size + self.cell_size // 2
+                
+                # Draw position ID
+                self.canvas.create_text(x, y, text=str(pos_id), font=("Arial", 10))
+
     
     def show(self):
         # Center the window
@@ -55,6 +152,23 @@ class VisualisationWindow:
         self.window.geometry(f'{width}x{height}+{x}+{y}')
     
     def update_visualisation(self, text):
+        # Safely clear the canvas if it exists
+        try:
+            if hasattr(self, 'canvas') and self.canvas.winfo_exists():
+                self.canvas.delete("all")
+        except tk.TclError:
+            # Canvas might have been destroyed, recreate it
+            self.canvas = tk.Canvas(self.window, bg="white")
+            self.canvas.grid(row=0, column=0, padx=10, pady=10, sticky='nsew')
+            
+            # Reconfigure scrollbars
+            x_scrollbar = ttk.Scrollbar(self.window, orient="horizontal", command=self.canvas.xview)
+            x_scrollbar.grid(row=1, column=0, sticky='ew')
+            
+            y_scrollbar = ttk.Scrollbar(self.window, orient="vertical", command=self.canvas.yview)
+            y_scrollbar.grid(row=0, column=1, sticky='ns')
+            
+            self.canvas.configure(xscrollcommand=x_scrollbar.set, yscrollcommand=y_scrollbar.set)
         # This method will be replaced with draw_grid
         pass
 
@@ -296,9 +410,13 @@ class PathfinderGUI:
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Cleared all points\n")
         
-        # Clear the visualisation canvas
-        if hasattr(self.viz_window, 'canvas'):
-            self.viz_window.canvas.delete("all")
+        # Safely clear the visualisation canvas
+        try:
+            if hasattr(self.viz_window, 'canvas') and self.viz_window.canvas.winfo_exists():
+                self.viz_window.canvas.delete("all")
+        except tk.TclError:
+            # If there's an error, just pass - the window might be closed
+            pass
 
     def query_stock(self):
         try:
@@ -352,99 +470,6 @@ class PathfinderGUI:
             
         except ValueError:
             self.output_text.insert(tk.END, "Error: Please enter a valid position number\n")
-
-    def draw_grid(self, rows, cols, path=None, start=None, end=None, points=None):
-        # Store grid dimensions
-        self.rows = rows
-        self.cols = cols
-        
-        # Clear previous drawings
-        self.canvas.delete("all")
-        
-        # Calculate total grid size
-        grid_width = self.cols * self.cell_size
-        grid_height = self.rows * self.cell_size
-        
-        # Configure canvas scrolling region
-        self.canvas.configure(scrollregion=(0, 0, grid_width, grid_height))
-        
-        # Draw grid cells
-        for i in range(rows):
-            for j in range(cols):
-                # Calculate cell coordinates
-                x1 = j * self.cell_size
-                y1 = i * self.cell_size
-                x2 = x1 + self.cell_size
-                y2 = y1 + self.cell_size
-                
-                # Calculate position ID (1-based)
-                pos_id = (i * cols) + j + 1
-                
-                # Default cell color
-                cell_color = "white"
-                
-                # Check if this cell is in the path
-                if path and (i, j) in path:
-                    cell_color = "#CCFFCC"  # Green for path
-                
-                # Check if this cell is a special point
-                if points and (i, j) in points:
-                    cell_color = "#FFFF00"  # Yellow for intermediate points
-                
-                # Check if this is start or end
-                if start and (i, j) == start:
-                    cell_color = "#99CCFF"  # Blue for start
-                
-                if end and (i, j) == end:
-                    cell_color = "#99CCFF"  # Blue for end
-                
-                # Draw cell rectangle with appropriate color
-                self.canvas.create_rectangle(x1, y1, x2, y2, fill=cell_color, outline="black")
-                
-                # Calculate cell center
-                x_center = x1 + self.cell_size // 2
-                y_center = y1 + self.cell_size // 2
-                
-                # Draw position ID
-                self.canvas.create_text(x_center, y_center, text=str(pos_id), font=("Arial", 10))
-        
-        # Draw path lines if available
-        if path:
-            for i in range(len(path) - 1):
-                # Get current and next point
-                current = path[i]
-                next_point = path[i + 1]
-                
-                # Calculate centers
-                x1 = current[1] * self.cell_size + self.cell_size // 2
-                y1 = current[0] * self.cell_size + self.cell_size // 2
-                x2 = next_point[1] * self.cell_size + self.cell_size // 2
-                y2 = next_point[0] * self.cell_size + self.cell_size // 2
-                
-                # Draw line
-                self.canvas.create_line(x1, y1, x2, y2, fill="blue", width=2, arrow=tk.LAST)
-        
-        # Draw grid lines
-        for i in range(rows + 1):
-            y = i * self.cell_size
-            self.canvas.create_line(0, y, grid_width, y, fill="black")
-        
-        for j in range(cols + 1):
-            x = j * self.cell_size
-            self.canvas.create_line(x, 0, x, grid_height, fill="black")
-        
-        # Draw cell IDs
-        for i in range(rows):
-            for j in range(cols):
-                # Calculate position ID (1-based)
-                pos_id = (i * cols) + j + 1
-                
-                # Calculate cell center
-                x = j * self.cell_size + self.cell_size // 2
-                y = i * self.cell_size + self.cell_size // 2
-                
-                # Draw position ID
-                self.canvas.create_text(x, y, text=str(pos_id), font=("Arial", 10))
 
 def main():
     # Get grid dimensions from config window (will only show once)
