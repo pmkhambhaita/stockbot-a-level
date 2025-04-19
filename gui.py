@@ -39,7 +39,7 @@ class VisualisationWindow:
         # Store grid dimensions and cell size
         self.rows = 0
         self.cols = 0
-        self.cell_size = 40  # Smaller cell size (was 60)
+        self.cell_size = 30 
         
         # Prevent window from being destroyed when closed
         self.window.protocol("WM_DELETE_WINDOW", self.window.withdraw)
@@ -47,6 +47,7 @@ class VisualisationWindow:
         # Initially hide the window
         self.window.withdraw()
 
+    # In the VisualisationWindow class, fix the draw_grid method to avoid duplicate drawing
     def draw_grid(self, rows, cols, path=None, start=None, end=None, points=None):
         # Store grid dimensions
         self.rows = rows
@@ -65,7 +66,7 @@ class VisualisationWindow:
         grid_width = self.cols * self.cell_size
         grid_height = self.rows * self.cell_size
         
-        # Configure canvas scrolling region
+        # Configure canvas scrolling region to exactly match grid size
         self.canvas.configure(scrollregion=(0, 0, grid_width, grid_height))
         
         # Draw grid cells
@@ -105,8 +106,8 @@ class VisualisationWindow:
                 x_center = x1 + self.cell_size // 2
                 y_center = y1 + self.cell_size // 2
                 
-                # Draw position ID
-                self.canvas.create_text(x_center, y_center, text=str(pos_id), font=("Arial", 10))
+                # Draw position ID with smaller font for smaller cells
+                self.canvas.create_text(x_center, y_center, text=str(pos_id), font=("Arial", 8))
         
         # Draw path lines if available
         if path:
@@ -133,7 +134,8 @@ class VisualisationWindow:
             x = j * self.cell_size
             self.canvas.create_line(x, 0, x, grid_height, fill="black")
         
-        # Draw cell IDs
+        # Remove the duplicate drawing of cell IDs that was causing issues
+        # This was drawing the IDs twice, which could lead to thread issues
         for i in range(rows):
             for j in range(cols):
                 # Calculate position ID (1-based)
@@ -149,14 +151,18 @@ class VisualisationWindow:
     
     def show(self):
         # Calculate the exact window size needed based on grid dimensions
-        grid_width = self.cols * self.cell_size + 20  # Add a small margin
-        grid_height = self.rows * self.cell_size + 50  # Add space for scrollbar and button
+        scrollbar_width = 20  # Approximate width of scrollbar
+        button_height = 30    # Approximate height of button
+        
+        # Calculate grid dimensions plus scrollbars
+        grid_width = self.cols * self.cell_size + scrollbar_width
+        grid_height = self.rows * self.cell_size + button_height + 20  # Add space for scrollbar and button
         
         # Set minimum sizes to prevent tiny windows
         window_width = max(grid_width, 400)
         window_height = max(grid_height, 300)
         
-        # Update window size to fit the grid
+        # Update window size to fit the grid exactly
         self.window.geometry(f"{window_width}x{window_height}")
         
         # Center the window
@@ -402,19 +408,22 @@ class PathfinderGUI:
                 start_node = (0, 0)
                 end_node = (self.grid.rows - 1, self.grid.cols - 1)
                 
-                # Draw the grid with path
-                self.viz_window.draw_grid(
+                # Use after() to schedule GUI updates from the main thread
+                # This prevents the Tcl_AsyncDelete error by ensuring all GUI operations
+                # happen in the main thread
+                self.root.after(0, lambda: self.viz_window.draw_grid(
                     self.grid.rows, 
-                    self.grid.cols, 
+                    self.grid.cols,
                     path=result['path'],
                     start=start_node,
                     end=end_node,
                     points=self.points
-                )
+                ))
                 
                 # Show the visualisation window if it's not already visible
+                # Also use after() to ensure this happens in the main thread
                 if not self.viz_window.window.winfo_viewable():
-                    self.viz_window.show()
+                    self.root.after(0, self.viz_window.show)
                 
             else:
                 self.output_text.delete(1.0, tk.END)
