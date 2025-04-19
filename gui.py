@@ -165,87 +165,126 @@ class PathfinderGUI:
         # Store the root window and configure basic window properties
         self.root = root
         self.root.title("StockBot")
-        self.root.geometry("600x400")
+        self.root.geometry("800x600")  # Increased size to accommodate new layout
         
         # Initialize threading components
         self.processing = False
         self.result_queue = queue.Queue()
         
         # Configure grid weights to enable proper resizing
-        self.root.grid_rowconfigure(1, weight=1)
+        self.root.grid_rowconfigure(2, weight=1)  # Output text area should expand
         self.root.grid_columnconfigure(0, weight=1)
         
         # Create and configure the top frame for input elements
         input_frame = ttk.Frame(root)
         input_frame.grid(row=0, column=0, pady=10, padx=10, sticky='ew')
-        input_frame.grid_columnconfigure(0, weight=1)  # Allow input field to expand
+        input_frame.grid_columnconfigure(1, weight=1)  # Allow input field to expand
         
-        # Create text entry field for coordinates
-        self.point_entry = ttk.Entry(input_frame)
-        self.point_entry.grid(row=0, column=0, padx=(0, 10), sticky='ew')
+        # Create label and text entry field for points
+        ttk.Label(input_frame, text="Enter points (space-separated):").grid(row=0, column=0, padx=(0, 10), sticky='w')
+        self.point_entry = ttk.Entry(input_frame, width=50)
+        self.point_entry.grid(row=0, column=1, sticky='ew')
         
-        # Add range label after point entry
-        self.range_label = ttk.Label(input_frame, text=f"Enter position (1-{rows*cols})")
-        self.range_label.grid(row=1, column=0, columnspan=2, pady=(5,0))
+        # Create row/column display frame
+        dim_frame = ttk.Frame(root)
+        dim_frame.grid(row=1, column=0, pady=5, padx=10, sticky='ew')
         
-        # Create button to add points to the path
-        add_button = ttk.Button(input_frame, text="Add Point", command=self.add_point)
-        add_button.grid(row=0, column=1)
+        # Row display
+        ttk.Label(dim_frame, text="Rows:").grid(row=0, column=0, padx=(0, 5), sticky='w')
+        row_var = tk.StringVar(value=str(rows))
+        row_entry = ttk.Entry(dim_frame, textvariable=row_var, width=5, state='readonly')
+        row_entry.grid(row=0, column=1, padx=(0, 20), sticky='w')
         
-        # Create main output area for displaying messages (smaller now)
+        # Column display
+        ttk.Label(dim_frame, text="Columns:").grid(row=0, column=2, padx=(0, 5), sticky='w')
+        col_var = tk.StringVar(value=str(cols))
+        col_entry = ttk.Entry(dim_frame, textvariable=col_var, width=5, state='readonly')
+        col_entry.grid(row=0, column=3, sticky='w')
+        
+        # Create legend frame
+        legend_frame = ttk.LabelFrame(root, text="Legend:")
+        legend_frame.grid(row=2, column=0, pady=10, padx=10, sticky='nw')
+        
+        # Add legend items
+        ttk.Label(legend_frame, text="B", foreground="#4287f5", font=("Arial", 10, "bold")).grid(row=0, column=0, padx=5, pady=2, sticky='w')
+        ttk.Label(legend_frame, text="Start/End").grid(row=0, column=1, padx=5, pady=2, sticky='w')
+        
+        ttk.Label(legend_frame, text="Y", foreground="#f5d742", font=("Arial", 10, "bold")).grid(row=1, column=0, padx=5, pady=2, sticky='w')
+        ttk.Label(legend_frame, text="User Points").grid(row=1, column=1, padx=5, pady=2, sticky='w')
+        
+        ttk.Label(legend_frame, text="G", foreground="#42f56f", font=("Arial", 10, "bold")).grid(row=2, column=0, padx=5, pady=2, sticky='w')
+        ttk.Label(legend_frame, text="Path").grid(row=2, column=1, padx=5, pady=2, sticky='w')
+        
+        ttk.Label(legend_frame, text="R", foreground="#ff3333", font=("Arial", 10, "bold")).grid(row=3, column=0, padx=5, pady=2, sticky='w')
+        ttk.Label(legend_frame, text="Out of Stock").grid(row=3, column=1, padx=5, pady=2, sticky='w')
+        
+        ttk.Label(legend_frame, text="O", foreground="#ff9933", font=("Arial", 10, "bold")).grid(row=4, column=0, padx=5, pady=2, sticky='w')
+        ttk.Label(legend_frame, text="Low Stock (<2)").grid(row=4, column=1, padx=5, pady=2, sticky='w')
+        
+        # Create path distance display
+        path_frame = ttk.Frame(root)
+        path_frame.grid(row=3, column=0, pady=10, padx=10, sticky='w')
+        
+        ttk.Label(path_frame, text="Total path distance:").grid(row=0, column=0, padx=(0, 5), sticky='w')
+        self.path_distance = ttk.Entry(path_frame, width=5, state='readonly')
+        self.path_distance.grid(row=0, column=1, sticky='w')
+        
+        # Create main output area for displaying messages
         self.output_text = tk.Text(root, height=5, width=50)
-        self.output_text.grid(row=1, column=0, pady=10, padx=10, sticky='nsew')
+        self.output_text.grid(row=4, column=0, pady=10, padx=10, sticky='nsew')
         
-        # Create bottom frame for control buttons
+        # Create bottom frame for control buttons in a 2x2 grid
         button_frame = ttk.Frame(root)
-        button_frame.grid(row=2, column=0, pady=5)
+        button_frame.grid(row=5, column=0, pady=10, padx=10, sticky='ew')
+        button_frame.grid_columnconfigure(0, weight=1)
+        button_frame.grid_columnconfigure(1, weight=1)
         
-        # Add buttons for path finding and clearing
-        start_button = ttk.Button(button_frame, text="Find Path", command=self.find_path)
-        start_button.grid(row=0, column=0, padx=5)
-        clear_button = ttk.Button(button_frame, text="Clear", command=self.clear_all)
-        clear_button.grid(row=0, column=1, padx=5)
+        # Add buttons in a 2x2 grid
+        query_button = ttk.Button(button_frame, text="Query Item Id", command=self.query_stock, width=20)
+        query_button.grid(row=0, column=0, padx=10, pady=5, sticky='w')
         
-        # Add button to show grid visualization
-        show_grid_button = ttk.Button(button_frame, text="Show Grid", command=self.show_grid)
-        show_grid_button.grid(row=0, column=2, padx=5)
+        obstacle_button = ttk.Button(button_frame, text="Obstacle mode", width=20)
+        obstacle_button.grid(row=0, column=1, padx=10, pady=5, sticky='e')
+        
+        update_button = ttk.Button(button_frame, text="Update Quantity", command=self.update_stock, width=20)
+        update_button.grid(row=1, column=0, padx=10, pady=5, sticky='w')
+        
+        grid_button = ttk.Button(button_frame, text="Open grid visualization", command=self.show_grid, width=20)
+        grid_button.grid(row=1, column=1, padx=10, pady=5, sticky='e')
+        
+        # Add Find Path button separately
+        find_path_button = ttk.Button(root, text="Find Path", command=self.find_path, width=20)
+        find_path_button.grid(row=6, column=0, pady=10)
         
         # Initialise the pathfinding components with configured grid size
         self.grid = spa.Grid(rows, cols)
         self.path_finder = spa.PathFinder(self.grid)
         self.path_visualiser = spa.PathVisualiser(self.grid)
         
-        # Initialise empty list to store intermediate points
-        self.points = []
-
         # Initialize database with the same dimensions as the grid
         self.db = database.InventoryDB(rows, cols)
         self.db.populate_random_data()  # Initialize with random stock levels
-        
-        # Create stock management frame
-        stock_frame = ttk.Frame(root)
-        stock_frame.grid(row=3, column=0, pady=5)
-        
-        # Add stock management buttons
-        query_button = ttk.Button(stock_frame, text="Query Stock", command=self.query_stock)
-        query_button.grid(row=0, column=0, padx=5)
-        
-        update_button = ttk.Button(stock_frame, text="Update Stock", command=self.update_stock)
-        update_button.grid(row=0, column=1, padx=5)
 
-    def add_point(self):
+    # Update find_path method to parse points directly from entry field
+    def find_path(self):
         # Get and clean the input string from the entry field
         points_str = self.point_entry.get().strip()
         if not points_str:
             self.output_text.insert(tk.END, "Error: Please enter at least one position\n")
             return
             
-        # Split input by commas or spaces
+        # Clear previous output
+        self.output_text.delete(1.0, tk.END)
+        self.output_text.insert(tk.END, "Processing path...\n")
+        
+        # Split input by spaces
         import re
-        point_list = re.split(r'[,\s]+', points_str)
+        point_list = re.split(r'[\s]+', points_str)
         
         # Process each point
-        added_count = 0
+        self.points = []  # Reset points list
+        valid_input_points = []
+        
         for point_str in point_list:
             if not point_str:  # Skip empty strings
                 continue
@@ -264,9 +303,6 @@ class PathfinderGUI:
                 if quantity is None:
                     self.output_text.insert(tk.END, f"Error: Position {index} not found\n")
                     continue
-                if quantity <= 0:
-                    self.output_text.insert(tk.END, f"Warning: Skipping position {index} - Out of stock\n")
-                    continue
                 
                 # Convert to coordinates (0-based)
                 x, y = spa.index_to_coordinates(index, self.grid.cols)
@@ -276,38 +312,19 @@ class PathfinderGUI:
                 if not valid:
                     self.output_text.insert(tk.END, f"Error: {error}\n")
                     continue
-                    
-                # Check if point already exists in the list
-                if (x, y) in self.points:
-                    self.output_text.insert(tk.END, f"Warning: Position {index} already added, skipping\n")
-                    continue
                 
-                self.points.append((x, y))
-                added_count += 1
-                self.output_text.insert(tk.END, f"Added position {index} (Stock: {quantity})\n")
+                # Add to valid input points
+                valid_input_points.append((x, y, index, quantity))
                 
             except ValueError:
                 self.output_text.insert(tk.END, f"Error: '{point_str}' is not a valid number\n")
         
-        # Clear the entry field after processing all points
-        self.point_entry.delete(0, tk.END)
-        
-        # Summary message
-        if added_count > 0:
-            self.output_text.insert(tk.END, f"Successfully added {added_count} point(s)\n")
-        else:
-            self.output_text.insert(tk.END, "No valid points were added\n")
-
-    def find_path(self):
-        # Check if there are any points to process
-        if not self.points:
-            self.output_text.insert(tk.END, "Error: No intermediate points added. Please add at least one point.\n")
+        # Check if we have any valid points
+        if not valid_input_points:
+            self.output_text.insert(tk.END, "Error: No valid positions entered\n")
             return
-    
-        # Clear previous output
-        self.output_text.delete(1.0, tk.END)
-        self.output_text.insert(tk.END, "Processing path...\n")
-        
+            
+        # Process valid points for pathfinding
         try:
             # Define start and end points of the grid
             start_node = (0, 0)
@@ -317,26 +334,23 @@ class PathfinderGUI:
             valid_points = []
             skipped_points = []
             
-            for x, y in self.points:
-                item_id = spa.coordinates_to_index(x, y, self.grid.cols)
-                quantity = self.db.get_quantity(item_id)
-                
+            for x, y, index, quantity in valid_input_points:
                 if quantity > 0:
                     valid_points.append((x, y))
+                    self.points.append((x, y))  # Add to class points list for visualization
                 else:
-                    skipped_points.append((x, y))
+                    skipped_points.append((x, y, index))
                     # Add to out-of-stock tracking if visualization window exists
                     if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
                         self.viz_window.out_of_stock_positions.add((x, y))
             
             if skipped_points:
-                skipped_indices = [spa.coordinates_to_index(x, y, self.grid.cols) for x, y in skipped_points]
+                skipped_indices = [idx for _, _, idx in skipped_points]
                 self.output_text.insert(tk.END, f"Skipping positions with no stock: {', '.join(map(str, skipped_indices))}\n")
             
             # If no valid points, find direct path from start to end
             if not valid_points:
                 self.output_text.insert(tk.END, "No valid points with stock available. Finding direct path from start to end.\n")
-                # Use find_path_through_points with empty intermediate points list
                 path = self.path_finder.find_path_through_points(start_node, [], end_node)
                 valid_points = []  # Empty list for visualization
             else:
@@ -350,8 +364,13 @@ class PathfinderGUI:
                     self.db.decrement_quantity(item_id)
                 
                 # Display path length
+                path_length = len(path) - 1
                 self.output_text.delete(1.0, tk.END)
-                self.output_text.insert(tk.END, f"Total path length: {len(path) - 1} steps\n")
+                self.output_text.insert(tk.END, f"Total path length: {path_length} steps\n")
+                
+                # Update path distance display
+                path_distance_var = tk.StringVar(value=str(path_length))
+                self.path_distance.config(textvariable=path_distance_var)
                 
                 # Convert path to position numbers
                 path_indices = [spa.coordinates_to_index(x, y, self.grid.cols) 
@@ -370,8 +389,8 @@ class PathfinderGUI:
                         path=path, 
                         start=start_node, 
                         end=end_node, 
-                        points=valid_points,  # Use only valid points for visualization
-                        db=self.db  # Pass database reference
+                        points=valid_points,
+                        db=self.db
                     )
                 else:
                     # If window exists, clear it and update with new path
@@ -379,13 +398,16 @@ class PathfinderGUI:
                     self.viz_window.path = path
                     self.viz_window.start = start_node
                     self.viz_window.end = end_node
-                    self.viz_window.points = valid_points  # Use only valid points for visualization
-                    self.viz_window.db = self.db  # Update database reference
+                    self.viz_window.points = valid_points
+                    self.viz_window.db = self.db
                     self.viz_window.visualize_path(path, start_node, end_node, valid_points)
             else:
                 self.output_text.delete(1.0, tk.END)
                 self.output_text.insert(tk.END, "Error: No valid path found\n")
-        
+                
+            # Clear points after finding path
+            self.points = []
+            
         except Exception as e:
             self.output_text.delete(1.0, tk.END)
             self.output_text.insert(tk.END, f"Error: {str(e)}\n")
@@ -395,12 +417,14 @@ class PathfinderGUI:
         self.points = []
         self.point_entry.delete(0, tk.END)
         self.output_text.delete(1.0, tk.END)
+        self.path_distance.config(textvariable=tk.StringVar(value=""))
         self.output_text.insert(tk.END, "Cleared all points\n")
         
         # Clear visualization but keep window open
         if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
             self.viz_window.clear_visualization()
 
+    # Update query_stock and update_stock methods to work with the new interface
     def query_stock(self):
         try:
             point_str = self.point_entry.get().strip()
