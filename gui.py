@@ -398,21 +398,8 @@ class PathfinderGUI:
                 self.output_text.insert(tk.END, f"Path: {path_str}\n")
                 self.output_text.insert(tk.END, "\nOpen Grid Visualisation to see the path map.")
                 
-                # Get start and end points
-                start_node = (0, 0)
-                end_node = (self.grid.rows - 1, self.grid.cols - 1)
-                
-                # Use after() to schedule GUI updates from the main thread
-                # This prevents the Tcl_AsyncDelete error by ensuring all GUI operations
-                # happen in the main thread
-                self.root.after(0, lambda: self.viz_window.draw_grid(
-                    self.grid.rows, 
-                    self.grid.cols,
-                    path=result['path'],
-                    start=start_node,
-                    end=end_node,
-                    points=self.points
-                ))
+                # Update the visualisation window
+                self.viz_window.update_visualisation(result['visualization'])
                 
                 # Show the visualisation window if it's not already visible
                 # Also use after() to ensure this happens in the main thread
@@ -437,13 +424,8 @@ class PathfinderGUI:
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Cleared all points\n")
         
-        # Safely clear the visualisation canvas
-        try:
-            if hasattr(self.viz_window, 'canvas') and self.viz_window.canvas.winfo_exists():
-                self.viz_window.canvas.delete("all")
-        except tk.TclError:
-            # If there's an error, just pass - the window might be closed
-            pass
+        # Also clear visualisation window if it's open
+        self.viz_window.update_visualisation("")
 
     def query_stock(self):
         try:
@@ -497,6 +479,43 @@ class PathfinderGUI:
             
         except ValueError:
             self.output_text.insert(tk.END, "Error: Please enter a valid position number\n")
+
+    def draw_grid(self, rows, cols, path=None, start=None, end=None, points=None):
+        # Store grid dimensions
+        self.rows = rows
+        self.cols = cols
+        
+        # Clear previous drawings
+        self.canvas.delete("all")
+        
+        # Calculate total grid size
+        grid_width = self.cols * self.cell_size
+        grid_height = self.rows * self.cell_size
+        
+        # Configure canvas scrolling region
+        self.canvas.configure(scrollregion=(0, 0, grid_width, grid_height))
+        
+        # Draw grid lines
+        for i in range(rows + 1):
+            y = i * self.cell_size
+            self.canvas.create_line(0, y, grid_width, y, fill="black")
+        
+        for j in range(cols + 1):
+            x = j * self.cell_size
+            self.canvas.create_line(x, 0, x, grid_height, fill="black")
+        
+        # Draw cell IDs
+        for i in range(rows):
+            for j in range(cols):
+                # Calculate position ID (1-based)
+                pos_id = (i * cols) + j + 1
+                
+                # Calculate cell center
+                x = j * self.cell_size + self.cell_size // 2
+                y = i * self.cell_size + self.cell_size // 2
+                
+                # Draw position ID
+                self.canvas.create_text(x, y, text=str(pos_id), font=("Arial", 10))
 
 def main():
     # Get grid dimensions from config window (will only show once)
