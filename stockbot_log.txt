@@ -213,3 +213,31 @@
 2025-04-18 20:20:43,180 - INFO - PathVisualiser initialised with grid size 10x10
 2025-04-18 20:38:04,260 - INFO - PathFinder initialised with grid size 10x10
 2025-04-18 20:38:04,260 - INFO - PathVisualiser initialised with grid size 10x10
+2025-04-19 09:28:16,699 - INFO - PathFinder initialised with grid size 10x10
+2025-04-19 09:28:16,699 - INFO - PathVisualiser initialised with grid size 10x10
+2025-04-19 09:28:25,065 - INFO - Finding path through 1 intermediate points
+2025-04-19 09:28:25,065 - INFO - Starting BFS search from (0, 0) to (5, 4)
+2025-04-19 09:28:25,065 - INFO - Path found with length 9
+2025-04-19 09:28:25,065 - INFO - Starting BFS search from (5, 4) to (9, 9)
+2025-04-19 09:28:25,066 - INFO - Path found with length 9
+2025-04-19 09:28:25,066 - INFO - Complete path found with length 18
+2025-04-19 09:28:25,073 - INFO - Starting path visualisation
+2025-04-19 09:28:25,073 - INFO - Path visualisation completed
+2025-04-19 09:28:28,298 - INFO - Finding path through 1 intermediate points
+2025-04-19 09:28:28,299 - INFO - Starting BFS search from (0, 0) to (5, 4)
+2025-04-19 09:28:28,299 - INFO - Path found with length 9
+2025-04-19 09:28:28,299 - INFO - Starting BFS search from (5, 4) to (9, 9)
+2025-04-19 09:28:28,299 - INFO - Path found with length 9
+2025-04-19 09:28:28,300 - INFO - Complete path found with length 18
+2025-04-19 09:28:28,310 - INFO - Starting path visualisation
+2025-04-19 09:28:28,311 - INFO - Path visualisation completed
+2025-04-19 09:28:36,728 - INFO - Finding path through 1 intermediate points
+2025-04-19 09:28:36,728 - INFO - Starting BFS search from (0, 0) to (5, 4)
+2025-04-19 09:28:36,729 - INFO - Path found with length 9
+2025-04-19 09:28:36,729 - INFO - Starting BFS search from (5, 4) to (9, 9)
+2025-04-19 09:28:36,730 - INFO - Path found with length 9
+2025-04-19 09:28:36,730 - INFO - Complete path found with length 18
+2025-04-19 09:28:36,746 - INFO - Starting path visualisation
+2025-04-19 09:28:36,747 - INFO - Path visualisation completed
+2025-04-19 09:34:36,950 - INFO - PathFinder initialised with grid size 10x10
+2025-04-19 09:34:36,950 - INFO - PathVisualiser initialised with grid size 10x10
