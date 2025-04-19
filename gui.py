@@ -275,6 +275,9 @@ class PathfinderGUI:
         self.point_entry.delete(0, tk.END)
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Cleared all points\n")
+        
+        # Also clear visualisation window if it's open
+        self.viz_window.update_visualisation("")
 
     def query_stock(self):
         try:
