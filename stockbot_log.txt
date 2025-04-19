@@ -539,3 +539,9 @@
 2025-04-19 12:55:57,978 - INFO - Starting BFS search from (0, 0) to (0, 13)
 =======
 >>>>>>> 33835f7567a38867b24714e472c699c294d9206b
+2025-04-19 12:57:48,592 - INFO - PathFinder initialised with grid size 20x20
+2025-04-19 12:57:48,593 - INFO - PathVisualiser initialised with grid size 20x20
+2025-04-19 12:57:55,331 - INFO - Finding path through 1 intermediate points
+2025-04-19 12:57:55,331 - INFO - Starting BFS search from (0, 0) to (1, 13)
+2025-04-19 12:57:55,331 - INFO - Path found with length 14
+2025-04-19 12:57:55,332 - INFO - Starting BFS search from (1, 13) to (19, 19)

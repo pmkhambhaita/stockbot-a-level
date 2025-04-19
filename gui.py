@@ -398,7 +398,6 @@ class PathfinderGUI:
                 self.output_text.insert(tk.END, f"Path: {path_str}\n")
                 self.output_text.insert(tk.END, "\nOpen Grid Visualisation to see the path map.")
                 
-<<<<<<< HEAD
                 # Get start and end points
                 start_node = (0, 0)
                 end_node = (self.grid.rows - 1, self.grid.cols - 1)
@@ -414,10 +413,15 @@ class PathfinderGUI:
                     end=end_node,
                     points=self.points
                 ))
-=======
+                
+                # Show the visualisation window if it's not already visible
+                # Also use after() to ensure this happens in the main thread
+                if not self.viz_window.window.winfo_viewable():
+                    self.root.after(0, self.viz_window.show)
+                self.output_text.insert(tk.END, "\nOpen Grid Visualisation to see the path map.")
+                
                 # Update the visualisation window
                 self.viz_window.update_visualisation(result['visualization'])
->>>>>>> 33835f7567a38867b24714e472c699c294d9206b
                 
                 # Show the visualisation window if it's not already visible
                 # Also use after() to ensure this happens in the main thread
@@ -442,7 +446,6 @@ class PathfinderGUI:
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Cleared all points\n")
         
-<<<<<<< HEAD
         # Safely clear the visualisation canvas
         try:
             if hasattr(self.viz_window, 'canvas') and self.viz_window.canvas.winfo_exists():
@@ -450,10 +453,9 @@ class PathfinderGUI:
         except tk.TclError:
             # If there's an error, just pass - the window might be closed
             pass
-=======
+        
         # Also clear visualisation window if it's open
         self.viz_window.update_visualisation("")
->>>>>>> 33835f7567a38867b24714e472c699c294d9206b
 
     def query_stock(self):
         try:
