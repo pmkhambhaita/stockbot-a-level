@@ -462,6 +462,7 @@
 >>>>>>> parent of 1f8d538 (added feature so that the grid visualisation appears whether findpath is pressed or not)
 =======
 >>>>>>> parent of 7e78e61 (added colours to the visualisation as described in the design section)
+<<<<<<< HEAD
 2025-04-19 12:42:31,724 - INFO - PathFinder initialised with grid size 10x10
 2025-04-19 12:42:31,724 - INFO - PathVisualiser initialised with grid size 10x10
 2025-04-19 12:42:43,013 - INFO - PathFinder initialised with grid size 20x20
@@ -536,3 +537,5 @@
 2025-04-19 12:55:46,065 - INFO - Path visualisation completed
 2025-04-19 12:55:57,978 - INFO - Finding path through 1 intermediate points
 2025-04-19 12:55:57,978 - INFO - Starting BFS search from (0, 0) to (0, 13)
+=======
+>>>>>>> 33835f7567a38867b24714e472c699c294d9206b
