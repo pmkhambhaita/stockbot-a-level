@@ -9,6 +9,192 @@ import queue           # For thread-safe data exchange
 import config
 import database
 
+class VisualisationWindow:
+    def __init__(self, parent):
+        self.window = tk.Toplevel(parent)
+        self.window.title("Path Visualisation")
+        self.window.geometry("1000x800")  # Larger default window size
+        
+        # Configure grid weights
+        self.window.grid_rowconfigure(0, weight=1)
+        self.window.grid_columnconfigure(0, weight=1)
+        
+        # Create canvas for grid visualisation
+        self.canvas = tk.Canvas(self.window, bg="white")
+        self.canvas.grid(row=0, column=0, padx=0, pady=0, sticky='nsew')  # Remove padding
+        
+        # Add scrollbars for larger grids
+        x_scrollbar = ttk.Scrollbar(self.window, orient="horizontal", command=self.canvas.xview)
+        x_scrollbar.grid(row=1, column=0, sticky='ew')
+        
+        y_scrollbar = ttk.Scrollbar(self.window, orient="vertical", command=self.canvas.yview)
+        y_scrollbar.grid(row=0, column=1, sticky='ns')
+        
+        self.canvas.configure(xscrollcommand=x_scrollbar.set, yscrollcommand=y_scrollbar.set)
+        
+        # Add close button
+        close_button = ttk.Button(self.window, text="Close", command=self.window.withdraw)
+        close_button.grid(row=2, column=0, pady=5)
+        
+        # Store grid dimensions and cell size
+        self.rows = 0
+        self.cols = 0
+        self.cell_size = 30 
+        
+        # Prevent window from being destroyed when closed
+        self.window.protocol("WM_DELETE_WINDOW", self.window.withdraw)
+        
+        # Initially hide the window
+        self.window.withdraw()
+
+    # In the VisualisationWindow class, fix the draw_grid method to avoid duplicate drawing
+    def draw_grid(self, rows, cols, path=None, start=None, end=None, points=None):
+        # Store grid dimensions
+        self.rows = rows
+        self.cols = cols
+        
+        # Store current path and points for later reference
+        self._current_path = path
+        self._current_start = start
+        self._current_end = end
+        self._current_points = points
+        
+        # Clear previous drawings
+        self.canvas.delete("all")
+        
+        # Calculate total grid size
+        grid_width = self.cols * self.cell_size
+        grid_height = self.rows * self.cell_size
+        
+        # Configure canvas scrolling region to exactly match grid size
+        self.canvas.configure(scrollregion=(0, 0, grid_width, grid_height))
+        
+        # Draw grid cells
+        for i in range(rows):
+            for j in range(cols):
+                # Calculate cell coordinates
+                x1 = j * self.cell_size
+                y1 = i * self.cell_size
+                x2 = x1 + self.cell_size
+                y2 = y1 + self.cell_size
+                
+                # Calculate position ID (1-based)
+                pos_id = (i * cols) + j + 1
+                
+                # Default cell color
+                cell_color = "white"
+                
+                # Check if this cell is in the path
+                if path and (i, j) in path:
+                    cell_color = "#CCFFCC"  # Green for path
+                
+                # Check if this cell is a special point
+                if points and (i, j) in points:
+                    cell_color = "#FFFF00"  # Yellow for intermediate points
+                
+                # Check if this is start or end
+                if start and (i, j) == start:
+                    cell_color = "#99CCFF"  # Blue for start
+                
+                if end and (i, j) == end:
+                    cell_color = "#99CCFF"  # Blue for end
+                
+                # Draw cell rectangle with appropriate color
+                self.canvas.create_rectangle(x1, y1, x2, y2, fill=cell_color, outline="black")
+                
+                # Calculate cell center
+                x_center = x1 + self.cell_size // 2
+                y_center = y1 + self.cell_size // 2
+                
+                # Draw position ID with smaller font for smaller cells
+                self.canvas.create_text(x_center, y_center, text=str(pos_id), font=("Arial", 8))
+        
+        # Draw path lines if available
+        if path:
+            for i in range(len(path) - 1):
+                # Get current and next point
+                current = path[i]
+                next_point = path[i + 1]
+                
+                # Calculate centers
+                x1 = current[1] * self.cell_size + self.cell_size // 2
+                y1 = current[0] * self.cell_size + self.cell_size // 2
+                x2 = next_point[1] * self.cell_size + self.cell_size // 2
+                y2 = next_point[0] * self.cell_size + self.cell_size // 2
+                
+                # Draw line
+                self.canvas.create_line(x1, y1, x2, y2, fill="blue", width=2, arrow=tk.LAST)
+        
+        # Draw grid lines
+        for i in range(rows + 1):
+            y = i * self.cell_size
+            self.canvas.create_line(0, y, grid_width, y, fill="black")
+        
+        for j in range(cols + 1):
+            x = j * self.cell_size
+            self.canvas.create_line(x, 0, x, grid_height, fill="black")
+        
+        # Remove the duplicate drawing of cell IDs that was causing issues
+        # This was drawing the IDs twice, which could lead to thread issues
+        for i in range(rows):
+            for j in range(cols):
+                # Calculate position ID (1-based)
+                pos_id = (i * cols) + j + 1
+                
+                # Calculate cell center
+                x = j * self.cell_size + self.cell_size // 2
+                y = i * self.cell_size + self.cell_size // 2
+                
+                # Draw position ID
+                self.canvas.create_text(x, y, text=str(pos_id), font=("Arial", 10))
+
+    
+    def show(self):
+        # Calculate the exact window size needed based on grid dimensions
+        scrollbar_width = 20  # Approximate width of scrollbar
+        button_height = 30    # Approximate height of button
+        
+        # Calculate grid dimensions plus scrollbars
+        grid_width = self.cols * self.cell_size + scrollbar_width
+        grid_height = self.rows * self.cell_size + button_height + 20  # Add space for scrollbar and button
+        
+        # Set minimum sizes to prevent tiny windows
+        window_width = max(grid_width, 400)
+        window_height = max(grid_height, 300)
+        
+        # Update window size to fit the grid exactly
+        self.window.geometry(f"{window_width}x{window_height}")
+        
+        # Center the window
+        self.window.deiconify()
+        self.window.update_idletasks()
+        width = self.window.winfo_width()
+        height = self.window.winfo_height()
+        x = (self.window.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.window.winfo_screenheight() // 2) - (height // 2)
+        self.window.geometry(f'{width}x{height}+{x}+{y}')
+    
+    def update_visualisation(self, text):
+        # Safely clear the canvas if it exists
+        try:
+            if hasattr(self, 'canvas') and self.canvas.winfo_exists():
+                self.canvas.delete("all")
+        except tk.TclError:
+            # Canvas might have been destroyed, recreate it
+            self.canvas = tk.Canvas(self.window, bg="white")
+            self.canvas.grid(row=0, column=0, padx=10, pady=10, sticky='nsew')
+            
+            # Reconfigure scrollbars
+            x_scrollbar = ttk.Scrollbar(self.window, orient="horizontal", command=self.canvas.xview)
+            x_scrollbar.grid(row=1, column=0, sticky='ew')
+            
+            y_scrollbar = ttk.Scrollbar(self.window, orient="vertical", command=self.canvas.yview)
+            y_scrollbar.grid(row=0, column=1, sticky='ns')
+            
+            self.canvas.configure(xscrollcommand=x_scrollbar.set, yscrollcommand=y_scrollbar.set)
+        # This method will be replaced with draw_grid
+        pass
+
 class PathfinderGUI:
     def __init__(self, root, rows=10, cols=10):  # Modified to accept dimensions
         # Store the root window and configure basic window properties
@@ -19,6 +205,9 @@ class PathfinderGUI:
         # Initialize threading components
         self.processing = False
         self.result_queue = queue.Queue()
+        
+        # Create visualisation window
+        self.viz_window = VisualisationWindow(root)
         
         # Configure grid weights to enable proper resizing
         self.root.grid_rowconfigure(1, weight=1)
@@ -41,7 +230,7 @@ class PathfinderGUI:
         add_button = ttk.Button(input_frame, text="Add Point", command=self.add_point)
         add_button.grid(row=0, column=1)
         
-        # Create main output area for displaying the path and messages
+        # Create main output area for displaying messages (not visualisation)
         self.output_text = tk.Text(root, height=15, width=50)
         self.output_text.grid(row=1, column=0, pady=10, padx=10, sticky='nsew')
         
@@ -55,6 +244,10 @@ class PathfinderGUI:
         
         clear_button = ttk.Button(button_frame, text="Clear", command=self.clear_all)
         clear_button.grid(row=0, column=1, padx=5)
+        
+        # Add button to open visualisation window
+        viz_button = ttk.Button(button_frame, text="Open Grid Visualisation", command=self.viz_window.show)
+        viz_button.grid(row=0, column=2, padx=5)
         
         # Initialise the pathfinding components with configured grid size
         self.grid = spa.Grid(rows, cols)
@@ -191,9 +384,10 @@ class PathfinderGUI:
             result = self.result_queue.get_nowait()
             
             if result['success']:
+                # Update the main output text with basic information
                 self.output_text.delete(1.0, tk.END)
-                self.output_text.insert(tk.END, result['visualization'])
-                self.output_text.insert(tk.END, f"\nTotal path length: {len(result['path']) - 1} steps\n")
+                self.output_text.insert(tk.END, "Path found successfully!\n")
+                self.output_text.insert(tk.END, f"Total path length: {len(result['path']) - 1} steps\n")
                 
                 # Convert path to position numbers
                 path_indices = [spa.coordinates_to_index(x, y, self.grid.cols) 
@@ -202,6 +396,28 @@ class PathfinderGUI:
                 # Show path as position numbers
                 path_str = " -> ".join([str(idx) for idx in path_indices])
                 self.output_text.insert(tk.END, f"Path: {path_str}\n")
+                self.output_text.insert(tk.END, "\nOpen Grid Visualisation to see the path map.")
+                
+                # Get start and end points
+                start_node = (0, 0)
+                end_node = (self.grid.rows - 1, self.grid.cols - 1)
+                
+                # Use after() to schedule GUI updates from the main thread
+                # This prevents the Tcl_AsyncDelete error by ensuring all GUI operations
+                # happen in the main thread
+                self.root.after(0, lambda: self.viz_window.draw_grid(
+                    self.grid.rows, 
+                    self.grid.cols,
+                    path=result['path'],
+                    start=start_node,
+                    end=end_node,
+                    points=self.points
+                ))
+                
+                # Show the visualisation window if it's not already visible
+                # Also use after() to ensure this happens in the main thread
+                if not self.viz_window.window.winfo_viewable():
+                    self.root.after(0, self.viz_window.show)
                 
             else:
                 self.output_text.delete(1.0, tk.END)
@@ -220,6 +436,14 @@ class PathfinderGUI:
         self.point_entry.delete(0, tk.END)
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Cleared all points\n")
+        
+        # Safely clear the visualisation canvas
+        try:
+            if hasattr(self.viz_window, 'canvas') and self.viz_window.canvas.winfo_exists():
+                self.viz_window.canvas.delete("all")
+        except tk.TclError:
+            # If there's an error, just pass - the window might be closed
+            pass
 
     def query_stock(self):
         try:
