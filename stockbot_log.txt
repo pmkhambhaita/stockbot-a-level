@@ -241,3 +241,5 @@
 2025-04-19 09:28:36,747 - INFO - Path visualisation completed
 2025-04-19 09:34:36,950 - INFO - PathFinder initialised with grid size 10x10
 2025-04-19 09:34:36,950 - INFO - PathVisualiser initialised with grid size 10x10
+2025-04-19 10:05:29,467 - INFO - PathFinder initialised with grid size 10x10
+2025-04-19 10:05:29,467 - INFO - PathVisualiser initialised with grid size 10x10

@@ -261,8 +261,19 @@ class PathfinderGUI:
                 self.output_text.insert(tk.END, f"Path: {path_str}\n")
                 self.output_text.insert(tk.END, "\nOpen Grid Visualisation to see the path map.")
                 
-                # Update the visualisation window
-                self.viz_window.update_visualisation(result['visualization'])
+                # Get start and end points
+                start_node = (0, 0)
+                end_node = (self.grid.rows - 1, self.grid.cols - 1)
+                
+                # Draw the grid with path
+                self.viz_window.draw_grid(
+                    self.grid.rows, 
+                    self.grid.cols, 
+                    path=result['path'],
+                    start=start_node,
+                    end=end_node,
+                    points=self.points
+                )
                 
                 # Show the visualisation window
                 self.viz_window.show()
@@ -285,8 +296,9 @@ class PathfinderGUI:
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Cleared all points\n")
         
-        # Also clear visualisation window if it's open
-        self.viz_window.update_visualisation("")
+        # Clear the visualisation canvas
+        if hasattr(self.viz_window, 'canvas'):
+            self.viz_window.canvas.delete("all")
 
     def query_stock(self):
         try:
@@ -355,6 +367,62 @@ class PathfinderGUI:
         
         # Configure canvas scrolling region
         self.canvas.configure(scrollregion=(0, 0, grid_width, grid_height))
+        
+        # Draw grid cells
+        for i in range(rows):
+            for j in range(cols):
+                # Calculate cell coordinates
+                x1 = j * self.cell_size
+                y1 = i * self.cell_size
+                x2 = x1 + self.cell_size
+                y2 = y1 + self.cell_size
+                
+                # Calculate position ID (1-based)
+                pos_id = (i * cols) + j + 1
+                
+                # Default cell color
+                cell_color = "white"
+                
+                # Check if this cell is in the path
+                if path and (i, j) in path:
+                    cell_color = "#CCFFCC"  # Green for path
+                
+                # Check if this cell is a special point
+                if points and (i, j) in points:
+                    cell_color = "#FFFF00"  # Yellow for intermediate points
+                
+                # Check if this is start or end
+                if start and (i, j) == start:
+                    cell_color = "#99CCFF"  # Blue for start
+                
+                if end and (i, j) == end:
+                    cell_color = "#99CCFF"  # Blue for end
+                
+                # Draw cell rectangle with appropriate color
+                self.canvas.create_rectangle(x1, y1, x2, y2, fill=cell_color, outline="black")
+                
+                # Calculate cell center
+                x_center = x1 + self.cell_size // 2
+                y_center = y1 + self.cell_size // 2
+                
+                # Draw position ID
+                self.canvas.create_text(x_center, y_center, text=str(pos_id), font=("Arial", 10))
+        
+        # Draw path lines if available
+        if path:
+            for i in range(len(path) - 1):
+                # Get current and next point
+                current = path[i]
+                next_point = path[i + 1]
+                
+                # Calculate centers
+                x1 = current[1] * self.cell_size + self.cell_size // 2
+                y1 = current[0] * self.cell_size + self.cell_size // 2
+                x2 = next_point[1] * self.cell_size + self.cell_size // 2
+                y2 = next_point[0] * self.cell_size + self.cell_size // 2
+                
+                # Draw line
+                self.canvas.create_line(x1, y1, x2, y2, fill="blue", width=2, arrow=tk.LAST)
         
         # Draw grid lines
         for i in range(rows + 1):
