@@ -283,6 +283,7 @@
 2025-04-19 11:23:53,252 - INFO - Complete path found with length 18
 2025-04-19 11:23:53,262 - INFO - Starting path visualisation
 2025-04-19 11:23:53,263 - INFO - Path visualisation completed
+<<<<<<< HEAD
 2025-04-19 11:43:55,023 - INFO - PathFinder initialised with grid size 15x10
 2025-04-19 11:43:55,024 - INFO - PathVisualiser initialised with grid size 15x10
 2025-04-19 11:44:01,741 - INFO - Finding path through 1 intermediate points
@@ -456,3 +457,5 @@
 2025-04-19 12:35:32,248 - INFO - Starting BFS search from (1, 13) to (19, 19)
 =======
 >>>>>>> f0f21a02317550788e898016c55769359e816a28
+=======
+>>>>>>> parent of 1f8d538 (added feature so that the grid visualisation appears whether findpath is pressed or not)

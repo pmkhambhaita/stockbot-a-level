@@ -168,15 +168,11 @@ class VisualisationWindow:
         # Center the window
         self.window.deiconify()
         self.window.update_idletasks()
-        x = (self.window.winfo_screenwidth() // 2) - (window_width // 2)
-        y = (self.window.winfo_screenheight() // 2) - (window_height // 2)
-        self.window.geometry(f'{window_width}x{window_height}+{x}+{y}')
-        
-        # Only draw the basic grid if no path is currently displayed
-        # This prevents overwriting an existing path visualization
-        if not hasattr(self, '_current_path') or not self._current_path:
-            if self.rows > 0 and self.cols > 0:
-                self.draw_grid(self.rows, self.cols)
+        width = self.window.winfo_width()
+        height = self.window.winfo_height()
+        x = (self.window.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.window.winfo_screenheight() // 2) - (height // 2)
+        self.window.geometry(f'{width}x{height}+{x}+{y}')
     
     def update_visualisation(self, text):
         # Safely clear the canvas if it exists
@@ -200,7 +196,7 @@ class VisualisationWindow:
         pass
 
 class PathfinderGUI:
-    def __init__(self, root, rows=10, cols=10):
+    def __init__(self, root, rows=10, cols=10):  # Modified to accept dimensions
         # Store the root window and configure basic window properties
         self.root = root
         self.root.title("StockBot")
@@ -212,8 +208,6 @@ class PathfinderGUI:
         
         # Create visualisation window
         self.viz_window = VisualisationWindow(root)
-        self.viz_window.rows = rows
-        self.viz_window.cols = cols
         
         # Configure grid weights to enable proper resizing
         self.root.grid_rowconfigure(1, weight=1)
@@ -443,17 +437,10 @@ class PathfinderGUI:
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Cleared all points\n")
         
-        # Redraw the grid without path or special points
+        # Safely clear the visualisation canvas
         try:
             if hasattr(self.viz_window, 'canvas') and self.viz_window.canvas.winfo_exists():
-                # Clear the stored path
-                self.viz_window._current_path = None
-                self.viz_window._current_start = None
-                self.viz_window._current_end = None
-                self.viz_window._current_points = None
-                
-                # Redraw the basic grid
-                self.viz_window.draw_grid(self.grid.rows, self.grid.cols)
+                self.viz_window.canvas.delete("all")
         except tk.TclError:
             # If there's an error, just pass - the window might be closed
             pass
