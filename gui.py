@@ -276,12 +276,15 @@ class PathfinderGUI:
                 skipped_indices = [spa.coordinates_to_index(x, y, self.grid.cols) for x, y in skipped_points]
                 self.output_text.insert(tk.END, f"Skipping positions with no stock: {', '.join(map(str, skipped_indices))}\n")
             
+            # If no valid points, find direct path from start to end
             if not valid_points:
-                self.output_text.insert(tk.END, "Error: No valid points with stock available.\n")
-                return
-            
-            # Find path through all valid points
-            path = self.path_finder.find_path_through_points(start_node, valid_points, end_node)
+                self.output_text.insert(tk.END, "No valid points with stock available. Finding direct path from start to end.\n")
+                # Use find_path_through_points with empty intermediate points list
+                path = self.path_finder.find_path_through_points(start_node, [], end_node)
+                valid_points = []  # Empty list for visualization
+            else:
+                # Find path through all valid points
+                path = self.path_finder.find_path_through_points(start_node, valid_points, end_node)
             
             if path:
                 # Decrement stock for each valid intermediate point
@@ -322,7 +325,7 @@ class PathfinderGUI:
                     self.viz_window.visualize_path(path, start_node, end_node, valid_points)
             else:
                 self.output_text.delete(1.0, tk.END)
-                self.output_text.insert(tk.END, "Error: No valid path found through all points\n")
+                self.output_text.insert(tk.END, "Error: No valid path found\n")
         
         except Exception as e:
             self.output_text.delete(1.0, tk.END)
