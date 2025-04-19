@@ -9,6 +9,63 @@ import queue           # For thread-safe data exchange
 import config
 import database
 
+class GridVisualizer(tk.Toplevel):
+    def __init__(self, parent, grid_rows, grid_cols, path=None, start=None, end=None, points=None):
+        super().__init__(parent)
+        self.title("Path Visualization")
+        self.grid_rows = grid_rows
+        self.grid_cols = grid_cols
+        
+        # Calculate canvas size based on grid dimensions
+        cell_size = 40
+        canvas_width = grid_cols * cell_size + 1
+        canvas_height = grid_rows * cell_size + 1
+        
+        # Create canvas for grid drawing
+        self.canvas = tk.Canvas(self, width=canvas_width, height=canvas_height, bg="white")
+        self.canvas.pack(padx=10, pady=10)
+        
+        # Draw the grid
+        self.cell_size = cell_size
+        self.draw_grid()
+        
+        # Draw path and points if provided
+        if path and start is not None and end is not None and points is not None:
+            self.visualize_path(path, start, end, points)
+    
+    def draw_grid(self):
+        # Draw horizontal lines
+        for i in range(self.grid_rows + 1):
+            y = i * self.cell_size
+            self.canvas.create_line(0, y, self.grid_cols * self.cell_size, y, fill="black")
+        
+        # Draw vertical lines
+        for j in range(self.grid_cols + 1):
+            x = j * self.cell_size
+            self.canvas.create_line(x, 0, x, self.grid_rows * self.cell_size, fill="black")
+    
+    def visualize_path(self, path, start, end, points):
+        # Draw start and end points (light blue)
+        self.draw_cell(start[0], start[1], "light blue")
+        self.draw_cell(end[0], end[1], "light blue")
+        
+        # Draw intermediate points (yellow)
+        for point in points:
+            self.draw_cell(point[0], point[1], "yellow")
+        
+        # Draw path (green)
+        for x, y in path:
+            # Skip start, end, and intermediate points to avoid overwriting
+            if (x, y) != start and (x, y) != end and (x, y) not in points:
+                self.draw_cell(x, y, "green")
+    
+    def draw_cell(self, row, col, color):
+        x1 = col * self.cell_size
+        y1 = row * self.cell_size
+        x2 = x1 + self.cell_size
+        y2 = y1 + self.cell_size
+        self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="black")
+
 class PathfinderGUI:
     def __init__(self, root, rows=10, cols=10):  # Modified to accept dimensions
         # Store the root window and configure basic window properties
@@ -41,8 +98,8 @@ class PathfinderGUI:
         add_button = ttk.Button(input_frame, text="Add Point", command=self.add_point)
         add_button.grid(row=0, column=1)
         
-        # Create main output area for displaying the path and messages
-        self.output_text = tk.Text(root, height=15, width=50)
+        # Create main output area for displaying messages (smaller now)
+        self.output_text = tk.Text(root, height=5, width=50)
         self.output_text.grid(row=1, column=0, pady=10, padx=10, sticky='nsew')
         
         # Create bottom frame for control buttons
@@ -117,32 +174,15 @@ class PathfinderGUI:
             self.output_text.insert(tk.END, "Error: Please enter a valid number\n")
 
     def find_path(self):
-        # Prevent multiple concurrent pathfinding operations
-        if self.processing:
-            self.output_text.insert(tk.END, "Already processing a path request. Please wait.\n")
-            return
-
         # Check if there are any points to process
         if not self.points:
             self.output_text.insert(tk.END, "Error: No intermediate points added. Please add at least one point.\n")
             return
-
+    
         # Clear previous output
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Processing path...\n")
         
-        # Set processing flag
-        self.processing = True
-        
-        # Create and start pathfinding thread
-        path_thread = threading.Thread(target=self._find_path_thread)
-        path_thread.daemon = True  # Thread will be terminated when main program exits
-        path_thread.start()
-        
-        # Start checking for results
-        self.root.after(100, self._check_path_results)
-
-    def _find_path_thread(self):
         try:
             # Define start and end points of the grid
             start_node = (0, 0)
@@ -157,62 +197,39 @@ class PathfinderGUI:
                     item_id = spa.coordinates_to_index(x, y, self.grid.cols)
                     self.db.decrement_quantity(item_id)
                 
-                # Capture visualization in a string
-                old_stdout = sys.stdout
-                result = io.StringIO()
-                sys.stdout = result
-                
-                # Generate the path visualisation
-                self.path_visualiser.visualise_path(path, start_node, end_node, self.points)
-                
-                # Restore stdout and get the visualisation
-                sys.stdout = old_stdout
-                visualization = result.getvalue()
-                
-                # Put results in queue
-                self.result_queue.put({
-                    'success': True,
-                    'visualization': visualization,
-                    'path': path
-                })
-            else:
-                self.result_queue.put({
-                    'success': False,
-                    'error': "No valid path found through all points"
-                })
-        except Exception as e:
-            self.result_queue.put({
-                'success': False,
-                'error': str(e)
-            })
-
-    def _check_path_results(self):
-        try:
-            result = self.result_queue.get_nowait()
-            
-            if result['success']:
+                # Display path length
                 self.output_text.delete(1.0, tk.END)
-                self.output_text.insert(tk.END, result['visualization'])
-                self.output_text.insert(tk.END, f"\nTotal path length: {len(result['path']) - 1} steps\n")
+                self.output_text.insert(tk.END, f"Total path length: {len(path) - 1} steps\n")
                 
                 # Convert path to position numbers
                 path_indices = [spa.coordinates_to_index(x, y, self.grid.cols) 
-                              for x, y in result['path']]
+                              for x, y in path]
                 
                 # Show path as position numbers
                 path_str = " -> ".join([str(idx) for idx in path_indices])
                 self.output_text.insert(tk.END, f"Path: {path_str}\n")
                 
+                # Close previous visualization window if it exists
+                if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
+                    self.viz_window.destroy()
+                
+                # Create visualization window
+                self.viz_window = GridVisualizer(
+                    self.root, 
+                    self.grid.rows, 
+                    self.grid.cols, 
+                    path=path, 
+                    start=start_node, 
+                    end=end_node, 
+                    points=self.points
+                )
             else:
                 self.output_text.delete(1.0, tk.END)
-                self.output_text.insert(tk.END, f"Error: {result['error']}\n")
-            
-            # Reset processing flag
-            self.processing = False
-            
-        except queue.Empty:
-            # No results yet, check again in 100ms
-            self.root.after(100, self._check_path_results)
+                self.output_text.insert(tk.END, "Error: No valid path found through all points\n")
+        
+        except Exception as e:
+            self.output_text.delete(1.0, tk.END)
+            self.output_text.insert(tk.END, f"Error: {str(e)}\n")
 
     def clear_all(self):
         # Reset all components to initial state
@@ -220,6 +237,11 @@ class PathfinderGUI:
         self.point_entry.delete(0, tk.END)
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Cleared all points\n")
+        
+        # Close visualization window if it exists
+        if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
+            self.viz_window.destroy()
+            self.viz_window = None
 
     def query_stock(self):
         try:
