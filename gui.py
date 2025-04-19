@@ -9,6 +9,46 @@ import queue           # For thread-safe data exchange
 import config
 import database
 
+class VisualisationWindow:
+    def __init__(self, parent):
+        self.window = tk.Toplevel(parent)
+        self.window.title("Path Visualisation")
+        self.window.geometry("600x400")
+        
+        # Configure grid weights
+        self.window.grid_rowconfigure(0, weight=1)
+        self.window.grid_columnconfigure(0, weight=1)
+        
+        # Create text area for visualisation
+        self.viz_text = tk.Text(self.window, height=20, width=60)
+        self.viz_text.grid(row=0, column=0, padx=10, pady=10, sticky='nsew')
+        
+        # Add scrollbars
+        y_scrollbar = ttk.Scrollbar(self.window, orient="vertical", command=self.viz_text.yview)
+        y_scrollbar.grid(row=0, column=1, sticky='ns')
+        self.viz_text.configure(yscrollcommand=y_scrollbar.set)
+        
+        # Add close button
+        close_button = ttk.Button(self.window, text="Close", command=self.window.withdraw)
+        close_button.grid(row=1, column=0, pady=10)
+        
+        # Initially hide the window
+        self.window.withdraw()
+    
+    def show(self):
+        # Center the window
+        self.window.deiconify()
+        self.window.update_idletasks()
+        width = self.window.winfo_width()
+        height = self.window.winfo_height()
+        x = (self.window.winfo_screenwidth() // 2) - (width // 2)
+        y = (self.window.winfo_screenheight() // 2) - (height // 2)
+        self.window.geometry(f'{width}x{height}+{x}+{y}')
+    
+    def update_visualisation(self, text):
+        self.viz_text.delete(1.0, tk.END)
+        self.viz_text.insert(tk.END, text)
+
 class PathfinderGUI:
     def __init__(self, root, rows=10, cols=10):  # Modified to accept dimensions
         # Store the root window and configure basic window properties
