@@ -295,3 +295,37 @@
 2025-04-19 11:44:01,754 - INFO - Path visualisation completed
 2025-04-19 11:49:51,801 - INFO - PathFinder initialised with grid size 15x10
 2025-04-19 11:49:51,801 - INFO - PathVisualiser initialised with grid size 15x10
+2025-04-19 11:50:46,086 - INFO - PathFinder initialised with grid size 11x11
+2025-04-19 11:50:46,086 - INFO - PathVisualiser initialised with grid size 11x11
+2025-04-19 11:50:52,324 - INFO - Finding path through 1 intermediate points
+2025-04-19 11:50:52,324 - INFO - Starting BFS search from (0, 0) to (4, 0)
+2025-04-19 11:50:52,325 - INFO - Path found with length 4
+2025-04-19 11:50:52,325 - INFO - Starting BFS search from (4, 0) to (10, 10)
+2025-04-19 11:50:52,325 - INFO - Path found with length 16
+2025-04-19 11:50:52,326 - INFO - Complete path found with length 20
+2025-04-19 11:50:52,342 - INFO - Starting path visualisation
+2025-04-19 11:50:52,342 - INFO - Path visualisation completed
+2025-04-19 11:50:56,885 - INFO - Finding path through 1 intermediate points
+2025-04-19 11:50:56,886 - INFO - Starting BFS search from (0, 0) to (4, 0)
+2025-04-19 11:50:56,886 - INFO - Path found with length 4
+2025-04-19 11:50:56,887 - INFO - Starting BFS search from (4, 0) to (10, 10)
+2025-04-19 11:50:56,887 - INFO - Path found with length 16
+2025-04-19 11:50:56,887 - INFO - Complete path found with length 20
+2025-04-19 11:50:56,905 - INFO - Starting path visualisation
+2025-04-19 11:50:56,905 - INFO - Path visualisation completed
+2025-04-19 11:50:58,039 - INFO - Finding path through 1 intermediate points
+2025-04-19 11:50:58,040 - INFO - Starting BFS search from (0, 0) to (4, 0)
+2025-04-19 11:50:58,040 - INFO - Path found with length 4
+2025-04-19 11:50:58,040 - INFO - Starting BFS search from (4, 0) to (10, 10)
+2025-04-19 11:50:58,041 - INFO - Path found with length 16
+2025-04-19 11:50:58,042 - INFO - Complete path found with length 20
+2025-04-19 11:50:58,053 - INFO - Starting path visualisation
+2025-04-19 11:50:58,054 - INFO - Path visualisation completed
+2025-04-19 11:51:02,360 - INFO - Finding path through 1 intermediate points
+2025-04-19 11:51:02,360 - INFO - Starting BFS search from (0, 0) to (4, 0)
+2025-04-19 11:51:02,360 - INFO - Path found with length 4
+2025-04-19 11:51:02,361 - INFO - Starting BFS search from (4, 0) to (10, 10)
+2025-04-19 11:51:02,361 - INFO - Path found with length 16
+2025-04-19 11:51:02,362 - INFO - Complete path found with length 20
+2025-04-19 11:51:02,374 - INFO - Starting path visualisation
+2025-04-19 11:51:02,374 - INFO - Path visualisation completed
