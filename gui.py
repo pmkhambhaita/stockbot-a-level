@@ -10,14 +10,20 @@ import config
 import database
 
 class GridVisualizer(tk.Toplevel):
-    def __init__(self, parent, grid_rows, grid_cols, path=None, start=None, end=None, points=None):
+    def __init__(self, parent, grid_rows, grid_cols, path=None, start=None, end=None, points=None, db=None):
         super().__init__(parent)
         self.title("Path Visualization")
         self.grid_rows = grid_rows
         self.grid_cols = grid_cols
+        self.db = db  # Store database reference for stock checking
         
-        # Calculate canvas size based on grid dimensions (improved size)
-        cell_size = 40  # Increased from 30 for better readability
+        # Track out-of-stock positions to keep them highlighted
+        self.out_of_stock_positions = set()
+        # Track user-selected points for stock level highlighting
+        self.selected_points = set()
+        
+        # Calculate canvas size based on grid dimensions
+        cell_size = 40
         canvas_width = grid_cols * cell_size + 1
         canvas_height = grid_rows * cell_size + 1
         
@@ -36,7 +42,7 @@ class GridVisualizer(tk.Toplevel):
         self.draw_grid()
         
         # Draw path and points if provided
-        if path and start is not None and end is not None and points is not None:
+        if path and start is not None and end is not None and points is not None and db is not None:
             self.visualize_path(path, start, end, points)
     
     def draw_grid(self):
@@ -64,28 +70,71 @@ class GridVisualizer(tk.Toplevel):
                 self.canvas.create_text(x, y, text=str(pos_num), font=("Arial", 10, "bold"))
     
     def visualize_path(self, path, start, end, points):
-        # Draw start and end points (improved colors)
-        self.draw_cell(start[0], start[1], "#4287f5")  # Bright blue for start
-        self.draw_cell(end[0], end[1], "#4287f5")      # Bright blue for end
+        # Update selected points for stock level highlighting
+        self.selected_points = set()
+        for x, y in points:
+            self.selected_points.add((x, y))
+            
+            # Check if this point is out of stock and add to tracking set
+            pos_num = spa.coordinates_to_index(x, y, self.grid_cols)  # Changed from self.grid.cols to self.grid_cols
+            quantity = self.db.get_quantity(pos_num)
+            if quantity == 0:
+                self.out_of_stock_positions.add((x, y))
         
-        # Draw intermediate points (improved color)
-        for point in points:
-            self.draw_cell(point[0], point[1], "#f5d742")  # Bright yellow for points
-        
-        # Draw path (improved color)
+        # First draw the path (lowest priority)
         for x, y in path:
             # Skip start, end, and intermediate points to avoid overwriting
             if (x, y) != start and (x, y) != end and (x, y) not in points:
                 self.draw_cell(x, y, "#42f56f")  # Bright green for path
+        
+        # Draw intermediate points (medium priority)
+        for point in points:
+            pos_num = spa.coordinates_to_index(point[0], point[1], self.grid_cols)  # Changed from self.grid.cols to self.grid_cols
+            quantity = self.db.get_quantity(pos_num)
+            
+            if quantity == 0:
+                # Out of stock - red
+                self.draw_cell(point[0], point[1], "#ff3333", True)  # Bright red
+            elif quantity < 2:
+                # Low stock - orange
+                self.draw_cell(point[0], point[1], "#ff9933", True)  # Bright orange
+            else:
+                # Normal stock - yellow
+                self.draw_cell(point[0], point[1], "#f5d742")  # Bright yellow
+        
+        # Draw start and end points (higher priority)
+        self.draw_cell(start[0], start[1], "#4287f5")  # Bright blue for start
+        self.draw_cell(end[0], end[1], "#4287f5")      # Bright blue for end
+        
+        # Draw any out-of-stock positions that aren't in the current path
+        for x, y in self.out_of_stock_positions:
+            if (x, y) not in self.selected_points and (x, y) != start and (x, y) != end:
+                self.draw_cell(x, y, "#ff3333", True)  # Bright red
     
-    def draw_cell(self, row, col, color):
+    def clear_visualization(self):
+        # Clear all colored cells but keep the grid and numbers
+        self.canvas.delete("all")
+        self.draw_grid()
+        
+        # Redraw only the out-of-stock positions
+        if self.db:
+            for x, y in self.out_of_stock_positions:
+                self.draw_cell(x, y, "#ff3333", True)  # Bright red
+        
+        # Reset selected points but keep out-of-stock tracking
+        self.selected_points = set()
+        self.path = None
+        self.start = None
+        self.end = None
+        self.points = None
+    
+    def draw_cell(self, row, col, color, is_stock_indicator=False):
         x1 = col * self.cell_size + 1
         y1 = row * self.cell_size + 1
         x2 = x1 + self.cell_size - 2
         y2 = y1 + self.cell_size - 2
         
         # Create rectangle with improved transparency to keep numbers visible
-        # First draw a filled rectangle with alpha transparency
         rect_id = self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="")
         
         # Add the position number on top with contrasting color
@@ -95,15 +144,21 @@ class GridVisualizer(tk.Toplevel):
         
         # Determine text color based on background brightness
         text_color = "black"
-        if color in ["#4287f5", "#42f56f"]:  # For blue and green backgrounds
+        if color in ["#4287f5", "#42f56f", "#ff3333", "#ff9933"]:  # For blue, green, red, orange backgrounds
             text_color = "white"
             
-        self.canvas.create_text(x, y, text=str(pos_num), font=("Arial", 10, "bold"), fill=text_color)
-    
-    def clear_visualization(self):
-        # Clear all colored cells but keep the grid and numbers
-        self.canvas.delete("all")
-        self.draw_grid()
+        # For stock indicators, add stock quantity if available
+        if is_stock_indicator and self.db:
+            quantity = self.db.get_quantity(pos_num)
+            if quantity is not None:
+                # Draw position number
+                self.canvas.create_text(x, y - 7, text=str(pos_num), font=("Arial", 8, "bold"), fill=text_color)
+                # Draw stock quantity
+                self.canvas.create_text(x, y + 7, text=f"Stock: {quantity}", font=("Arial", 8), fill=text_color)
+            else:
+                self.canvas.create_text(x, y, text=str(pos_num), font=("Arial", 10, "bold"), fill=text_color)
+        else:
+            self.canvas.create_text(x, y, text=str(pos_num), font=("Arial", 10, "bold"), fill=text_color)
 
 class PathfinderGUI:
     def __init__(self, root, rows=10, cols=10):  # Modified to accept dimensions
@@ -148,7 +203,6 @@ class PathfinderGUI:
         # Add buttons for path finding and clearing
         start_button = ttk.Button(button_frame, text="Find Path", command=self.find_path)
         start_button.grid(row=0, column=0, padx=5)
-        
         clear_button = ttk.Button(button_frame, text="Clear", command=self.clear_all)
         clear_button.grid(row=0, column=1, padx=5)
         
@@ -271,6 +325,9 @@ class PathfinderGUI:
                     valid_points.append((x, y))
                 else:
                     skipped_points.append((x, y))
+                    # Add to out-of-stock tracking if visualization window exists
+                    if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
+                        self.viz_window.out_of_stock_positions.add((x, y))
             
             if skipped_points:
                 skipped_indices = [spa.coordinates_to_index(x, y, self.grid.cols) for x, y in skipped_points]
@@ -313,7 +370,8 @@ class PathfinderGUI:
                         path=path, 
                         start=start_node, 
                         end=end_node, 
-                        points=valid_points  # Use only valid points for visualization
+                        points=valid_points,  # Use only valid points for visualization
+                        db=self.db  # Pass database reference
                     )
                 else:
                     # If window exists, clear it and update with new path
@@ -322,6 +380,7 @@ class PathfinderGUI:
                     self.viz_window.start = start_node
                     self.viz_window.end = end_node
                     self.viz_window.points = valid_points  # Use only valid points for visualization
+                    self.viz_window.db = self.db  # Update database reference
                     self.viz_window.visualize_path(path, start_node, end_node, valid_points)
             else:
                 self.output_text.delete(1.0, tk.END)
@@ -383,7 +442,32 @@ class PathfinderGUI:
                 try:
                     new_qty = int(qty_entry.get())
                     self.db.update_quantity(index, new_qty)
-                    self.output_text.insert(tk.END, f"Updated stock for position {index} to {new_qty}\n")
+                    self.output_text.insert(tk.END, f"Updated stock for position {index} to {new_qty}\n")                    
+                    # Update visualization if window exists
+                    if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
+                        # Get coordinates from index
+                        x, y = spa.index_to_coordinates(index, self.grid.cols)
+                        
+                        # Update out-of-stock tracking
+                        if new_qty == 0:
+                            self.viz_window.out_of_stock_positions.add((x, y))
+                        else:
+                            # Remove from out-of-stock if it was there
+                            self.viz_window.out_of_stock_positions.discard((x, y))
+                        
+                        # Refresh visualization if path exists
+                        if self.viz_window.path:
+                            self.viz_window.clear_visualization()
+                            self.viz_window.visualize_path(
+                                self.viz_window.path,
+                                self.viz_window.start,
+                                self.viz_window.end,
+                                self.viz_window.points
+                            )
+                        else:
+                            # Just refresh the grid with out-of-stock items
+                            self.viz_window.clear_visualization()
+                    
                     popup.destroy()
                 except ValueError:
                     self.output_text.insert(tk.END, "Error: Please enter a valid number\n")
@@ -401,7 +485,8 @@ class PathfinderGUI:
             self.viz_window = GridVisualizer(
                 self.root, 
                 self.grid.rows, 
-                self.grid.cols
+                self.grid.cols,
+                db=self.db  # Pass database reference
             )
         else:
             # If window exists but is minimized, restore it
