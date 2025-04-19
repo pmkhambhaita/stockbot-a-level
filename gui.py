@@ -13,7 +13,7 @@ class VisualisationWindow:
     def __init__(self, parent):
         self.window = tk.Toplevel(parent)
         self.window.title("Path Visualisation")
-        self.window.geometry("800x600")  # Larger window for better grid visibility
+        self.window.geometry("1000x800")  # Larger default window size
         
         # Configure grid weights
         self.window.grid_rowconfigure(0, weight=1)
@@ -21,7 +21,7 @@ class VisualisationWindow:
         
         # Create canvas for grid visualisation
         self.canvas = tk.Canvas(self.window, bg="white")
-        self.canvas.grid(row=0, column=0, padx=10, pady=10, sticky='nsew')
+        self.canvas.grid(row=0, column=0, padx=0, pady=0, sticky='nsew')  # Remove padding
         
         # Add scrollbars for larger grids
         x_scrollbar = ttk.Scrollbar(self.window, orient="horizontal", command=self.canvas.xview)
@@ -34,12 +34,12 @@ class VisualisationWindow:
         
         # Add close button
         close_button = ttk.Button(self.window, text="Close", command=self.window.withdraw)
-        close_button.grid(row=2, column=0, pady=10)
+        close_button.grid(row=2, column=0, pady=5)
         
         # Store grid dimensions and cell size
         self.rows = 0
         self.cols = 0
-        self.cell_size = 60  # Default cell size in pixels
+        self.cell_size = 40  # Smaller cell size (was 60)
         
         # Prevent window from being destroyed when closed
         self.window.protocol("WM_DELETE_WINDOW", self.window.withdraw)
@@ -148,14 +148,23 @@ class VisualisationWindow:
 
     
     def show(self):
+        # Calculate the exact window size needed based on grid dimensions
+        grid_width = self.cols * self.cell_size + 20  # Add a small margin
+        grid_height = self.rows * self.cell_size + 50  # Add space for scrollbar and button
+        
+        # Set minimum sizes to prevent tiny windows
+        window_width = max(grid_width, 400)
+        window_height = max(grid_height, 300)
+        
+        # Update window size to fit the grid
+        self.window.geometry(f"{window_width}x{window_height}")
+        
         # Center the window
         self.window.deiconify()
         self.window.update_idletasks()
-        width = self.window.winfo_width()
-        height = self.window.winfo_height()
-        x = (self.window.winfo_screenwidth() // 2) - (width // 2)
-        y = (self.window.winfo_screenheight() // 2) - (height // 2)
-        self.window.geometry(f'{width}x{height}+{x}+{y}')
+        x = (self.window.winfo_screenwidth() // 2) - (window_width // 2)
+        y = (self.window.winfo_screenheight() // 2) - (window_height // 2)
+        self.window.geometry(f'{window_width}x{window_height}+{x}+{y}')
         
         # Only draw the basic grid if no path is currently displayed
         # This prevents overwriting an existing path visualization
