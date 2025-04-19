@@ -407,6 +407,7 @@
 2025-04-19 12:14:54,839 - INFO - Complete path found with length 20
 2025-04-19 12:14:54,852 - INFO - Starting path visualisation
 2025-04-19 12:14:54,852 - INFO - Path visualisation completed
+<<<<<<< HEAD
 2025-04-19 12:19:09,870 - INFO - PathFinder initialised with grid size 15x15
 2025-04-19 12:19:09,870 - INFO - PathVisualiser initialised with grid size 15x15
 2025-04-19 12:19:15,505 - INFO - Finding path through 1 intermediate points
@@ -453,3 +454,5 @@
 2025-04-19 12:35:32,247 - INFO - Starting BFS search from (0, 0) to (1, 13)
 2025-04-19 12:35:32,248 - INFO - Path found with length 14
 2025-04-19 12:35:32,248 - INFO - Starting BFS search from (1, 13) to (19, 19)
+=======
+>>>>>>> f0f21a02317550788e898016c55769359e816a28
