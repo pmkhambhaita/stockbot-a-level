@@ -60,6 +60,9 @@ class PathfinderGUI:
         self.processing = False
         self.result_queue = queue.Queue()
         
+        # Create visualisation window
+        self.viz_window = VisualisationWindow(root)
+        
         # Configure grid weights to enable proper resizing
         self.root.grid_rowconfigure(1, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
@@ -81,7 +84,7 @@ class PathfinderGUI:
         add_button = ttk.Button(input_frame, text="Add Point", command=self.add_point)
         add_button.grid(row=0, column=1)
         
-        # Create main output area for displaying the path and messages
+        # Create main output area for displaying messages (not visualisation)
         self.output_text = tk.Text(root, height=15, width=50)
         self.output_text.grid(row=1, column=0, pady=10, padx=10, sticky='nsew')
         
@@ -95,6 +98,10 @@ class PathfinderGUI:
         
         clear_button = ttk.Button(button_frame, text="Clear", command=self.clear_all)
         clear_button.grid(row=0, column=1, padx=5)
+        
+        # Add button to open visualisation window
+        viz_button = ttk.Button(button_frame, text="Open Grid Visualisation", command=self.viz_window.show)
+        viz_button.grid(row=0, column=2, padx=5)
         
         # Initialise the pathfinding components with configured grid size
         self.grid = spa.Grid(rows, cols)
