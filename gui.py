@@ -52,6 +52,12 @@ class VisualisationWindow:
         self.rows = rows
         self.cols = cols
         
+        # Store current path and points for later reference
+        self._current_path = path
+        self._current_start = start
+        self._current_end = end
+        self._current_points = points
+        
         # Clear previous drawings
         self.canvas.delete("all")
         
@@ -151,9 +157,11 @@ class VisualisationWindow:
         y = (self.window.winfo_screenheight() // 2) - (height // 2)
         self.window.geometry(f'{width}x{height}+{x}+{y}')
         
-        # Draw the basic grid when showing the window if dimensions are available
-        if self.rows > 0 and self.cols > 0:
-            self.draw_grid(self.rows, self.cols)
+        # Only draw the basic grid if no path is currently displayed
+        # This prevents overwriting an existing path visualization
+        if not hasattr(self, '_current_path') or not self._current_path:
+            if self.rows > 0 and self.cols > 0:
+                self.draw_grid(self.rows, self.cols)
     
     def update_visualisation(self, text):
         # Safely clear the canvas if it exists
@@ -395,8 +403,9 @@ class PathfinderGUI:
                     points=self.points
                 )
                 
-                # Show the visualisation window
-                self.viz_window.show()
+                # Show the visualisation window if it's not already visible
+                if not self.viz_window.window.winfo_viewable():
+                    self.viz_window.show()
                 
             else:
                 self.output_text.delete(1.0, tk.END)
@@ -419,6 +428,13 @@ class PathfinderGUI:
         # Redraw the grid without path or special points
         try:
             if hasattr(self.viz_window, 'canvas') and self.viz_window.canvas.winfo_exists():
+                # Clear the stored path
+                self.viz_window._current_path = None
+                self.viz_window._current_start = None
+                self.viz_window._current_end = None
+                self.viz_window._current_points = None
+                
+                # Redraw the basic grid
                 self.viz_window.draw_grid(self.grid.rows, self.grid.cols)
         except tk.TclError:
             # If there's an error, just pass - the window might be closed
