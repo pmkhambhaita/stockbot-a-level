@@ -76,8 +76,9 @@ class GridVisualizer(tk.Toplevel):
             self.selected_points.add((x, y))
             
             # Check if this point is out of stock and add to tracking set
-            pos_num = spa.coordinates_to_index(x, y, self.grid_cols)  # Changed from self.grid.cols to self.grid_cols
+            pos_num = spa.coordinates_to_index(x, y, self.grid_cols)
             quantity = self.db.get_quantity(pos_num)
+            # Only add to out-of-stock if it was already at 0 before this run
             if quantity == 0:
                 self.out_of_stock_positions.add((x, y))
         
@@ -89,12 +90,17 @@ class GridVisualizer(tk.Toplevel):
         
         # Draw intermediate points (medium priority)
         for point in points:
-            pos_num = spa.coordinates_to_index(point[0], point[1], self.grid_cols)  # Changed from self.grid.cols to self.grid_cols
+            pos_num = spa.coordinates_to_index(point[0], point[1], self.grid_cols)
             quantity = self.db.get_quantity(pos_num)
             
             if quantity == 0:
-                # Out of stock - red
-                self.draw_cell(point[0], point[1], "#ff3333", True)  # Bright red
+                # Check if it was already in out-of-stock before this run
+                if (point[0], point[1]) in self.out_of_stock_positions:
+                    # Was already out of stock - red
+                    self.draw_cell(point[0], point[1], "#ff3333", True)  # Bright red
+                else:
+                    # Just became out of stock in this run - orange
+                    self.draw_cell(point[0], point[1], "#ff9933", True)  # Bright orange
             elif quantity < 2:
                 # Low stock - orange
                 self.draw_cell(point[0], point[1], "#ff9933", True)  # Bright orange
@@ -330,6 +336,7 @@ class PathfinderGUI:
             start_node = (0, 0)
             end_node = (self.grid.rows - 1, self.grid.cols - 1)
             
+            # Inside find_path method, modify the section where we process valid points:
             # Filter out points with zero stock before pathfinding
             valid_points = []
             skipped_points = []
@@ -342,6 +349,7 @@ class PathfinderGUI:
                     skipped_points.append((x, y, index))
                     # Add to out-of-stock tracking if visualization window exists
                     if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
+                        # Only add to out-of-stock if it was already at 0 before this run
                         self.viz_window.out_of_stock_positions.add((x, y))
             
             if skipped_points:
