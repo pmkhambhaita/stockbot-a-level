@@ -1135,3 +1135,5 @@
 2025-04-19 14:18:27,773 - INFO - Path found with length 23
 2025-04-19 14:26:02,728 - INFO - PathFinder initialised with grid size 10x10
 2025-04-19 14:26:02,729 - INFO - PathVisualiser initialised with grid size 10x10
+2025-04-19 14:27:46,442 - INFO - PathFinder initialised with grid size 10x10
+2025-04-19 14:27:46,442 - INFO - PathVisualiser initialised with grid size 10x10
