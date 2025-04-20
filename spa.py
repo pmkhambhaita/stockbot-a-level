@@ -1,7 +1,8 @@
 # Import logging module for tracking programme execution
 import logging
 import random  # For genetic algorithm
-import math    # For distance calculations
+import math
+import time
 
 # Configure logging settings for output formatting
 logging.basicConfig(
@@ -91,10 +92,28 @@ class PathFinder:
                 
         # If optimize_order is True, find the optimal order to visit points
         if optimize_order and len(points) > 1:
-            points = self.optimize_point_order(start, points, end)
-            logger.info(f"Optimized point order: {points}")
+            try:
+                # Add timeout for optimization
+                import time
+                start_time = time.time()
+                
+                # Make a copy of points to avoid modifying the original
+                points_copy = list(points)
+                optimized_points = self.optimize_point_order(start, points_copy, end)
+                
+                # Check if optimization took too long
+                if time.time() - start_time > 10.0:  # 10 seconds max
+                    logger.warning("Optimization took too long, using original order")
+                    # Continue with original points
+                else:
+                    points = optimized_points
+                    logger.info(f"Optimized point order: {points}")
+            except Exception as e:
+                logger.error(f"Optimization failed: {str(e)}")
+                # Continue with original points
+                logger.info("Using original point order")
 
-        # Initialise path construction
+        # Initialize path construction
         full_path = []
         current_start = start
 
@@ -103,22 +122,27 @@ class PathFinder:
             logger.debug(f"Finding path segment {i} to point {point}")
             path_segment = self.bfs(current_start, point)
             if path_segment:
-                full_path.extend(path_segment[:-1])
+                # Add all points except the last one if not the first segment
+                if full_path:
+                    full_path.extend(path_segment[1:])
+                else:
+                    full_path.extend(path_segment)
                 current_start = point
             else:
-                logger.error(f"Failed to find path segment to point {point}")
+                logger.error(f"No path found to point {point}")
                 return None
 
-        # Find final path segment to end point
+        # Add final segment from last point to end
         final_segment = self.bfs(current_start, end)
         if final_segment:
-            full_path.extend(final_segment)
-            logger.info(f"Complete path found with length {len(full_path) - 1}")
-            return full_path
+            full_path.extend(final_segment[1:])
         else:
-            logger.error(f"Failed to find final path segment to end point {end}")
+            logger.error(f"No path found from last point {current_start} to end {end}")
             return None
-            
+
+        logger.info(f"Complete path found with length {len(full_path)}")
+        return full_path
+
     def optimize_point_order(self, start, points, end):
         """
         Optimizes the order of points to minimize total path length
@@ -130,109 +154,155 @@ class PathFinder:
         if len(points) <= 1:
             return points
             
+        # Safety check - limit the number of points to optimize
+        if len(points) > 10:
+            logger.warning(f"Too many points ({len(points)}) for optimization, limiting to first 10")
+            points = points[:10]
+            
         # Create initial population (different permutations of points)
-        population_size = min(100, math.factorial(len(points)))
+        population_size = min(50, math.factorial(len(points)))
         population = []
         
         # Add the original order
         population.append(list(points))
         
-        # Add random permutations
+        # Add random permutations with a timeout
+        start_time = time.time()
+        timeout = 2.0  # 2 seconds maximum for population generation
+        
         while len(population) < population_size:
+            # Check for timeout
+            if time.time() - start_time > timeout:
+                logger.warning(f"Timeout reached during population generation, using {len(population)} permutations")
+                break
+                
             perm = list(points)
             random.shuffle(perm)
             if perm not in population:
                 population.append(perm)
                 
-        # Number of generations
-        generations = 20
+        # Number of generations - reduced for performance
+        generations = min(10, 20 if len(points) <= 5 else 10)
         
         # For each generation
         for gen in range(generations):
-            # Calculate fitness for each permutation
+            # Check for timeout - overall optimization should not take more than 5 seconds
+            if time.time() - start_time > 5.0:
+                logger.warning(f"Timeout reached during optimization at generation {gen}")
+                break
+                
+            # Calculate fitness for each permutation (total path length)
             fitness_scores = []
             
             for perm in population:
-                # Calculate total path length
-                total_length = 0
-                
-                # Start to first point
-                if self.grid.rows <= 10 and self.grid.cols <= 10:
-                    # For small grids, we can use exact path length
+                try:
+                    # Calculate total path length for this permutation
+                    total_length = 0
+                    
+                    # Path from start to first point
                     path = self.bfs(start, perm[0])
                     if path:
                         total_length += len(path) - 1
                     else:
-                        total_length += 999  # Large penalty for impossible paths
-                else:
-                    # For larger grids, use Manhattan distance as an approximation
-                    total_length += abs(start[0] - perm[0][0]) + abs(start[1] - perm[0][1])
-                
-                # Between points
-                for i in range(len(perm) - 1):
-                    if self.grid.rows <= 10 and self.grid.cols <= 10:
-                        path = self.bfs(perm[i], perm[i+1])
+                        # If no path found, assign a high penalty
+                        total_length += 1000
+                    
+                    # Paths between consecutive points
+                    for i in range(len(perm) - 1):
+                        path = self.bfs(perm[i], perm[i + 1])
                         if path:
                             total_length += len(path) - 1
                         else:
-                            total_length += 999
-                    else:
-                        total_length += abs(perm[i][0] - perm[i+1][0]) + abs(perm[i][1] - perm[i+1][1])
-                
-                # Last point to end
-                if self.grid.rows <= 10 and self.grid.cols <= 10:
+                            # If no path found, assign a high penalty
+                            total_length += 1000
+                    
+                    # Path from last point to end
                     path = self.bfs(perm[-1], end)
                     if path:
                         total_length += len(path) - 1
                     else:
-                        total_length += 999
-                else:
-                    total_length += abs(perm[-1][0] - end[0]) + abs(perm[-1][1] - end[1])
-                
-                # Fitness is inverse of length (shorter is better)
-                fitness = 1000.0 / (total_length + 1)
-                fitness_scores.append((fitness, perm))
+                        # If no path found, assign a high penalty
+                        total_length += 1000
+                    
+                    fitness_scores.append((total_length, perm))
+                except Exception as e:
+                    # If any error occurs, assign a high penalty
+                    logger.error(f"Error calculating fitness: {str(e)}")
+                    fitness_scores.append((10000, perm))
             
-            # Sort by fitness (descending)
-            fitness_scores.sort(reverse=True)
+            # Sort by fitness (shorter paths are better)
+            fitness_scores.sort()
             
-            # Select top performers
-            top_performers = [perm for _, perm in fitness_scores[:population_size//2]]
+            # If we have a good solution, stop early
+            if fitness_scores[0][0] < 1000:
+                best_perm = fitness_scores[0][1]
+                logger.info(f"Found good solution at generation {gen}: {best_perm}")
+                return best_perm
             
-            # Create new population
-            new_population = list(top_performers)
+            # Select top performers (elitism)
+            elite_size = max(2, population_size // 5)
+            new_population = [score[1] for score in fitness_scores[:elite_size]]
             
-            # Add crossover children
+            # Fill the rest with crossover and mutation
             while len(new_population) < population_size:
-                # Select two parents
-                parent1 = random.choice(top_performers)
-                parent2 = random.choice(top_performers)
+                # Select two parents using tournament selection
+                tournament_size = 3
+                parent1 = None
+                parent2 = None
                 
-                # Create child using ordered crossover
-                child = self._ordered_crossover(parent1, parent2)
+                # Simple timeout check for tournament selection
+                selection_start = time.time()
                 
-                # Add to new population
-                if child not in new_population:
+                while parent1 is None or parent2 is None:
+                    if time.time() - selection_start > 0.5:  # Half second timeout
+                        # Just pick random parents if taking too long
+                        parent1 = random.choice(population)
+                        parent2 = random.choice(population)
+                        break
+                        
+                    # Tournament selection
+                    tournament = random.sample(fitness_scores, min(tournament_size, len(fitness_scores)))
+                    tournament.sort()
+                    
+                    if parent1 is None:
+                        parent1 = tournament[0][1]
+                    else:
+                        parent2 = tournament[0][1]
+                
+                # Perform crossover (ordered crossover)
+                try:
+                    child = self.ordered_crossover(parent1, parent2)
+                    
+                    # Perform mutation with low probability
+                    if random.random() < 0.1:
+                        # Swap mutation - swap two random positions
+                        idx1, idx2 = random.sample(range(len(child)), 2)
+                        child[idx1], child[idx2] = child[idx2], child[idx1]
+                    
                     new_population.append(child)
+                except Exception as e:
+                    # If crossover fails, just add a copy of the best parent
+                    logger.error(f"Crossover error: {str(e)}")
+                    new_population.append(parent1.copy())
             
-            # Apply mutation
-            for i in range(1, len(new_population)):
-                if random.random() < 0.1:  # 10% mutation rate
-                    self._mutate(new_population[i])
-            
-            # Update population
+            # Update population for next generation
             population = new_population
-            
-            logger.debug(f"Generation {gen+1}: Best fitness = {fitness_scores[0][0]}")
         
-        # Return the best permutation
-        return fitness_scores[0][1]
-    
-    def _ordered_crossover(self, parent1, parent2):
-        """Helper method for genetic algorithm crossover"""
+        # Return the best permutation found
+        if fitness_scores:
+            return fitness_scores[0][1]
+        else:
+            # If something went wrong, return original order
+            logger.warning("Optimization failed, returning original order")
+            return points
+            
+    def ordered_crossover(self, parent1, parent2):
+        """
+        Performs ordered crossover between two parent permutations
+        """
         size = len(parent1)
         
-        # Select a random subset of parent1
+        # Choose random subset of parent1
         start, end = sorted(random.sample(range(size), 2))
         
         # Create child with subset from parent1
@@ -244,10 +314,23 @@ class PathFinder:
         parent2_idx = 0
         for i in range(size):
             if child[i] is None:
+                # Find next value from parent2 that's not already in child
                 while parent2[parent2_idx] in child:
                     parent2_idx += 1
-                child[i] = parent2[parent2_idx]
-                parent2_idx += 1
+                    if parent2_idx >= size:
+                        # This shouldn't happen with valid permutations, but just in case
+                        remaining = [p for p in parent2 if p not in child]
+                        if remaining:
+                            child[i] = remaining[0]
+                            break
+                        else:
+                            # Emergency fallback - should never reach here
+                            child[i] = parent2[0]
+                            break
+                
+                if child[i] is None:  # Still None, means we didn't break from the while loop
+                    child[i] = parent2[parent2_idx]
+                    parent2_idx += 1
         
         return child
     
