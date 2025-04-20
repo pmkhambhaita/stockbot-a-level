@@ -469,8 +469,8 @@ class PathFinder:
         permutation[idx1], permutation[idx2] = permutation[idx2], permutation[idx1]
 
 
-def validate_point(x, y, rows, cols, allow_start_end=False):
-    """Validates if a point is within bounds and optionally checks for start/end points"""
+def validate_point(x, y, rows, cols, allow_start_end=False, obstacles=None):
+    """Validates if a point is within bounds and optionally checks for start/end points and obstacles"""
     # Check if point is start/end when not allowed
     if not allow_start_end and ((x, y) == (0, 0) or (x, y) == (rows - 1, cols - 1)):
         return False, f"Cannot use start point (index 1) or end point (index {rows * cols})"
@@ -478,6 +478,10 @@ def validate_point(x, y, rows, cols, allow_start_end=False):
     # Check if point is within grid boundaries
     if not (0 <= x < rows and 0 <= y < cols):
         return False, f"Position out of bounds"
+    
+    # Check if point is an obstacle
+    if obstacles and (x, y) in obstacles:
+        return False, f"Position contains an obstacle"
     
     return True, ""
 
