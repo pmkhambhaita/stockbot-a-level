@@ -68,33 +68,42 @@ class PathFinder:
         if not (0 <= end[0] < self.grid.rows and 0 <= end[1] < self.grid.cols):
             logger.error(f"End position {end} is out of bounds")
             return None
-
+        
+        # Check if start or end is an obstacle
+        if self.grid.is_obstacle(start[0], start[1]) or self.grid.is_obstacle(end[0], end[1]):
+            logger.error(f"Start or end position is an obstacle")
+            return None
+    
         # Initialise queue with starting point and visited set
         queue = [[start]]
-        visited = set()
+        visited = set([start])
         
         # Continue searching while there are paths to explore
         while queue:
             path = queue.pop(0)  # Get the next path to explore
-            x, y = path[-1]      # Get the last point in the path
-
-            # Check if we've reached the destination
-            if (x, y) == end:
-                logger.info(f"Path found with length {len(path) - 1}")
+            current = path[-1]   # Get the last position in the path
+            
+            # If we've reached the end, return the path
+            if current == end:
+                logger.info(f"Path found with length {len(path)}")
                 return path
-
-            # Explore unvisited neighbours
-            if (x, y) not in visited:
-                visited.add((x, y))
-                for dx, dy in self.directions:
-                    nx, ny = x + dx, y + dy  # Calculate neighbour coordinates
-                    # Check if neighbour is within bounds
-                    if 0 <= nx < self.grid.rows and 0 <= ny < self.grid.cols:
-                        if (nx, ny) not in visited:
-                            new_path = list(path) + [(nx, ny)]
-                            queue.append(new_path)
-
-        logger.warning(f"No path found between {start} and {end}")
+                
+            # Explore all possible directions
+            for dx, dy in self.directions:
+                nx, ny = current[0] + dx, current[1] + dy
+                next_pos = (nx, ny)
+                
+                # Check if the new position is valid and not visited
+                if (0 <= nx < self.grid.rows and 0 <= ny < self.grid.cols and 
+                    next_pos not in visited and not self.grid.is_obstacle(nx, ny)):
+                    # Create a new path by extending the current path
+                    new_path = list(path)
+                    new_path.append(next_pos)
+                    queue.append(new_path)
+                    visited.add(next_pos)
+        
+        # If we've exhausted all possibilities without finding a path
+        logger.warning("No path found")
         return None
 
     def set_algorithm(self, algorithm):
