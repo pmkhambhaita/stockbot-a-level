@@ -4356,3 +4356,188 @@
 2025-04-20 11:26:46,332 - WARNING - No intermediate points provided
 2025-04-20 11:26:46,332 - INFO - Starting BFS search from (0, 0) to (9, 9)
 2025-04-20 11:26:46,333 - INFO - Path found with length 18
+2025-04-20 11:47:00,781 - INFO - PathFinder initialised with grid size 10x10
+2025-04-20 11:47:24,231 - INFO - Finding path through 3 intermediate points
+2025-04-20 11:47:24,232 - INFO - Optimising point order using genetic algorithm
+2025-04-20 11:47:24,232 - INFO - Starting BFS search from (0, 0) to (3, 5)
+2025-04-20 11:47:24,233 - INFO - Path found with length 9
+2025-04-20 11:47:24,233 - INFO - Starting BFS search from (3, 5) to (0, 3)
+2025-04-20 11:47:24,233 - INFO - Path found with length 6
+2025-04-20 11:47:24,234 - INFO - Starting BFS search from (0, 3) to (7, 8)
+2025-04-20 11:47:24,234 - INFO - Path found with length 13
+2025-04-20 11:47:24,234 - INFO - Starting BFS search from (7, 8) to (9, 9)
+2025-04-20 11:47:24,234 - INFO - Path found with length 4
+2025-04-20 11:47:24,234 - INFO - Starting BFS search from (0, 0) to (3, 5)
+2025-04-20 11:47:24,235 - INFO - Path found with length 9
+2025-04-20 11:47:24,235 - INFO - Starting BFS search from (3, 5) to (7, 8)
+2025-04-20 11:47:24,235 - INFO - Path found with length 8
+2025-04-20 11:47:24,235 - INFO - Starting BFS search from (7, 8) to (0, 3)
+2025-04-20 11:47:24,235 - INFO - Path found with length 13
+2025-04-20 11:47:24,235 - INFO - Starting BFS search from (0, 3) to (9, 9)
+2025-04-20 11:47:24,236 - INFO - Path found with length 16
+2025-04-20 11:47:24,236 - INFO - Starting BFS search from (0, 0) to (7, 8)
+2025-04-20 11:47:24,236 - INFO - Path found with length 16
+2025-04-20 11:47:24,236 - INFO - Starting BFS search from (7, 8) to (0, 3)
+2025-04-20 11:47:24,236 - INFO - Path found with length 13
+2025-04-20 11:47:24,237 - INFO - Starting BFS search from (0, 3) to (3, 5)
+2025-04-20 11:47:24,237 - INFO - Path found with length 6
+2025-04-20 11:47:24,237 - INFO - Starting BFS search from (3, 5) to (9, 9)
+2025-04-20 11:47:24,237 - INFO - Path found with length 11
+2025-04-20 11:47:24,237 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:47:24,238 - INFO - Path found with length 4
+2025-04-20 11:47:24,238 - INFO - Starting BFS search from (0, 3) to (3, 5)
+2025-04-20 11:47:24,238 - INFO - Path found with length 6
+2025-04-20 11:47:24,238 - INFO - Starting BFS search from (3, 5) to (7, 8)
+2025-04-20 11:47:24,238 - INFO - Path found with length 8
+2025-04-20 11:47:24,238 - INFO - Starting BFS search from (7, 8) to (9, 9)
+2025-04-20 11:47:24,239 - INFO - Path found with length 4
+2025-04-20 11:47:24,239 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:47:24,239 - INFO - Path found with length 4
+2025-04-20 11:47:24,239 - INFO - Starting BFS search from (0, 3) to (7, 8)
+2025-04-20 11:47:24,239 - INFO - Path found with length 13
+2025-04-20 11:47:24,239 - INFO - Starting BFS search from (7, 8) to (3, 5)
+2025-04-20 11:47:24,240 - INFO - Path found with length 8
+2025-04-20 11:47:24,240 - INFO - Starting BFS search from (3, 5) to (9, 9)
+2025-04-20 11:47:24,240 - INFO - Path found with length 11
+2025-04-20 11:47:24,240 - INFO - Starting BFS search from (0, 0) to (7, 8)
+2025-04-20 11:47:24,240 - INFO - Path found with length 16
+2025-04-20 11:47:24,240 - INFO - Starting BFS search from (7, 8) to (3, 5)
+2025-04-20 11:47:24,240 - INFO - Path found with length 8
+2025-04-20 11:47:24,241 - INFO - Starting BFS search from (3, 5) to (0, 3)
+2025-04-20 11:47:24,241 - INFO - Path found with length 6
+2025-04-20 11:47:24,241 - INFO - Starting BFS search from (0, 3) to (9, 9)
+2025-04-20 11:47:24,241 - INFO - Path found with length 16
+2025-04-20 11:47:24,241 - INFO - Found good solution at generation 0: [(0, 3), (3, 5), (7, 8)]
+2025-04-20 11:47:24,241 - INFO - Optimised point order: [(0, 3), (3, 5), (7, 8)]
+2025-04-20 11:47:24,242 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:47:24,242 - INFO - Path found with length 4
+2025-04-20 11:47:24,242 - INFO - Starting BFS search from (0, 3) to (3, 5)
+2025-04-20 11:47:24,242 - INFO - Path found with length 6
+2025-04-20 11:47:24,243 - INFO - Starting BFS search from (3, 5) to (7, 8)
+2025-04-20 11:47:24,243 - INFO - Path found with length 8
+2025-04-20 11:47:24,243 - INFO - Starting BFS search from (7, 8) to (9, 9)
+2025-04-20 11:47:24,243 - INFO - Path found with length 4
+2025-04-20 11:49:26,115 - INFO - PathFinder initialised with grid size 10x10
+2025-04-20 11:49:38,281 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:49:38,281 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:49:38,282 - INFO - Path found with length 4
+2025-04-20 11:49:38,282 - INFO - Starting BFS search from (0, 3) to (9, 9)
+2025-04-20 11:49:38,282 - INFO - Path found with length 16
+2025-04-20 11:49:48,683 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:49:48,683 - INFO - Starting BFS search from (0, 0) to (3, 3)
+2025-04-20 11:49:48,684 - INFO - Path found with length 7
+2025-04-20 11:49:48,684 - INFO - Starting BFS search from (3, 3) to (9, 9)
+2025-04-20 11:49:48,685 - INFO - Path found with length 13
+2025-04-20 11:49:58,306 - INFO - Finding path through 2 intermediate points
+2025-04-20 11:49:58,307 - INFO - Optimising point order using genetic algorithm
+2025-04-20 11:49:58,307 - INFO - Starting BFS search from (0, 0) to (3, 3)
+2025-04-20 11:49:58,308 - INFO - Path found with length 7
+2025-04-20 11:49:58,309 - INFO - Starting BFS search from (3, 3) to (0, 3)
+2025-04-20 11:49:58,309 - INFO - Path found with length 4
+2025-04-20 11:49:58,309 - INFO - Starting BFS search from (0, 3) to (9, 9)
+2025-04-20 11:49:58,310 - INFO - Path found with length 16
+2025-04-20 11:49:58,310 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:49:58,310 - INFO - Path found with length 4
+2025-04-20 11:49:58,311 - INFO - Starting BFS search from (0, 3) to (3, 3)
+2025-04-20 11:49:58,311 - INFO - Path found with length 4
+2025-04-20 11:49:58,311 - INFO - Starting BFS search from (3, 3) to (9, 9)
+2025-04-20 11:49:58,311 - INFO - Path found with length 13
+2025-04-20 11:49:58,311 - INFO - Found good solution at generation 0: [(0, 3), (3, 3)]
+2025-04-20 11:49:58,311 - INFO - Optimised point order: [(0, 3), (3, 3)]
+2025-04-20 11:49:58,311 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:49:58,312 - INFO - Path found with length 4
+2025-04-20 11:49:58,312 - INFO - Starting BFS search from (0, 3) to (3, 3)
+2025-04-20 11:49:58,312 - INFO - Path found with length 4
+2025-04-20 11:49:58,312 - INFO - Starting BFS search from (3, 3) to (9, 9)
+2025-04-20 11:49:58,312 - INFO - Path found with length 13
+2025-04-20 11:50:12,960 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:50:16,529 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:50:20,386 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:50:20,386 - INFO - Starting BFS search from (0, 0) to (3, 3)
+2025-04-20 11:50:20,386 - INFO - Path found with length 7
+2025-04-20 11:50:20,387 - INFO - Starting BFS search from (3, 3) to (9, 9)
+2025-04-20 11:50:20,387 - INFO - Path found with length 13
+2025-04-20 11:52:39,979 - INFO - PathFinder initialised with grid size 10x10
+2025-04-20 11:55:15,527 - INFO - PathFinder initialised with grid size 10x10
+2025-04-20 11:55:29,019 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:55:29,019 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:55:29,019 - INFO - Path found with length 4
+2025-04-20 11:55:29,020 - INFO - Starting BFS search from (0, 3) to (9, 9)
+2025-04-20 11:55:29,020 - INFO - Path found with length 16
+2025-04-20 11:55:46,329 - INFO - Finding path through 3 intermediate points
+2025-04-20 11:55:46,329 - INFO - Optimising point order using genetic algorithm
+2025-04-20 11:55:46,329 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:55:46,329 - INFO - Path found with length 4
+2025-04-20 11:55:46,330 - INFO - Starting BFS search from (0, 3) to (5, 5)
+2025-04-20 11:55:46,330 - INFO - Path found with length 8
+2025-04-20 11:55:46,331 - INFO - Starting BFS search from (5, 5) to (2, 4)
+2025-04-20 11:55:46,331 - INFO - Path found with length 5
+2025-04-20 11:55:46,331 - INFO - Starting BFS search from (2, 4) to (9, 9)
+2025-04-20 11:55:46,331 - INFO - Path found with length 13
+2025-04-20 11:55:46,331 - INFO - Starting BFS search from (0, 0) to (5, 5)
+2025-04-20 11:55:46,332 - INFO - Path found with length 11
+2025-04-20 11:55:46,332 - INFO - Starting BFS search from (5, 5) to (0, 3)
+2025-04-20 11:55:46,332 - INFO - Path found with length 8
+2025-04-20 11:55:46,332 - INFO - Starting BFS search from (0, 3) to (2, 4)
+2025-04-20 11:55:46,332 - INFO - Path found with length 4
+2025-04-20 11:55:46,332 - INFO - Starting BFS search from (2, 4) to (9, 9)
+2025-04-20 11:55:46,333 - INFO - Path found with length 13
+2025-04-20 11:55:46,333 - INFO - Starting BFS search from (0, 0) to (2, 4)
+2025-04-20 11:55:46,333 - INFO - Path found with length 7
+2025-04-20 11:55:46,333 - INFO - Starting BFS search from (2, 4) to (0, 3)
+2025-04-20 11:55:46,333 - INFO - Path found with length 4
+2025-04-20 11:55:46,334 - INFO - Starting BFS search from (0, 3) to (5, 5)
+2025-04-20 11:55:46,334 - INFO - Path found with length 8
+2025-04-20 11:55:46,335 - INFO - Starting BFS search from (5, 5) to (9, 9)
+2025-04-20 11:55:46,335 - INFO - Path found with length 9
+2025-04-20 11:55:46,335 - INFO - Starting BFS search from (0, 0) to (5, 5)
+2025-04-20 11:55:46,336 - INFO - Path found with length 11
+2025-04-20 11:55:46,336 - INFO - Starting BFS search from (5, 5) to (2, 4)
+2025-04-20 11:55:46,339 - INFO - Path found with length 5
+2025-04-20 11:55:46,340 - INFO - Starting BFS search from (2, 4) to (0, 3)
+2025-04-20 11:55:46,340 - INFO - Path found with length 4
+2025-04-20 11:55:46,340 - INFO - Starting BFS search from (0, 3) to (9, 9)
+2025-04-20 11:55:46,341 - INFO - Path found with length 16
+2025-04-20 11:55:46,341 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:55:46,341 - INFO - Path found with length 4
+2025-04-20 11:55:46,342 - INFO - Starting BFS search from (0, 3) to (2, 4)
+2025-04-20 11:55:46,342 - INFO - Path found with length 4
+2025-04-20 11:55:46,342 - INFO - Starting BFS search from (2, 4) to (5, 5)
+2025-04-20 11:55:46,342 - INFO - Path found with length 5
+2025-04-20 11:55:46,342 - INFO - Starting BFS search from (5, 5) to (9, 9)
+2025-04-20 11:55:46,343 - INFO - Path found with length 9
+2025-04-20 11:55:46,343 - INFO - Starting BFS search from (0, 0) to (2, 4)
+2025-04-20 11:55:46,343 - INFO - Path found with length 7
+2025-04-20 11:55:46,344 - INFO - Starting BFS search from (2, 4) to (5, 5)
+2025-04-20 11:55:46,344 - INFO - Path found with length 5
+2025-04-20 11:55:46,344 - INFO - Starting BFS search from (5, 5) to (0, 3)
+2025-04-20 11:55:46,345 - INFO - Path found with length 8
+2025-04-20 11:55:46,345 - INFO - Starting BFS search from (0, 3) to (9, 9)
+2025-04-20 11:55:46,345 - INFO - Path found with length 16
+2025-04-20 11:55:46,345 - INFO - Found good solution at generation 0: [(0, 3), (2, 4), (5, 5)]
+2025-04-20 11:55:46,346 - INFO - Optimised point order: [(0, 3), (2, 4), (5, 5)]
+2025-04-20 11:55:46,346 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:55:46,346 - INFO - Path found with length 4
+2025-04-20 11:55:46,346 - INFO - Starting BFS search from (0, 3) to (2, 4)
+2025-04-20 11:55:46,346 - INFO - Path found with length 4
+2025-04-20 11:55:46,346 - INFO - Starting BFS search from (2, 4) to (5, 5)
+2025-04-20 11:55:46,346 - INFO - Path found with length 5
+2025-04-20 11:55:46,347 - INFO - Starting BFS search from (5, 5) to (9, 9)
+2025-04-20 11:55:46,347 - INFO - Path found with length 9
+2025-04-20 11:56:36,030 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:56:36,031 - INFO - Starting BFS search from (0, 0) to (5, 5)
+2025-04-20 11:56:36,031 - INFO - Path found with length 15
+2025-04-20 11:56:36,032 - INFO - Starting BFS search from (5, 5) to (9, 9)
+2025-04-20 11:56:36,032 - INFO - Path found with length 9
+2025-04-20 11:56:50,377 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:56:50,377 - INFO - Starting BFS search from (0, 0) to (5, 5)
+2025-04-20 11:56:50,378 - WARNING - No path found
+2025-04-20 11:56:57,239 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:56:57,239 - INFO - Starting BFS search from (0, 0) to (5, 5)
+2025-04-20 11:56:57,240 - INFO - Path found with length 19
+2025-04-20 11:56:57,240 - INFO - Starting BFS search from (5, 5) to (9, 9)
+2025-04-20 11:56:57,240 - INFO - Path found with length 9
+2025-04-20 11:56:58,298 - INFO - Finding path through 0 intermediate points
+2025-04-20 11:56:58,299 - WARNING - No intermediate points provided
+2025-04-20 11:56:58,299 - INFO - Starting BFS search from (0, 0) to (9, 9)
+2025-04-20 11:56:58,299 - INFO - Path found with length 19

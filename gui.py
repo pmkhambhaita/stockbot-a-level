@@ -21,6 +21,8 @@ class GridVisualiser(tk.Toplevel):
         self.out_of_stock_positions = set()
         # Track user-selected points for stock level highlighting
         self.selected_points = set()
+        # Track obstacles
+        self.obstacles = set()
         
         # Calculate canvas size based on grid dimensions
         cell_size = 40
@@ -84,9 +86,15 @@ class GridVisualiser(tk.Toplevel):
         
         # First draw the path (lowest priority)
         for x, y in path:
-            # Skip start, end, and intermediate points to avoid overwriting
-            if (x, y) != start and (x, y) != end and (x, y) not in points:
+            # Skip start, end, intermediate points, and obstacles to avoid overwriting
+            if ((x, y) != start and (x, y) != end and (x, y) not in points 
+                    and (x, y) not in self.obstacles):
                 self.draw_cell(x, y, "#42f56f")  # Bright green for path
+        
+        # Draw obstacles (higher priority than path, lower than points)
+        for x, y in self.obstacles:
+            if (x, y) != start and (x, y) != end and (x, y) not in points:
+                self.draw_cell(x, y, "#000000")  # Black for obstacles
         
         # Draw intermediate points (medium priority)
         for point in points:
@@ -122,10 +130,16 @@ class GridVisualiser(tk.Toplevel):
         self.canvas.delete("all")
         self.draw_grid()
         
-        # Redraw only the out-of-stock positions
+        # Redraw obstacles first
+        for x, y in self.obstacles:
+            self.draw_cell(x, y, "#000000")  # Black for obstacles
+        
+        # Then redraw out-of-stock positions
         if self.db:
             for x, y in self.out_of_stock_positions:
-                self.draw_cell(x, y, "#ff3333", True)  # Bright red
+                # Only draw if not an obstacle
+                if (x, y) not in self.obstacles:
+                    self.draw_cell(x, y, "#ff3333", True)  # Bright red
         
         # Reset selected points but keep out-of-stock tracking
         self.selected_points = set()
@@ -135,6 +149,7 @@ class GridVisualiser(tk.Toplevel):
         self.points = None
     
     def draw_cell(self, row, col, color, is_stock_indicator=False):
+        """Draw a colored cell on the grid with position number on top"""
         x1 = col * self.cell_size + 1
         y1 = row * self.cell_size + 1
         x2 = x1 + self.cell_size - 2
@@ -150,7 +165,7 @@ class GridVisualiser(tk.Toplevel):
         
         # Determine text color based on background brightness
         text_color = "black"
-        if color in ["#4287f5", "#42f56f", "#ff3333", "#ff9933"]:  # For blue, green, red, orange backgrounds
+        if color in ["#4287f5", "#42f56f", "#ff3333", "#ff9933", "#000000"]:  # For blue, green, red, orange, black backgrounds
             text_color = "white"
             
         # For stock indicators, add stock quantity if available
@@ -158,13 +173,35 @@ class GridVisualiser(tk.Toplevel):
             quantity = self.db.get_quantity(pos_num)
             if quantity is not None:
                 # Draw position number
-                self.canvas.create_text(x, y - 7, text=str(pos_num), font=("Arial", 8, "bold"), fill=text_color)
-                # Draw stock quantity
-                self.canvas.create_text(x, y + 7, text=f"Stock: {quantity}", font=("Arial", 8), fill=text_color)
-            else:
-                self.canvas.create_text(x, y, text=str(pos_num), font=("Arial", 10, "bold"), fill=text_color)
+                self.canvas.create_text(x, y - 5, text=str(pos_num), font=("Arial", 8, "bold"), fill=text_color)
+                # Draw quantity below
+                self.canvas.create_text(x, y + 8, text=f"Qty: {quantity}", font=("Arial", 7), fill=text_color)
         else:
+            # Just draw the position number
             self.canvas.create_text(x, y, text=str(pos_num), font=("Arial", 10, "bold"), fill=text_color)
+
+    def update_obstacles(self, obstacles):
+        """Update the obstacles and redraw the grid"""
+        self.obstacles = obstacles.copy() if obstacles else set()
+        
+        # Redraw everything to ensure proper layering
+        self.canvas.delete("all")
+        self.draw_grid()
+        
+        # Redraw obstacles
+        for x, y in self.obstacles:
+            self.draw_cell(x, y, "#000000")  # Black for obstacles
+        
+        # Redraw out-of-stock positions
+        if self.db:
+            for x, y in self.out_of_stock_positions:
+                # Only draw if not an obstacle
+                if (x, y) not in self.obstacles:
+                    self.draw_cell(x, y, "#ff3333", True)  # Bright red
+        
+        # Redraw path if exists
+        if self.path and self.start is not None and self.end is not None and self.points is not None:
+            self.visualize_path(self.path, self.start, self.end, self.points)
 
 class PathfinderGUI:
     def __init__(self, root, rows=10, cols=10):  # Modified to accept dimensions
@@ -622,10 +659,76 @@ class PathfinderGUI:
                 self.grid.cols,
                 db=self.db  # Pass database reference
             )
+            # Update obstacles in visualization
+            if hasattr(self.grid, 'obstacles'):
+                self.viz_window.update_obstacles(self.grid.obstacles)
         else:
             # If window exists but is minimized, restore it
             self.viz_window.deiconify()
             self.viz_window.lift()
+            # Ensure obstacles are up to date
+            if hasattr(self.grid, 'obstacles'):
+                self.viz_window.update_obstacles(self.grid.obstacles)
+
+    def toggle_obstacle_mode(self):
+        """Handle obstacle mode to add or remove obstacles"""
+        # Create popup for obstacle input
+        obstacle_popup = tk.Toplevel(self.root)
+        obstacle_popup.title("Obstacle Mode")
+        obstacle_popup.geometry("300x150")
+        
+        ttk.Label(
+            obstacle_popup, 
+            text="Enter position number to toggle obstacle status:",
+            wraplength=250
+        ).pack(pady=5)
+        
+        obstacle_entry = ttk.Entry(obstacle_popup)
+        obstacle_entry.pack(pady=5)
+        
+        def toggle_obstacle():
+            try:
+                index = int(obstacle_entry.get())
+                
+                # Validate index range
+                if not (1 <= index <= self.grid.rows * self.grid.cols):
+                    messagebox.showerror("Error", f"Position {index} out of range (1-{self.grid.rows * self.grid.cols})")
+                    return
+                
+                # Convert to coordinates (0-based)
+                x, y = spa.index_to_coordinates(index, self.grid.cols)
+                
+                # Check if it's a start or end point
+                if (x, y) == (0, 0) or (x, y) == (self.grid.rows - 1, self.grid.cols - 1):
+                    messagebox.showerror("Error", "Cannot set start or end point as an obstacle")
+                    return
+                
+                # Toggle obstacle status
+                if self.grid.is_obstacle(x, y):
+                    self.grid.remove_obstacle(x, y)
+                    self.output_text.insert(tk.END, f"Removed obstacle at position {index}\n")
+                else:
+                    self.grid.add_obstacle(x, y)
+                    self.output_text.insert(tk.END, f"Added obstacle at position {index}\n")
+                
+                # Update visualization if window exists
+                if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
+                    self.viz_window.update_obstacles(self.grid.obstacles)
+                
+            except ValueError:
+                messagebox.showerror("Error", "Please enter a valid number")
+        
+        ttk.Button(
+            obstacle_popup, 
+            text="Toggle Obstacle", 
+            command=toggle_obstacle
+        ).pack(pady=5)
+        
+        ttk.Button(
+            obstacle_popup, 
+            text="Close", 
+            command=obstacle_popup.destroy
+        ).pack(pady=5)
 
 def main():
     # Get grid dimensions from config window (will only show once)
@@ -642,62 +745,3 @@ if __name__ == "__main__":
     main()
 
 
-def toggle_obstacle_mode(self):
-    """Handle obstacle mode to add or remove obstacles"""
-    # Create popup for obstacle input
-    obstacle_popup = tk.Toplevel(self.root)
-    obstacle_popup.title("Obstacle Mode")
-    obstacle_popup.geometry("300x150")
-    
-    ttk.Label(
-        obstacle_popup, 
-        text="Enter position number to toggle obstacle status:",
-        wraplength=250
-    ).pack(pady=5)
-    
-    obstacle_entry = ttk.Entry(obstacle_popup)
-    obstacle_entry.pack(pady=5)
-    
-    def toggle_obstacle():
-        try:
-            index = int(obstacle_entry.get())
-            
-            # Validate index range
-            if not (1 <= index <= self.grid.rows * self.grid.cols):
-                messagebox.showerror("Error", f"Position {index} out of range (1-{self.grid.rows * self.grid.cols})")
-                return
-            
-            # Convert to coordinates (0-based)
-            x, y = spa.index_to_coordinates(index, self.grid.cols)
-            
-            # Check if it's a start or end point
-            if (x, y) == (0, 0) or (x, y) == (self.grid.rows - 1, self.grid.cols - 1):
-                messagebox.showerror("Error", "Cannot set start or end point as an obstacle")
-                return
-            
-            # Toggle obstacle status
-            if self.grid.is_obstacle(x, y):
-                self.grid.remove_obstacle(x, y)
-                self.output_text.insert(tk.END, f"Removed obstacle at position {index}\n")
-            else:
-                self.grid.add_obstacle(x, y)
-                self.output_text.insert(tk.END, f"Added obstacle at position {index}\n")
-            
-            # Update visualization if window exists
-            if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
-                self.viz_window.update_obstacles(self.grid.obstacles)
-            
-        except ValueError:
-            messagebox.showerror("Error", "Please enter a valid number")
-    
-    ttk.Button(
-        obstacle_popup, 
-        text="Toggle Obstacle", 
-        command=toggle_obstacle
-    ).pack(pady=5)
-    
-    ttk.Button(
-        obstacle_popup, 
-        text="Close", 
-        command=obstacle_popup.destroy
-    ).pack(pady=5)
