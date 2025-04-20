@@ -30,6 +30,9 @@ class PathFinder:
     def __init__(self, grid_in=None):
         # Store reference to the grid
         self.grid = grid_in
+        # Default algorithm
+        self.algorithm = "bfs"  # Options: "bfs", "astar"
+    
         # Define possible movement directions (up, down, left, right)
         self.directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
         if grid_in:
@@ -74,6 +77,102 @@ class PathFinder:
         logger.warning(f"No path found between {start} and {end}")
         return None
 
+    def set_algorithm(self, algorithm):
+        """Set the pathfinding algorithm to use"""
+        if algorithm in ["bfs", "astar"]:
+            self.algorithm = algorithm
+            return True
+        return False
+    
+    def find_path(self, start, end):
+        """Find path using the selected algorithm"""
+        if self.algorithm == "astar":
+            return self.astar(start, end)
+        else:
+            return self.bfs(start, end)
+    
+    def astar(self, start, end):
+        """
+        A* pathfinding algorithm implementation
+        
+        Parameters:
+        - start: Starting position (row, col)
+        - end: End position (row, col)
+        
+        Returns:
+        - List of positions forming the path from start to end, or None if no path found
+        """
+        if not self.grid:
+            return None
+            
+        # Check if start and end are valid
+        if not self.grid.is_valid_position(start[0], start[1]) or not self.grid.is_valid_position(end[0], end[1]):
+            return None
+            
+        # Check if start and end are the same
+        if start == end:
+            return [start]
+            
+        # Priority queue for A* (f_score, position)
+        import heapq
+        open_set = []
+        heapq.heappush(open_set, (0, start))
+        
+        # Dictionaries to store g_score and f_score
+        g_score = {start: 0}  # Cost from start to current node
+        f_score = {start: self.heuristic(start, end)}  # Estimated total cost
+        
+        # Dictionary to reconstruct path
+        came_from = {}
+        
+        # Set of visited nodes
+        closed_set = set()
+        
+        while open_set:
+            # Get node with lowest f_score
+            current_f, current = heapq.heappop(open_set)
+            
+            # If we reached the end, reconstruct and return the path
+            if current == end:
+                path = [current]
+                while current in came_from:
+                    current = came_from[current]
+                    path.append(current)
+                path.reverse()
+                return path
+                
+            # Add current to closed set
+            closed_set.add(current)
+            
+            # Check all neighbors
+            for neighbor in self.grid.get_neighbors(current[0], current[1]):
+                # Skip if in closed set
+                if neighbor in closed_set:
+                    continue
+                    
+                # Calculate tentative g_score
+                tentative_g = g_score[current] + 1  # Assuming uniform cost of 1
+                
+                # If neighbor not in open set or has better g_score
+                if neighbor not in g_score or tentative_g < g_score[neighbor]:
+                    # Update path and scores
+                    came_from[neighbor] = current
+                    g_score[neighbor] = tentative_g
+                    f_score[neighbor] = tentative_g + self.heuristic(neighbor, end)
+                    
+                    # Add to open set if not already there
+                    if neighbor not in [item[1] for item in open_set]:
+                        heapq.heappush(open_set, (f_score[neighbor], neighbor))
+        
+        # No path found
+        return None
+    
+    def heuristic(self, a, b):
+        """
+        Manhattan distance heuristic for A*
+        """
+        return abs(a[0] - b[0]) + abs(a[1] - b[1])
+    
     def find_path_through_points(self, start, points, end, optimise_order=False):
         """
         Finds a path that visits all intermediate points
@@ -119,8 +218,7 @@ class PathFinder:
 
         # Find path segments between consecutive points
         for i, point in enumerate(points, 1):
-            logger.debug(f"Finding path segment {i} to point {point}")
-            path_segment = self.bfs(current_start, point)
+            path_segment = self.find_path(current_start, point)  # Use selected algorithm
             if path_segment:
                 # Add all points except the last one if not the first segment
                 if full_path:
@@ -129,18 +227,15 @@ class PathFinder:
                     full_path.extend(path_segment)
                 current_start = point
             else:
-                logger.error(f"No path found to point {point}")
                 return None
 
         # Add final segment from last point to end
-        final_segment = self.bfs(current_start, end)
+        final_segment = self.find_path(current_start, end)  # Use selected algorithm
         if final_segment:
             full_path.extend(final_segment[1:])
         else:
-            logger.error(f"No path found from last point {current_start} to end {end}")
             return None
 
-        logger.info(f"Complete path found with length {len(full_path)}")
         return full_path
 
     def optimise_point_order(self, start, points, end):
