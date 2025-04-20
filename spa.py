@@ -105,8 +105,11 @@ class PathFinder:
         if not self.grid:
             return None
             
-        # Check if start and end are valid
-        if not self.grid.is_valid_position(start[0], start[1]) or not self.grid.is_valid_position(end[0], end[1]):
+        # Check if start and end are valid using the existing validate_point function
+        valid_start, _ = validate_point(start[0], start[1], self.grid.rows, self.grid.cols, allow_start_end=True)
+        valid_end, _ = validate_point(end[0], end[1], self.grid.rows, self.grid.cols, allow_start_end=True)
+        
+        if not valid_start or not valid_end:
             return None
             
         # Check if start and end are the same
@@ -144,8 +147,18 @@ class PathFinder:
             # Add current to closed set
             closed_set.add(current)
             
-            # Check all neighbors
-            for neighbor in self.grid.get_neighbors(current[0], current[1]):
+            # Check all neighbors (up, down, left, right)
+            directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+            for dr, dc in directions:
+                neighbor_row, neighbor_col = current[0] + dr, current[1] + dc
+                
+                # Use validate_point to check if neighbor is valid
+                valid, _ = validate_point(neighbor_row, neighbor_col, self.grid.rows, self.grid.cols, allow_start_end=True)
+                if not valid:
+                    continue
+                    
+                neighbor = (neighbor_row, neighbor_col)
+                
                 # Skip if in closed set
                 if neighbor in closed_set:
                     continue

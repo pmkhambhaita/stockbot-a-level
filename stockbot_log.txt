@@ -1984,3 +1984,2375 @@
 2025-04-20 10:57:10,891 - WARNING - No intermediate points provided
 2025-04-20 10:57:10,892 - INFO - Starting BFS search from (0, 0) to (24, 24)
 2025-04-20 10:57:10,896 - INFO - Path found with length 48
+2025-04-20 11:07:19,277 - INFO - PathFinder initialised with grid size 20x20
+2025-04-20 11:07:35,672 - INFO - Finding path through 6 intermediate points
+2025-04-20 11:07:35,673 - INFO - Optimising point order using genetic algorithm
+2025-04-20 11:07:35,673 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,673 - INFO - Path found with length 4
+2025-04-20 11:07:35,673 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,676 - INFO - Path found with length 14
+2025-04-20 11:07:35,676 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:07:35,676 - INFO - Path found with length 10
+2025-04-20 11:07:35,676 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,677 - INFO - Path found with length 9
+2025-04-20 11:07:35,677 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,678 - INFO - Path found with length 32
+2025-04-20 11:07:35,678 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:07:35,679 - INFO - Path found with length 24
+2025-04-20 11:07:35,679 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:07:35,680 - INFO - Path found with length 27
+2025-04-20 11:07:35,680 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:07:35,680 - INFO - Path found with length 11
+2025-04-20 11:07:35,681 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:07:35,681 - INFO - Path found with length 8
+2025-04-20 11:07:35,681 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:07:35,681 - INFO - Path found with length 15
+2025-04-20 11:07:35,682 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:07:35,682 - INFO - Path found with length 17
+2025-04-20 11:07:35,683 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:07:35,683 - INFO - Path found with length 23
+2025-04-20 11:07:35,684 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:07:35,684 - INFO - Path found with length 8
+2025-04-20 11:07:35,684 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:07:35,685 - INFO - Path found with length 34
+2025-04-20 11:07:35,685 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,685 - INFO - Path found with length 4
+2025-04-20 11:07:35,686 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,686 - INFO - Path found with length 8
+2025-04-20 11:07:35,686 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:07:35,687 - INFO - Path found with length 23
+2025-04-20 11:07:35,687 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:07:35,688 - INFO - Path found with length 24
+2025-04-20 11:07:35,688 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:07:35,688 - INFO - Path found with length 7
+2025-04-20 11:07:35,688 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:07:35,689 - INFO - Path found with length 15
+2025-04-20 11:07:35,689 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:07:35,690 - INFO - Path found with length 35
+2025-04-20 11:07:35,690 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,690 - INFO - Path found with length 4
+2025-04-20 11:07:35,690 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:07:35,691 - INFO - Path found with length 31
+2025-04-20 11:07:35,691 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:07:35,692 - INFO - Path found with length 32
+2025-04-20 11:07:35,692 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:07:35,693 - INFO - Path found with length 15
+2025-04-20 11:07:35,693 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,693 - INFO - Path found with length 7
+2025-04-20 11:07:35,693 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:07:35,693 - INFO - Path found with length 7
+2025-04-20 11:07:35,693 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:07:35,694 - INFO - Path found with length 26
+2025-04-20 11:07:35,695 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:07:35,695 - INFO - Path found with length 11
+2025-04-20 11:07:35,695 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:07:35,695 - INFO - Path found with length 7
+2025-04-20 11:07:35,695 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:07:35,696 - INFO - Path found with length 23
+2025-04-20 11:07:35,696 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:07:35,697 - INFO - Path found with length 32
+2025-04-20 11:07:35,697 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:07:35,698 - INFO - Path found with length 15
+2025-04-20 11:07:35,698 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:07:35,698 - INFO - Path found with length 14
+2025-04-20 11:07:35,699 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:07:35,699 - INFO - Path found with length 34
+2025-04-20 11:07:35,700 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:07:35,700 - INFO - Path found with length 12
+2025-04-20 11:07:35,700 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,700 - INFO - Path found with length 9
+2025-04-20 11:07:35,701 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,702 - INFO - Path found with length 32
+2025-04-20 11:07:35,702 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:07:35,703 - INFO - Path found with length 24
+2025-04-20 11:07:35,703 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:07:35,704 - INFO - Path found with length 11
+2025-04-20 11:07:35,704 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,704 - INFO - Path found with length 14
+2025-04-20 11:07:35,705 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:07:35,705 - INFO - Path found with length 20
+2025-04-20 11:07:35,706 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,706 - INFO - Path found with length 4
+2025-04-20 11:07:35,706 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:07:35,706 - INFO - Path found with length 11
+2025-04-20 11:07:35,706 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:07:35,707 - INFO - Path found with length 24
+2025-04-20 11:07:35,707 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:07:35,708 - INFO - Path found with length 32
+2025-04-20 11:07:35,708 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:07:35,709 - INFO - Path found with length 9
+2025-04-20 11:07:35,709 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:07:35,709 - INFO - Path found with length 10
+2025-04-20 11:07:35,710 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:07:35,710 - INFO - Path found with length 20
+2025-04-20 11:07:35,711 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:07:35,711 - INFO - Path found with length 3
+2025-04-20 11:07:35,711 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:07:35,711 - INFO - Path found with length 3
+2025-04-20 11:07:35,711 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:07:35,712 - INFO - Path found with length 31
+2025-04-20 11:07:35,712 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:07:35,713 - INFO - Path found with length 23
+2025-04-20 11:07:35,713 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:07:35,713 - INFO - Path found with length 10
+2025-04-20 11:07:35,713 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,714 - INFO - Path found with length 7
+2025-04-20 11:07:35,714 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:07:35,715 - INFO - Path found with length 27
+2025-04-20 11:07:35,715 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:07:35,715 - INFO - Path found with length 18
+2025-04-20 11:07:35,715 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:07:35,716 - INFO - Path found with length 14
+2025-04-20 11:07:35,716 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:07:35,716 - INFO - Path found with length 11
+2025-04-20 11:07:35,716 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:07:35,717 - INFO - Path found with length 7
+2025-04-20 11:07:35,717 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,717 - INFO - Path found with length 9
+2025-04-20 11:07:35,717 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,718 - INFO - Path found with length 32
+2025-04-20 11:07:35,718 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,718 - INFO - Path found with length 3
+2025-04-20 11:07:35,718 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:07:35,719 - INFO - Path found with length 11
+2025-04-20 11:07:35,719 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:07:35,719 - INFO - Path found with length 8
+2025-04-20 11:07:35,719 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:07:35,720 - INFO - Path found with length 9
+2025-04-20 11:07:35,720 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:07:35,720 - INFO - Path found with length 10
+2025-04-20 11:07:35,720 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:07:35,721 - INFO - Path found with length 17
+2025-04-20 11:07:35,721 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:07:35,722 - INFO - Path found with length 31
+2025-04-20 11:07:35,722 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:07:35,723 - INFO - Path found with length 34
+2025-04-20 11:07:35,723 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:07:35,723 - INFO - Path found with length 3
+2025-04-20 11:07:35,723 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,724 - INFO - Path found with length 32
+2025-04-20 11:07:35,725 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:07:35,726 - INFO - Path found with length 31
+2025-04-20 11:07:35,726 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,726 - INFO - Path found with length 8
+2025-04-20 11:07:35,726 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:07:35,727 - INFO - Path found with length 10
+2025-04-20 11:07:35,727 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,727 - INFO - Path found with length 7
+2025-04-20 11:07:35,727 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:07:35,728 - INFO - Path found with length 27
+2025-04-20 11:07:35,728 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:07:35,728 - INFO - Path found with length 18
+2025-04-20 11:07:35,728 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,729 - INFO - Path found with length 7
+2025-04-20 11:07:35,729 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:07:35,729 - INFO - Path found with length 11
+2025-04-20 11:07:35,729 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:07:35,730 - INFO - Path found with length 31
+2025-04-20 11:07:35,731 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:07:35,731 - INFO - Path found with length 23
+2025-04-20 11:07:35,732 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,732 - INFO - Path found with length 9
+2025-04-20 11:07:35,732 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:07:35,733 - INFO - Path found with length 35
+2025-04-20 11:07:35,733 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:07:35,734 - INFO - Path found with length 12
+2025-04-20 11:07:35,734 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:07:35,734 - INFO - Path found with length 7
+2025-04-20 11:07:35,734 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:07:35,734 - INFO - Path found with length 7
+2025-04-20 11:07:35,735 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:07:35,735 - INFO - Path found with length 15
+2025-04-20 11:07:35,736 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:07:35,736 - INFO - Path found with length 3
+2025-04-20 11:07:35,736 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:07:35,737 - INFO - Path found with length 31
+2025-04-20 11:07:35,737 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,737 - INFO - Path found with length 3
+2025-04-20 11:07:35,738 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:07:35,738 - INFO - Path found with length 3
+2025-04-20 11:07:35,738 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,739 - INFO - Path found with length 32
+2025-04-20 11:07:35,739 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:07:35,740 - INFO - Path found with length 24
+2025-04-20 11:07:35,740 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:07:35,740 - INFO - Path found with length 7
+2025-04-20 11:07:35,741 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:07:35,741 - INFO - Path found with length 10
+2025-04-20 11:07:35,741 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:07:35,742 - INFO - Path found with length 14
+2025-04-20 11:07:35,742 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:07:35,743 - INFO - Path found with length 34
+2025-04-20 11:07:35,743 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,743 - INFO - Path found with length 4
+2025-04-20 11:07:35,744 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:07:35,744 - INFO - Path found with length 31
+2025-04-20 11:07:35,745 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:07:35,745 - INFO - Path found with length 24
+2025-04-20 11:07:35,746 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:07:35,746 - INFO - Path found with length 7
+2025-04-20 11:07:35,746 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:07:35,746 - INFO - Path found with length 10
+2025-04-20 11:07:35,746 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,747 - INFO - Path found with length 9
+2025-04-20 11:07:35,747 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:07:35,748 - INFO - Path found with length 35
+2025-04-20 11:07:35,748 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:07:35,748 - INFO - Path found with length 12
+2025-04-20 11:07:35,748 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:07:35,749 - INFO - Path found with length 8
+2025-04-20 11:07:35,749 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,749 - INFO - Path found with length 14
+2025-04-20 11:07:35,749 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:07:35,750 - INFO - Path found with length 15
+2025-04-20 11:07:35,750 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:07:35,750 - INFO - Path found with length 8
+2025-04-20 11:07:35,750 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:07:35,751 - INFO - Path found with length 24
+2025-04-20 11:07:35,751 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,751 - INFO - Path found with length 3
+2025-04-20 11:07:35,752 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:07:35,752 - INFO - Path found with length 35
+2025-04-20 11:07:35,752 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:07:35,753 - INFO - Path found with length 24
+2025-04-20 11:07:35,753 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:07:35,754 - INFO - Path found with length 11
+2025-04-20 11:07:35,754 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,754 - INFO - Path found with length 14
+2025-04-20 11:07:35,754 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:07:35,755 - INFO - Path found with length 10
+2025-04-20 11:07:35,755 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,755 - INFO - Path found with length 9
+2025-04-20 11:07:35,755 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:07:35,756 - INFO - Path found with length 35
+2025-04-20 11:07:35,756 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:07:35,757 - INFO - Path found with length 12
+2025-04-20 11:07:35,757 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,757 - INFO - Path found with length 9
+2025-04-20 11:07:35,757 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:07:35,757 - INFO - Path found with length 3
+2025-04-20 11:07:35,758 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:07:35,758 - INFO - Path found with length 11
+2025-04-20 11:07:35,758 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:07:35,759 - INFO - Path found with length 24
+2025-04-20 11:07:35,759 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:07:35,760 - INFO - Path found with length 17
+2025-04-20 11:07:35,760 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:07:35,761 - INFO - Path found with length 20
+2025-04-20 11:07:35,761 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,761 - INFO - Path found with length 4
+2025-04-20 11:07:35,761 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:07:35,761 - INFO - Path found with length 3
+2025-04-20 11:07:35,761 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:07:35,761 - INFO - Path found with length 8
+2025-04-20 11:07:35,762 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:07:35,762 - INFO - Path found with length 7
+2025-04-20 11:07:35,762 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:07:35,762 - INFO - Path found with length 10
+2025-04-20 11:07:35,762 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:07:35,763 - INFO - Path found with length 23
+2025-04-20 11:07:35,763 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,763 - INFO - Path found with length 3
+2025-04-20 11:07:35,764 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:07:35,764 - INFO - Path found with length 11
+2025-04-20 11:07:35,764 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:07:35,765 - INFO - Path found with length 8
+2025-04-20 11:07:35,765 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:07:35,765 - INFO - Path found with length 9
+2025-04-20 11:07:35,766 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:07:35,766 - INFO - Path found with length 23
+2025-04-20 11:07:35,767 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:07:35,767 - INFO - Path found with length 17
+2025-04-20 11:07:35,767 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:07:35,768 - INFO - Path found with length 14
+2025-04-20 11:07:35,768 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:07:35,769 - INFO - Path found with length 34
+2025-04-20 11:07:35,770 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:07:35,770 - INFO - Path found with length 18
+2025-04-20 11:07:35,770 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:07:35,771 - INFO - Path found with length 10
+2025-04-20 11:07:35,771 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:07:35,771 - INFO - Path found with length 7
+2025-04-20 11:07:35,772 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:07:35,773 - INFO - Path found with length 24
+2025-04-20 11:07:35,773 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:07:35,774 - INFO - Path found with length 31
+2025-04-20 11:07:35,774 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:07:35,774 - INFO - Path found with length 3
+2025-04-20 11:07:35,774 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:07:35,775 - INFO - Path found with length 35
+2025-04-20 11:07:35,775 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:07:35,776 - INFO - Path found with length 11
+2025-04-20 11:07:35,776 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:07:35,776 - INFO - Path found with length 7
+2025-04-20 11:07:35,776 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:07:35,777 - INFO - Path found with length 23
+2025-04-20 11:07:35,777 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:07:35,778 - INFO - Path found with length 31
+2025-04-20 11:07:35,778 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,779 - INFO - Path found with length 14
+2025-04-20 11:07:35,779 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:07:35,779 - INFO - Path found with length 15
+2025-04-20 11:07:35,779 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:07:35,780 - INFO - Path found with length 35
+2025-04-20 11:07:35,780 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:07:35,780 - INFO - Path found with length 3
+2025-04-20 11:07:35,780 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:07:35,781 - INFO - Path found with length 15
+2025-04-20 11:07:35,781 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:07:35,781 - INFO - Path found with length 10
+2025-04-20 11:07:35,781 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:07:35,782 - INFO - Path found with length 7
+2025-04-20 11:07:35,782 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:07:35,782 - INFO - Path found with length 11
+2025-04-20 11:07:35,782 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:07:35,783 - INFO - Path found with length 31
+2025-04-20 11:07:35,783 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,783 - INFO - Path found with length 3
+2025-04-20 11:07:35,783 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:07:35,784 - INFO - Path found with length 11
+2025-04-20 11:07:35,784 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:07:35,785 - INFO - Path found with length 24
+2025-04-20 11:07:35,785 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:07:35,786 - INFO - Path found with length 23
+2025-04-20 11:07:35,786 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,786 - INFO - Path found with length 9
+2025-04-20 11:07:35,787 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:07:35,787 - INFO - Path found with length 15
+2025-04-20 11:07:35,787 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:07:35,788 - INFO - Path found with length 14
+2025-04-20 11:07:35,788 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:07:35,789 - INFO - Path found with length 34
+2025-04-20 11:07:35,789 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:07:35,789 - INFO - Path found with length 12
+2025-04-20 11:07:35,789 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:07:35,790 - INFO - Path found with length 8
+2025-04-20 11:07:35,790 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,790 - INFO - Path found with length 14
+2025-04-20 11:07:35,790 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,791 - INFO - Path found with length 7
+2025-04-20 11:07:35,791 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:07:35,791 - INFO - Path found with length 8
+2025-04-20 11:07:35,791 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,792 - INFO - Path found with length 32
+2025-04-20 11:07:35,792 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,793 - INFO - Path found with length 3
+2025-04-20 11:07:35,793 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:07:35,794 - INFO - Path found with length 35
+2025-04-20 11:07:35,794 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:07:35,795 - INFO - Path found with length 32
+2025-04-20 11:07:35,795 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:07:35,795 - INFO - Path found with length 8
+2025-04-20 11:07:35,795 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:07:35,795 - INFO - Path found with length 7
+2025-04-20 11:07:35,795 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:07:35,796 - INFO - Path found with length 14
+2025-04-20 11:07:35,796 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,796 - INFO - Path found with length 8
+2025-04-20 11:07:35,796 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:07:35,797 - INFO - Path found with length 26
+2025-04-20 11:07:35,797 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:07:35,798 - INFO - Path found with length 18
+2025-04-20 11:07:35,798 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:07:35,799 - INFO - Path found with length 15
+2025-04-20 11:07:35,799 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:07:35,799 - INFO - Path found with length 3
+2025-04-20 11:07:35,799 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,799 - INFO - Path found with length 8
+2025-04-20 11:07:35,800 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:07:35,800 - INFO - Path found with length 23
+2025-04-20 11:07:35,801 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:07:35,801 - INFO - Path found with length 24
+2025-04-20 11:07:35,801 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:07:35,802 - INFO - Path found with length 27
+2025-04-20 11:07:35,802 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:07:35,803 - INFO - Path found with length 35
+2025-04-20 11:07:35,803 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:07:35,804 - INFO - Path found with length 31
+2025-04-20 11:07:35,804 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,804 - INFO - Path found with length 8
+2025-04-20 11:07:35,805 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:07:35,805 - INFO - Path found with length 7
+2025-04-20 11:07:35,805 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:07:35,805 - INFO - Path found with length 7
+2025-04-20 11:07:35,805 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:07:35,806 - INFO - Path found with length 15
+2025-04-20 11:07:35,806 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:07:35,807 - INFO - Path found with length 35
+2025-04-20 11:07:35,807 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,807 - INFO - Path found with length 4
+2025-04-20 11:07:35,807 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,808 - INFO - Path found with length 8
+2025-04-20 11:07:35,808 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,808 - INFO - Path found with length 9
+2025-04-20 11:07:35,808 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:07:35,809 - INFO - Path found with length 8
+2025-04-20 11:07:35,809 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:07:35,809 - INFO - Path found with length 7
+2025-04-20 11:07:35,809 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:07:35,810 - INFO - Path found with length 17
+2025-04-20 11:07:35,810 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,810 - INFO - Path found with length 3
+2025-04-20 11:07:35,810 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,811 - INFO - Path found with length 4
+2025-04-20 11:07:35,811 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,811 - INFO - Path found with length 14
+2025-04-20 11:07:35,811 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:07:35,811 - INFO - Path found with length 10
+2025-04-20 11:07:35,812 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:07:35,812 - INFO - Path found with length 7
+2025-04-20 11:07:35,812 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:07:35,812 - INFO - Path found with length 8
+2025-04-20 11:07:35,812 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,813 - INFO - Path found with length 32
+2025-04-20 11:07:35,813 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,813 - INFO - Path found with length 3
+2025-04-20 11:07:35,814 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:07:35,814 - INFO - Path found with length 11
+2025-04-20 11:07:35,814 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:07:35,814 - INFO - Path found with length 11
+2025-04-20 11:07:35,815 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,815 - INFO - Path found with length 8
+2025-04-20 11:07:35,815 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,815 - INFO - Path found with length 9
+2025-04-20 11:07:35,815 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:07:35,816 - INFO - Path found with length 15
+2025-04-20 11:07:35,816 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:07:35,816 - INFO - Path found with length 17
+2025-04-20 11:07:35,817 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,817 - INFO - Path found with length 3
+2025-04-20 11:07:35,817 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:07:35,817 - INFO - Path found with length 11
+2025-04-20 11:07:35,817 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:07:35,817 - INFO - Path found with length 11
+2025-04-20 11:07:35,818 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:07:35,818 - INFO - Path found with length 31
+2025-04-20 11:07:35,819 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:07:35,819 - INFO - Path found with length 17
+2025-04-20 11:07:35,819 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:07:35,819 - INFO - Path found with length 15
+2025-04-20 11:07:35,820 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:07:35,820 - INFO - Path found with length 9
+2025-04-20 11:07:35,820 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:07:35,821 - INFO - Path found with length 26
+2025-04-20 11:07:35,821 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,821 - INFO - Path found with length 4
+2025-04-20 11:07:35,821 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,822 - INFO - Path found with length 14
+2025-04-20 11:07:35,822 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,822 - INFO - Path found with length 7
+2025-04-20 11:07:35,822 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:07:35,822 - INFO - Path found with length 8
+2025-04-20 11:07:35,823 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,823 - INFO - Path found with length 32
+2025-04-20 11:07:35,823 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:07:35,824 - INFO - Path found with length 23
+2025-04-20 11:07:35,824 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:07:35,825 - INFO - Path found with length 26
+2025-04-20 11:07:35,825 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,826 - INFO - Path found with length 4
+2025-04-20 11:07:35,826 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,826 - INFO - Path found with length 14
+2025-04-20 11:07:35,826 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:07:35,827 - INFO - Path found with length 17
+2025-04-20 11:07:35,827 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:07:35,828 - INFO - Path found with length 32
+2025-04-20 11:07:35,828 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:07:35,828 - INFO - Path found with length 8
+2025-04-20 11:07:35,828 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:07:35,829 - INFO - Path found with length 7
+2025-04-20 11:07:35,829 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:07:35,830 - INFO - Path found with length 26
+2025-04-20 11:07:35,830 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:07:35,831 - INFO - Path found with length 35
+2025-04-20 11:07:35,831 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:07:35,832 - INFO - Path found with length 32
+2025-04-20 11:07:35,832 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:07:35,832 - INFO - Path found with length 3
+2025-04-20 11:07:35,832 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,832 - INFO - Path found with length 14
+2025-04-20 11:07:35,833 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,833 - INFO - Path found with length 7
+2025-04-20 11:07:35,833 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:07:35,833 - INFO - Path found with length 7
+2025-04-20 11:07:35,833 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:07:35,834 - INFO - Path found with length 26
+2025-04-20 11:07:35,834 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:07:35,835 - INFO - Path found with length 35
+2025-04-20 11:07:35,835 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:07:35,836 - INFO - Path found with length 23
+2025-04-20 11:07:35,836 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:07:35,836 - INFO - Path found with length 9
+2025-04-20 11:07:35,837 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:07:35,837 - INFO - Path found with length 8
+2025-04-20 11:07:35,837 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:07:35,837 - INFO - Path found with length 7
+2025-04-20 11:07:35,837 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:07:35,838 - INFO - Path found with length 14
+2025-04-20 11:07:35,838 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:07:35,839 - INFO - Path found with length 34
+2025-04-20 11:07:35,839 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:07:35,839 - INFO - Path found with length 3
+2025-04-20 11:07:35,839 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:07:35,839 - INFO - Path found with length 3
+2025-04-20 11:07:35,840 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:07:35,840 - INFO - Path found with length 14
+2025-04-20 11:07:35,840 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:07:35,841 - INFO - Path found with length 10
+2025-04-20 11:07:35,841 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:07:35,841 - INFO - Path found with length 7
+2025-04-20 11:07:35,841 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:07:35,842 - INFO - Path found with length 24
+2025-04-20 11:07:35,842 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,842 - INFO - Path found with length 3
+2025-04-20 11:07:35,843 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:07:35,843 - INFO - Path found with length 3
+2025-04-20 11:07:35,843 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,844 - INFO - Path found with length 32
+2025-04-20 11:07:35,844 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:07:35,844 - INFO - Path found with length 17
+2025-04-20 11:07:35,845 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,845 - INFO - Path found with length 7
+2025-04-20 11:07:35,845 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:07:35,845 - INFO - Path found with length 11
+2025-04-20 11:07:35,845 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,845 - INFO - Path found with length 8
+2025-04-20 11:07:35,846 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:07:35,846 - INFO - Path found with length 26
+2025-04-20 11:07:35,847 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:07:35,847 - INFO - Path found with length 35
+2025-04-20 11:07:35,848 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:07:35,848 - INFO - Path found with length 32
+2025-04-20 11:07:35,849 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:07:35,849 - INFO - Path found with length 9
+2025-04-20 11:07:35,849 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:07:35,850 - INFO - Path found with length 10
+2025-04-20 11:07:35,850 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,850 - INFO - Path found with length 7
+2025-04-20 11:07:35,850 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:07:35,851 - INFO - Path found with length 11
+2025-04-20 11:07:35,851 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:07:35,851 - INFO - Path found with length 34
+2025-04-20 11:07:35,852 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:07:35,852 - INFO - Path found with length 3
+2025-04-20 11:07:35,852 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:07:35,852 - INFO - Path found with length 15
+2025-04-20 11:07:35,852 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:07:35,853 - INFO - Path found with length 17
+2025-04-20 11:07:35,853 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:07:35,854 - INFO - Path found with length 23
+2025-04-20 11:07:35,854 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:07:35,854 - INFO - Path found with length 8
+2025-04-20 11:07:35,854 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:07:35,855 - INFO - Path found with length 11
+2025-04-20 11:07:35,855 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:07:35,856 - INFO - Path found with length 27
+2025-04-20 11:07:35,856 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:07:35,857 - INFO - Path found with length 35
+2025-04-20 11:07:35,857 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:07:35,857 - INFO - Path found with length 17
+2025-04-20 11:07:35,858 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:07:35,858 - INFO - Path found with length 14
+2025-04-20 11:07:35,858 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:07:35,859 - INFO - Path found with length 11
+2025-04-20 11:07:35,859 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:07:35,859 - INFO - Path found with length 8
+2025-04-20 11:07:35,859 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:07:35,860 - INFO - Path found with length 9
+2025-04-20 11:07:35,860 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:07:35,861 - INFO - Path found with length 26
+2025-04-20 11:07:35,861 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:07:35,861 - INFO - Path found with length 12
+2025-04-20 11:07:35,861 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:07:35,861 - INFO - Path found with length 7
+2025-04-20 11:07:35,862 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:07:35,862 - INFO - Path found with length 7
+2025-04-20 11:07:35,862 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:07:35,862 - INFO - Path found with length 15
+2025-04-20 11:07:35,863 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,863 - INFO - Path found with length 32
+2025-04-20 11:07:35,864 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:07:35,864 - INFO - Path found with length 31
+2025-04-20 11:07:35,865 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:07:35,865 - INFO - Path found with length 34
+2025-04-20 11:07:35,866 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,866 - INFO - Path found with length 4
+2025-04-20 11:07:35,866 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,866 - INFO - Path found with length 8
+2025-04-20 11:07:35,866 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:07:35,867 - INFO - Path found with length 10
+2025-04-20 11:07:35,867 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,867 - INFO - Path found with length 7
+2025-04-20 11:07:35,867 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:07:35,867 - INFO - Path found with length 8
+2025-04-20 11:07:35,867 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,868 - INFO - Path found with length 32
+2025-04-20 11:07:35,868 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:07:35,868 - INFO - Path found with length 3
+2025-04-20 11:07:35,868 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:07:35,869 - INFO - Path found with length 3
+2025-04-20 11:07:35,869 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:07:35,869 - INFO - Path found with length 9
+2025-04-20 11:07:35,869 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:07:35,870 - INFO - Path found with length 10
+2025-04-20 11:07:35,870 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:07:35,870 - INFO - Path found with length 17
+2025-04-20 11:07:35,870 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:07:35,871 - INFO - Path found with length 31
+2025-04-20 11:07:35,871 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:07:35,872 - INFO - Path found with length 11
+2025-04-20 11:07:35,872 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:07:35,873 - INFO - Path found with length 27
+2025-04-20 11:07:35,873 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:07:35,873 - INFO - Path found with length 3
+2025-04-20 11:07:35,873 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:07:35,874 - INFO - Path found with length 15
+2025-04-20 11:07:35,874 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:07:35,874 - INFO - Path found with length 17
+2025-04-20 11:07:35,874 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:07:35,875 - INFO - Path found with length 31
+2025-04-20 11:07:35,876 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,876 - INFO - Path found with length 8
+2025-04-20 11:07:35,876 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:07:35,876 - INFO - Path found with length 7
+2025-04-20 11:07:35,876 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:07:35,878 - INFO - Path found with length 27
+2025-04-20 11:07:35,878 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,878 - INFO - Path found with length 4
+2025-04-20 11:07:35,878 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:07:35,878 - INFO - Path found with length 3
+2025-04-20 11:07:35,879 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:07:35,879 - INFO - Path found with length 9
+2025-04-20 11:07:35,879 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:07:35,879 - INFO - Path found with length 7
+2025-04-20 11:07:35,879 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:07:35,880 - INFO - Path found with length 24
+2025-04-20 11:07:35,880 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:07:35,881 - INFO - Path found with length 17
+2025-04-20 11:07:35,881 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:07:35,882 - INFO - Path found with length 20
+2025-04-20 11:07:35,882 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:07:35,882 - INFO - Path found with length 3
+2025-04-20 11:07:35,882 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:07:35,882 - INFO - Path found with length 9
+2025-04-20 11:07:35,882 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:07:35,883 - INFO - Path found with length 10
+2025-04-20 11:07:35,883 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:07:35,883 - INFO - Path found with length 7
+2025-04-20 11:07:35,883 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:07:35,884 - INFO - Path found with length 24
+2025-04-20 11:07:35,884 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:07:35,885 - INFO - Path found with length 31
+2025-04-20 11:07:35,885 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:07:35,886 - INFO - Path found with length 34
+2025-04-20 11:07:35,886 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:07:35,886 - INFO - Path found with length 12
+2025-04-20 11:07:35,886 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:07:35,887 - INFO - Path found with length 8
+2025-04-20 11:07:35,887 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:07:35,887 - INFO - Path found with length 11
+2025-04-20 11:07:35,887 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:07:35,887 - INFO - Path found with length 8
+2025-04-20 11:07:35,888 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:07:35,888 - INFO - Path found with length 32
+2025-04-20 11:07:35,889 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:07:35,889 - INFO - Path found with length 17
+2025-04-20 11:07:35,889 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:07:35,890 - INFO - Path found with length 20
+2025-04-20 11:07:35,891 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:07:35,891 - INFO - Path found with length 4
+2025-04-20 11:07:35,891 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:07:35,891 - INFO - Path found with length 8
+2025-04-20 11:07:35,892 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:07:35,893 - INFO - Path found with length 23
+2025-04-20 11:07:35,893 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:07:35,894 - INFO - Path found with length 24
+2025-04-20 11:07:35,894 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:07:35,894 - INFO - Path found with length 8
+2025-04-20 11:07:35,894 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:07:35,895 - INFO - Path found with length 15
+2025-04-20 11:07:35,895 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:07:35,895 - INFO - Path found with length 20
+2025-04-20 11:07:35,896 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:07:35,896 - INFO - Path found with length 18
+2025-04-20 11:07:35,896 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:07:35,897 - INFO - Path found with length 15
+2025-04-20 11:07:35,897 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:07:35,897 - INFO - Path found with length 8
+2025-04-20 11:07:35,897 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:07:35,897 - INFO - Path found with length 11
+2025-04-20 11:07:35,898 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:07:35,898 - INFO - Path found with length 31
+2025-04-20 11:07:35,898 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:07:35,899 - INFO - Path found with length 23
+2025-04-20 11:07:35,899 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:07:35,900 - INFO - Path found with length 26
+2025-04-20 11:07:35,900 - INFO - Found good solution at generation 0: [(2, 2), (4, 8), (0, 3), (0, 11), (2, 16), (16, 19)]
+2025-04-20 11:07:35,900 - INFO - Optimised point order: [(2, 2), (4, 8), (0, 3), (0, 11), (2, 16), (16, 19)]
+2025-04-20 11:07:35,901 - INFO - Finding path through 6 intermediate points
+2025-04-20 11:08:00,706 - INFO - Finding path through 6 intermediate points
+2025-04-20 11:08:00,706 - INFO - Optimising point order using genetic algorithm
+2025-04-20 11:08:00,707 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:00,707 - INFO - Path found with length 4
+2025-04-20 11:08:00,707 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:00,707 - INFO - Path found with length 14
+2025-04-20 11:08:00,708 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:00,708 - INFO - Path found with length 10
+2025-04-20 11:08:00,709 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:00,709 - INFO - Path found with length 9
+2025-04-20 11:08:00,709 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:08:00,710 - INFO - Path found with length 32
+2025-04-20 11:08:00,711 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,712 - INFO - Path found with length 24
+2025-04-20 11:08:00,712 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:00,713 - INFO - Path found with length 27
+2025-04-20 11:08:00,713 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,714 - INFO - Path found with length 35
+2025-04-20 11:08:00,714 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:08:00,715 - INFO - Path found with length 23
+2025-04-20 11:08:00,715 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:00,716 - INFO - Path found with length 7
+2025-04-20 11:08:00,716 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:00,716 - INFO - Path found with length 11
+2025-04-20 11:08:00,717 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:00,717 - INFO - Path found with length 14
+2025-04-20 11:08:00,717 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:00,718 - INFO - Path found with length 15
+2025-04-20 11:08:00,718 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:00,719 - INFO - Path found with length 35
+2025-04-20 11:08:00,719 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:00,719 - INFO - Path found with length 18
+2025-04-20 11:08:00,719 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:00,720 - INFO - Path found with length 15
+2025-04-20 11:08:00,720 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,720 - INFO - Path found with length 3
+2025-04-20 11:08:00,720 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:08:00,721 - INFO - Path found with length 31
+2025-04-20 11:08:00,722 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,723 - INFO - Path found with length 24
+2025-04-20 11:08:00,723 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:00,723 - INFO - Path found with length 7
+2025-04-20 11:08:00,723 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,725 - INFO - Path found with length 26
+2025-04-20 11:08:00,725 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:00,726 - INFO - Path found with length 18
+2025-04-20 11:08:00,726 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:00,727 - INFO - Path found with length 15
+2025-04-20 11:08:00,727 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,727 - INFO - Path found with length 3
+2025-04-20 11:08:00,728 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,728 - INFO - Path found with length 8
+2025-04-20 11:08:00,728 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:00,728 - INFO - Path found with length 7
+2025-04-20 11:08:00,729 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:08:00,730 - INFO - Path found with length 24
+2025-04-20 11:08:00,730 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:08:00,730 - INFO - Path found with length 3
+2025-04-20 11:08:00,730 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,731 - INFO - Path found with length 35
+2025-04-20 11:08:00,731 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:08:00,732 - INFO - Path found with length 32
+2025-04-20 11:08:00,732 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:00,733 - INFO - Path found with length 8
+2025-04-20 11:08:00,733 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:00,733 - INFO - Path found with length 7
+2025-04-20 11:08:00,733 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:00,733 - INFO - Path found with length 10
+2025-04-20 11:08:00,734 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:00,734 - INFO - Path found with length 8
+2025-04-20 11:08:00,734 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:00,735 - INFO - Path found with length 34
+2025-04-20 11:08:00,735 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:00,735 - INFO - Path found with length 11
+2025-04-20 11:08:00,736 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:00,736 - INFO - Path found with length 7
+2025-04-20 11:08:00,736 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:08:00,737 - INFO - Path found with length 23
+2025-04-20 11:08:00,737 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:08:00,738 - INFO - Path found with length 32
+2025-04-20 11:08:00,738 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,738 - INFO - Path found with length 3
+2025-04-20 11:08:00,738 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:00,739 - INFO - Path found with length 14
+2025-04-20 11:08:00,739 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:00,740 - INFO - Path found with length 20
+2025-04-20 11:08:00,740 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,741 - INFO - Path found with length 35
+2025-04-20 11:08:00,741 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:08:00,741 - INFO - Path found with length 17
+2025-04-20 11:08:00,742 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:00,742 - INFO - Path found with length 15
+2025-04-20 11:08:00,743 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,743 - INFO - Path found with length 3
+2025-04-20 11:08:00,743 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,743 - INFO - Path found with length 8
+2025-04-20 11:08:00,744 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:00,744 - INFO - Path found with length 7
+2025-04-20 11:08:00,744 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:00,745 - INFO - Path found with length 27
+2025-04-20 11:08:00,746 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,747 - INFO - Path found with length 35
+2025-04-20 11:08:00,747 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:08:00,747 - INFO - Path found with length 23
+2025-04-20 11:08:00,747 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,748 - INFO - Path found with length 10
+2025-04-20 11:08:00,748 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:00,749 - INFO - Path found with length 15
+2025-04-20 11:08:00,749 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,749 - INFO - Path found with length 3
+2025-04-20 11:08:00,749 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,750 - INFO - Path found with length 11
+2025-04-20 11:08:00,750 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:00,750 - INFO - Path found with length 27
+2025-04-20 11:08:00,751 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:00,751 - INFO - Path found with length 12
+2025-04-20 11:08:00,751 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:08:00,752 - INFO - Path found with length 23
+2025-04-20 11:08:00,752 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:08:00,753 - INFO - Path found with length 31
+2025-04-20 11:08:00,753 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:00,753 - INFO - Path found with length 3
+2025-04-20 11:08:00,753 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:00,754 - INFO - Path found with length 8
+2025-04-20 11:08:00,754 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:00,754 - INFO - Path found with length 7
+2025-04-20 11:08:00,754 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:00,755 - INFO - Path found with length 20
+2025-04-20 11:08:00,755 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:00,755 - INFO - Path found with length 12
+2025-04-20 11:08:00,755 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:00,756 - INFO - Path found with length 9
+2025-04-20 11:08:00,756 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:00,756 - INFO - Path found with length 8
+2025-04-20 11:08:00,756 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:00,756 - INFO - Path found with length 7
+2025-04-20 11:08:00,756 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:08:00,757 - INFO - Path found with length 17
+2025-04-20 11:08:00,757 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:08:00,758 - INFO - Path found with length 31
+2025-04-20 11:08:00,758 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:00,759 - INFO - Path found with length 34
+2025-04-20 11:08:00,759 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:00,760 - INFO - Path found with length 11
+2025-04-20 11:08:00,760 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,760 - INFO - Path found with length 8
+2025-04-20 11:08:00,760 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:08:00,761 - INFO - Path found with length 32
+2025-04-20 11:08:00,761 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:08:00,762 - INFO - Path found with length 17
+2025-04-20 11:08:00,762 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,762 - INFO - Path found with length 14
+2025-04-20 11:08:00,762 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,763 - INFO - Path found with length 8
+2025-04-20 11:08:00,763 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,764 - INFO - Path found with length 26
+2025-04-20 11:08:00,764 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,764 - INFO - Path found with length 35
+2025-04-20 11:08:00,765 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:08:00,765 - INFO - Path found with length 32
+2025-04-20 11:08:00,766 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:00,766 - INFO - Path found with length 8
+2025-04-20 11:08:00,766 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:00,766 - INFO - Path found with length 11
+2025-04-20 11:08:00,767 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,767 - INFO - Path found with length 8
+2025-04-20 11:08:00,767 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,767 - INFO - Path found with length 10
+2025-04-20 11:08:00,768 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:00,768 - INFO - Path found with length 20
+2025-04-20 11:08:00,768 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,768 - INFO - Path found with length 3
+2025-04-20 11:08:00,769 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:00,769 - INFO - Path found with length 9
+2025-04-20 11:08:00,769 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:08:00,770 - INFO - Path found with length 23
+2025-04-20 11:08:00,770 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,771 - INFO - Path found with length 24
+2025-04-20 11:08:00,771 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:00,771 - INFO - Path found with length 11
+2025-04-20 11:08:00,771 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:00,772 - INFO - Path found with length 14
+2025-04-20 11:08:00,772 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:00,773 - INFO - Path found with length 20
+2025-04-20 11:08:00,773 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:00,773 - INFO - Path found with length 18
+2025-04-20 11:08:00,773 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:00,774 - INFO - Path found with length 15
+2025-04-20 11:08:00,774 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:00,774 - INFO - Path found with length 9
+2025-04-20 11:08:00,774 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:00,774 - INFO - Path found with length 8
+2025-04-20 11:08:00,774 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,775 - INFO - Path found with length 11
+2025-04-20 11:08:00,775 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:08:00,776 - INFO - Path found with length 24
+2025-04-20 11:08:00,776 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:08:00,776 - INFO - Path found with length 3
+2025-04-20 11:08:00,776 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,776 - INFO - Path found with length 3
+2025-04-20 11:08:00,777 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,777 - INFO - Path found with length 3
+2025-04-20 11:08:00,777 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,777 - INFO - Path found with length 11
+2025-04-20 11:08:00,778 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:08:00,778 - INFO - Path found with length 24
+2025-04-20 11:08:00,779 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:08:00,779 - INFO - Path found with length 17
+2025-04-20 11:08:00,779 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:00,780 - INFO - Path found with length 10
+2025-04-20 11:08:00,780 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,781 - INFO - Path found with length 26
+2025-04-20 11:08:00,781 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,781 - INFO - Path found with length 3
+2025-04-20 11:08:00,781 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:08:00,782 - INFO - Path found with length 32
+2025-04-20 11:08:00,782 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:08:00,783 - INFO - Path found with length 23
+2025-04-20 11:08:00,783 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:00,783 - INFO - Path found with length 7
+2025-04-20 11:08:00,784 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:00,784 - INFO - Path found with length 7
+2025-04-20 11:08:00,784 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,785 - INFO - Path found with length 14
+2025-04-20 11:08:00,785 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:00,786 - INFO - Path found with length 34
+2025-04-20 11:08:00,786 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:00,786 - INFO - Path found with length 12
+2025-04-20 11:08:00,786 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:00,787 - INFO - Path found with length 8
+2025-04-20 11:08:00,787 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:08:00,788 - INFO - Path found with length 31
+2025-04-20 11:08:00,788 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:08:00,788 - INFO - Path found with length 17
+2025-04-20 11:08:00,789 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:00,789 - INFO - Path found with length 7
+2025-04-20 11:08:00,789 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,789 - INFO - Path found with length 8
+2025-04-20 11:08:00,789 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:00,790 - INFO - Path found with length 35
+2025-04-20 11:08:00,791 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:00,791 - INFO - Path found with length 12
+2025-04-20 11:08:00,791 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:00,791 - INFO - Path found with length 9
+2025-04-20 11:08:00,792 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,792 - INFO - Path found with length 3
+2025-04-20 11:08:00,792 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:00,792 - INFO - Path found with length 14
+2025-04-20 11:08:00,793 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:08:00,793 - INFO - Path found with length 17
+2025-04-20 11:08:00,793 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,794 - INFO - Path found with length 24
+2025-04-20 11:08:00,794 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:00,795 - INFO - Path found with length 27
+2025-04-20 11:08:00,795 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,796 - INFO - Path found with length 35
+2025-04-20 11:08:00,796 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,797 - INFO - Path found with length 24
+2025-04-20 11:08:00,797 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,797 - INFO - Path found with length 8
+2025-04-20 11:08:00,798 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,798 - INFO - Path found with length 3
+2025-04-20 11:08:00,798 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:00,798 - INFO - Path found with length 14
+2025-04-20 11:08:00,799 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:00,799 - INFO - Path found with length 10
+2025-04-20 11:08:00,799 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,800 - INFO - Path found with length 26
+2025-04-20 11:08:00,800 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,801 - INFO - Path found with length 35
+2025-04-20 11:08:00,801 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,802 - INFO - Path found with length 24
+2025-04-20 11:08:00,802 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:00,802 - INFO - Path found with length 7
+2025-04-20 11:08:00,802 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:00,803 - INFO - Path found with length 9
+2025-04-20 11:08:00,803 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,803 - INFO - Path found with length 3
+2025-04-20 11:08:00,803 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:00,804 - INFO - Path found with length 14
+2025-04-20 11:08:00,804 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:00,805 - INFO - Path found with length 20
+2025-04-20 11:08:00,805 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:00,805 - INFO - Path found with length 4
+2025-04-20 11:08:00,805 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,805 - INFO - Path found with length 8
+2025-04-20 11:08:00,806 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:00,806 - INFO - Path found with length 9
+2025-04-20 11:08:00,806 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:00,806 - INFO - Path found with length 15
+2025-04-20 11:08:00,807 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:08:00,807 - INFO - Path found with length 17
+2025-04-20 11:08:00,807 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,808 - INFO - Path found with length 24
+2025-04-20 11:08:00,808 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:00,809 - INFO - Path found with length 27
+2025-04-20 11:08:00,809 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,810 - INFO - Path found with length 3
+2025-04-20 11:08:00,810 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:00,810 - INFO - Path found with length 8
+2025-04-20 11:08:00,810 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:00,810 - INFO - Path found with length 7
+2025-04-20 11:08:00,811 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,811 - INFO - Path found with length 14
+2025-04-20 11:08:00,811 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:08:00,812 - INFO - Path found with length 31
+2025-04-20 11:08:00,812 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:08:00,813 - INFO - Path found with length 23
+2025-04-20 11:08:00,813 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,814 - INFO - Path found with length 26
+2025-04-20 11:08:00,814 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,815 - INFO - Path found with length 35
+2025-04-20 11:08:00,815 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:08:00,816 - INFO - Path found with length 31
+2025-04-20 11:08:00,816 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,816 - INFO - Path found with length 8
+2025-04-20 11:08:00,817 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,817 - INFO - Path found with length 10
+2025-04-20 11:08:00,817 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:00,817 - INFO - Path found with length 7
+2025-04-20 11:08:00,818 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,818 - INFO - Path found with length 8
+2025-04-20 11:08:00,818 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:00,819 - INFO - Path found with length 35
+2025-04-20 11:08:00,819 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:00,819 - INFO - Path found with length 12
+2025-04-20 11:08:00,820 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,820 - INFO - Path found with length 10
+2025-04-20 11:08:00,820 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:08:00,821 - INFO - Path found with length 17
+2025-04-20 11:08:00,821 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:08:00,822 - INFO - Path found with length 31
+2025-04-20 11:08:00,822 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,822 - INFO - Path found with length 11
+2025-04-20 11:08:00,822 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,823 - INFO - Path found with length 8
+2025-04-20 11:08:00,823 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:00,824 - INFO - Path found with length 35
+2025-04-20 11:08:00,824 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,824 - INFO - Path found with length 3
+2025-04-20 11:08:00,824 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:08:00,825 - INFO - Path found with length 32
+2025-04-20 11:08:00,825 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:08:00,826 - INFO - Path found with length 31
+2025-04-20 11:08:00,826 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,827 - INFO - Path found with length 8
+2025-04-20 11:08:00,827 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:00,827 - INFO - Path found with length 7
+2025-04-20 11:08:00,827 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:00,827 - INFO - Path found with length 7
+2025-04-20 11:08:00,828 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:00,828 - INFO - Path found with length 20
+2025-04-20 11:08:00,828 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,829 - INFO - Path found with length 3
+2025-04-20 11:08:00,829 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:08:00,830 - INFO - Path found with length 32
+2025-04-20 11:08:00,830 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,831 - INFO - Path found with length 24
+2025-04-20 11:08:00,831 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:00,831 - INFO - Path found with length 7
+2025-04-20 11:08:00,831 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,832 - INFO - Path found with length 14
+2025-04-20 11:08:00,832 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,832 - INFO - Path found with length 8
+2025-04-20 11:08:00,832 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,833 - INFO - Path found with length 26
+2025-04-20 11:08:00,833 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:00,833 - INFO - Path found with length 11
+2025-04-20 11:08:00,834 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:08:00,834 - INFO - Path found with length 24
+2025-04-20 11:08:00,835 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:08:00,836 - INFO - Path found with length 32
+2025-04-20 11:08:00,836 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,836 - INFO - Path found with length 3
+2025-04-20 11:08:00,836 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:00,836 - INFO - Path found with length 14
+2025-04-20 11:08:00,837 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:00,837 - INFO - Path found with length 10
+2025-04-20 11:08:00,837 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,838 - INFO - Path found with length 26
+2025-04-20 11:08:00,838 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:00,839 - INFO - Path found with length 18
+2025-04-20 11:08:00,839 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:00,839 - INFO - Path found with length 10
+2025-04-20 11:08:00,839 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:00,840 - INFO - Path found with length 8
+2025-04-20 11:08:00,840 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:08:00,841 - INFO - Path found with length 31
+2025-04-20 11:08:00,841 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,842 - INFO - Path found with length 24
+2025-04-20 11:08:00,842 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,842 - INFO - Path found with length 8
+2025-04-20 11:08:00,842 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:00,843 - INFO - Path found with length 35
+2025-04-20 11:08:00,843 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:00,843 - INFO - Path found with length 4
+2025-04-20 11:08:00,844 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,844 - INFO - Path found with length 11
+2025-04-20 11:08:00,844 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,844 - INFO - Path found with length 8
+2025-04-20 11:08:00,845 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:00,845 - INFO - Path found with length 9
+2025-04-20 11:08:00,845 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,846 - INFO - Path found with length 10
+2025-04-20 11:08:00,846 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:08:00,846 - INFO - Path found with length 17
+2025-04-20 11:08:00,846 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:08:00,847 - INFO - Path found with length 3
+2025-04-20 11:08:00,847 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,848 - INFO - Path found with length 35
+2025-04-20 11:08:00,848 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,849 - INFO - Path found with length 24
+2025-04-20 11:08:00,849 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,849 - INFO - Path found with length 8
+2025-04-20 11:08:00,849 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:00,850 - INFO - Path found with length 15
+2025-04-20 11:08:00,850 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,850 - INFO - Path found with length 14
+2025-04-20 11:08:00,850 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,851 - INFO - Path found with length 8
+2025-04-20 11:08:00,851 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,852 - INFO - Path found with length 26
+2025-04-20 11:08:00,852 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:00,852 - INFO - Path found with length 11
+2025-04-20 11:08:00,852 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:08:00,853 - INFO - Path found with length 24
+2025-04-20 11:08:00,853 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:08:00,854 - INFO - Path found with length 32
+2025-04-20 11:08:00,854 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:00,855 - INFO - Path found with length 15
+2025-04-20 11:08:00,855 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,855 - INFO - Path found with length 14
+2025-04-20 11:08:00,855 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,856 - INFO - Path found with length 8
+2025-04-20 11:08:00,856 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,857 - INFO - Path found with length 26
+2025-04-20 11:08:00,857 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:00,857 - INFO - Path found with length 11
+2025-04-20 11:08:00,857 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:08:00,858 - INFO - Path found with length 24
+2025-04-20 11:08:00,858 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:08:00,859 - INFO - Path found with length 23
+2025-04-20 11:08:00,859 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,860 - INFO - Path found with length 10
+2025-04-20 11:08:00,860 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:00,860 - INFO - Path found with length 15
+2025-04-20 11:08:00,860 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,861 - INFO - Path found with length 3
+2025-04-20 11:08:00,861 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:00,862 - INFO - Path found with length 34
+2025-04-20 11:08:00,862 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:00,863 - INFO - Path found with length 18
+2025-04-20 11:08:00,863 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,863 - INFO - Path found with length 14
+2025-04-20 11:08:00,863 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:00,864 - INFO - Path found with length 3
+2025-04-20 11:08:00,864 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:08:00,865 - INFO - Path found with length 32
+2025-04-20 11:08:00,865 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,866 - INFO - Path found with length 24
+2025-04-20 11:08:00,866 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:00,866 - INFO - Path found with length 7
+2025-04-20 11:08:00,866 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,867 - INFO - Path found with length 26
+2025-04-20 11:08:00,867 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,867 - INFO - Path found with length 3
+2025-04-20 11:08:00,867 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:00,868 - INFO - Path found with length 9
+2025-04-20 11:08:00,868 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:00,868 - INFO - Path found with length 8
+2025-04-20 11:08:00,868 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,869 - INFO - Path found with length 11
+2025-04-20 11:08:00,869 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:08:00,870 - INFO - Path found with length 24
+2025-04-20 11:08:00,870 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:08:00,870 - INFO - Path found with length 17
+2025-04-20 11:08:00,870 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:00,871 - INFO - Path found with length 20
+2025-04-20 11:08:00,871 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:00,871 - INFO - Path found with length 18
+2025-04-20 11:08:00,872 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:00,872 - INFO - Path found with length 7
+2025-04-20 11:08:00,872 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:00,872 - INFO - Path found with length 7
+2025-04-20 11:08:00,872 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:00,873 - INFO - Path found with length 8
+2025-04-20 11:08:00,873 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:00,873 - INFO - Path found with length 3
+2025-04-20 11:08:00,873 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:08:00,874 - INFO - Path found with length 32
+2025-04-20 11:08:00,874 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:08:00,874 - INFO - Path found with length 3
+2025-04-20 11:08:00,874 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:00,875 - INFO - Path found with length 11
+2025-04-20 11:08:00,875 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:00,875 - INFO - Path found with length 11
+2025-04-20 11:08:00,876 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:00,876 - INFO - Path found with length 3
+2025-04-20 11:08:00,876 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:00,876 - INFO - Path found with length 9
+2025-04-20 11:08:00,877 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,877 - INFO - Path found with length 10
+2025-04-20 11:08:00,877 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:08:00,878 - INFO - Path found with length 17
+2025-04-20 11:08:00,878 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:08:00,878 - INFO - Path found with length 3
+2025-04-20 11:08:00,878 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,879 - INFO - Path found with length 35
+2025-04-20 11:08:00,879 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:08:00,880 - INFO - Path found with length 32
+2025-04-20 11:08:00,880 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:00,881 - INFO - Path found with length 8
+2025-04-20 11:08:00,881 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:00,881 - INFO - Path found with length 7
+2025-04-20 11:08:00,881 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,882 - INFO - Path found with length 10
+2025-04-20 11:08:00,882 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,882 - INFO - Path found with length 14
+2025-04-20 11:08:00,882 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:00,883 - INFO - Path found with length 34
+2025-04-20 11:08:00,883 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,883 - INFO - Path found with length 3
+2025-04-20 11:08:00,884 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,884 - INFO - Path found with length 3
+2025-04-20 11:08:00,884 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,885 - INFO - Path found with length 11
+2025-04-20 11:08:00,885 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:00,885 - INFO - Path found with length 7
+2025-04-20 11:08:00,886 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,886 - INFO - Path found with length 10
+2025-04-20 11:08:00,886 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:08:00,887 - INFO - Path found with length 17
+2025-04-20 11:08:00,887 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:08:00,887 - INFO - Path found with length 3
+2025-04-20 11:08:00,887 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:00,888 - INFO - Path found with length 12
+2025-04-20 11:08:00,888 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:08:00,889 - INFO - Path found with length 23
+2025-04-20 11:08:00,889 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:08:00,890 - INFO - Path found with length 32
+2025-04-20 11:08:00,890 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:00,890 - INFO - Path found with length 8
+2025-04-20 11:08:00,890 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:00,890 - INFO - Path found with length 7
+2025-04-20 11:08:00,891 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,891 - INFO - Path found with length 14
+2025-04-20 11:08:00,891 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:00,892 - INFO - Path found with length 34
+2025-04-20 11:08:00,892 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,892 - INFO - Path found with length 3
+2025-04-20 11:08:00,893 - INFO - Starting BFS search from (0, 3) to (16, 19)
+2025-04-20 11:08:00,893 - INFO - Path found with length 32
+2025-04-20 11:08:00,894 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:08:00,894 - INFO - Path found with length 23
+2025-04-20 11:08:00,894 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,895 - INFO - Path found with length 10
+2025-04-20 11:08:00,895 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:00,895 - INFO - Path found with length 7
+2025-04-20 11:08:00,895 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:00,896 - INFO - Path found with length 11
+2025-04-20 11:08:00,896 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:00,897 - INFO - Path found with length 34
+2025-04-20 11:08:00,897 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:00,897 - INFO - Path found with length 4
+2025-04-20 11:08:00,897 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,898 - INFO - Path found with length 11
+2025-04-20 11:08:00,898 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:00,898 - INFO - Path found with length 7
+2025-04-20 11:08:00,898 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:08:00,899 - INFO - Path found with length 17
+2025-04-20 11:08:00,899 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:08:00,900 - INFO - Path found with length 32
+2025-04-20 11:08:00,900 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:00,900 - INFO - Path found with length 9
+2025-04-20 11:08:00,900 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,901 - INFO - Path found with length 26
+2025-04-20 11:08:00,901 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:00,902 - INFO - Path found with length 18
+2025-04-20 11:08:00,902 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:00,902 - INFO - Path found with length 10
+2025-04-20 11:08:00,902 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:00,903 - INFO - Path found with length 7
+2025-04-20 11:08:00,903 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,903 - INFO - Path found with length 8
+2025-04-20 11:08:00,903 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,903 - INFO - Path found with length 3
+2025-04-20 11:08:00,903 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:08:00,904 - INFO - Path found with length 31
+2025-04-20 11:08:00,904 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:08:00,905 - INFO - Path found with length 3
+2025-04-20 11:08:00,905 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,905 - INFO - Path found with length 3
+2025-04-20 11:08:00,905 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:00,905 - INFO - Path found with length 15
+2025-04-20 11:08:00,906 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:00,906 - INFO - Path found with length 7
+2025-04-20 11:08:00,906 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:00,907 - INFO - Path found with length 11
+2025-04-20 11:08:00,907 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:00,907 - INFO - Path found with length 8
+2025-04-20 11:08:00,907 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:08:00,908 - INFO - Path found with length 23
+2025-04-20 11:08:00,908 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:08:00,909 - INFO - Path found with length 3
+2025-04-20 11:08:00,909 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,910 - INFO - Path found with length 35
+2025-04-20 11:08:00,910 - INFO - Starting BFS search from (16, 19) to (4, 8)
+2025-04-20 11:08:00,911 - INFO - Path found with length 23
+2025-04-20 11:08:00,911 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:00,912 - INFO - Path found with length 8
+2025-04-20 11:08:00,912 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,912 - INFO - Path found with length 11
+2025-04-20 11:08:00,912 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,913 - INFO - Path found with length 8
+2025-04-20 11:08:00,913 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:00,913 - INFO - Path found with length 15
+2025-04-20 11:08:00,913 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:00,914 - INFO - Path found with length 20
+2025-04-20 11:08:00,914 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,914 - INFO - Path found with length 3
+2025-04-20 11:08:00,915 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:00,915 - INFO - Path found with length 9
+2025-04-20 11:08:00,915 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:08:00,916 - INFO - Path found with length 23
+2025-04-20 11:08:00,916 - INFO - Starting BFS search from (16, 19) to (2, 2)
+2025-04-20 11:08:00,917 - INFO - Path found with length 31
+2025-04-20 11:08:00,917 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:00,917 - INFO - Path found with length 14
+2025-04-20 11:08:00,918 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:00,918 - INFO - Path found with length 7
+2025-04-20 11:08:00,918 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:00,919 - INFO - Path found with length 27
+2025-04-20 11:08:00,919 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:00,919 - INFO - Path found with length 11
+2025-04-20 11:08:00,919 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:00,920 - INFO - Path found with length 11
+2025-04-20 11:08:00,920 - INFO - Starting BFS search from (2, 2) to (16, 19)
+2025-04-20 11:08:00,921 - INFO - Path found with length 31
+2025-04-20 11:08:00,921 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:08:00,922 - INFO - Path found with length 32
+2025-04-20 11:08:00,922 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:00,922 - INFO - Path found with length 15
+2025-04-20 11:08:00,923 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:00,923 - INFO - Path found with length 10
+2025-04-20 11:08:00,923 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:00,924 - INFO - Path found with length 26
+2025-04-20 11:08:00,924 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:00,924 - INFO - Path found with length 12
+2025-04-20 11:08:00,925 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:08:00,925 - INFO - Path found with length 23
+2025-04-20 11:08:00,926 - INFO - Starting BFS search from (16, 19) to (0, 11)
+2025-04-20 11:08:00,927 - INFO - Path found with length 24
+2025-04-20 11:08:00,927 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:00,927 - INFO - Path found with length 7
+2025-04-20 11:08:00,927 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,928 - INFO - Path found with length 14
+2025-04-20 11:08:00,928 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:00,928 - INFO - Path found with length 3
+2025-04-20 11:08:00,928 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:00,929 - INFO - Path found with length 35
+2025-04-20 11:08:00,929 - INFO - Starting BFS search from (0, 0) to (16, 19)
+2025-04-20 11:08:00,929 - INFO - Path found with length 35
+2025-04-20 11:08:00,929 - INFO - Starting BFS search from (16, 19) to (0, 3)
+2025-04-20 11:08:00,930 - INFO - Path found with length 32
+2025-04-20 11:08:00,930 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,931 - INFO - Path found with length 3
+2025-04-20 11:08:00,931 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,931 - INFO - Path found with length 11
+2025-04-20 11:08:00,931 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:00,931 - INFO - Path found with length 7
+2025-04-20 11:08:00,931 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,932 - INFO - Path found with length 10
+2025-04-20 11:08:00,932 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:00,933 - INFO - Path found with length 20
+2025-04-20 11:08:00,933 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:00,933 - INFO - Path found with length 18
+2025-04-20 11:08:00,933 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,934 - INFO - Path found with length 14
+2025-04-20 11:08:00,934 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:00,934 - INFO - Path found with length 3
+2025-04-20 11:08:00,934 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:00,935 - INFO - Path found with length 9
+2025-04-20 11:08:00,935 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:00,935 - INFO - Path found with length 7
+2025-04-20 11:08:00,935 - INFO - Starting BFS search from (0, 11) to (16, 19)
+2025-04-20 11:08:00,936 - INFO - Path found with length 24
+2025-04-20 11:08:00,936 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:08:00,936 - INFO - Path found with length 3
+2025-04-20 11:08:00,936 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:00,937 - INFO - Path found with length 11
+2025-04-20 11:08:00,937 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:00,937 - INFO - Path found with length 8
+2025-04-20 11:08:00,937 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:00,937 - INFO - Path found with length 9
+2025-04-20 11:08:00,938 - INFO - Starting BFS search from (4, 8) to (16, 19)
+2025-04-20 11:08:00,938 - INFO - Path found with length 23
+2025-04-20 11:08:00,938 - INFO - Starting BFS search from (16, 19) to (2, 16)
+2025-04-20 11:08:00,939 - INFO - Path found with length 17
+2025-04-20 11:08:00,939 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:00,939 - INFO - Path found with length 14
+2025-04-20 11:08:00,940 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:00,941 - INFO - Path found with length 34
+2025-04-20 11:08:00,941 - INFO - Found good solution at generation 0: [(0, 3), (2, 2), (0, 11), (4, 8), (2, 16), (16, 19)]
+2025-04-20 11:08:00,941 - INFO - Optimised point order: [(0, 3), (2, 2), (0, 11), (4, 8), (2, 16), (16, 19)]
+2025-04-20 11:08:00,941 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:00,942 - INFO - Path found with length 3
+2025-04-20 11:08:00,942 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:00,942 - INFO - Path found with length 3
+2025-04-20 11:08:00,942 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:00,942 - INFO - Path found with length 11
+2025-04-20 11:08:00,943 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:00,943 - INFO - Path found with length 7
+2025-04-20 11:08:00,943 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:00,944 - INFO - Path found with length 10
+2025-04-20 11:08:00,944 - INFO - Starting BFS search from (2, 16) to (16, 19)
+2025-04-20 11:08:00,945 - INFO - Path found with length 17
+2025-04-20 11:08:00,945 - INFO - Starting BFS search from (16, 19) to (19, 19)
+2025-04-20 11:08:00,945 - INFO - Path found with length 3
+2025-04-20 11:08:06,977 - INFO - Finding path through 5 intermediate points
+2025-04-20 11:08:06,978 - INFO - Optimising point order using genetic algorithm
+2025-04-20 11:08:06,978 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:06,979 - INFO - Path found with length 4
+2025-04-20 11:08:06,979 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:06,980 - INFO - Path found with length 14
+2025-04-20 11:08:06,980 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:06,980 - INFO - Path found with length 10
+2025-04-20 11:08:06,981 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:06,981 - INFO - Path found with length 9
+2025-04-20 11:08:06,981 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:06,982 - INFO - Path found with length 8
+2025-04-20 11:08:06,982 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:06,984 - INFO - Path found with length 27
+2025-04-20 11:08:06,984 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:06,984 - INFO - Path found with length 4
+2025-04-20 11:08:06,984 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:06,984 - INFO - Path found with length 3
+2025-04-20 11:08:06,985 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:06,985 - INFO - Path found with length 15
+2025-04-20 11:08:06,985 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:06,985 - INFO - Path found with length 10
+2025-04-20 11:08:06,986 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:06,986 - INFO - Path found with length 7
+2025-04-20 11:08:06,986 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:06,988 - INFO - Path found with length 27
+2025-04-20 11:08:06,988 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:06,989 - INFO - Path found with length 18
+2025-04-20 11:08:06,989 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:06,990 - INFO - Path found with length 15
+2025-04-20 11:08:06,990 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:06,991 - INFO - Path found with length 8
+2025-04-20 11:08:06,991 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:06,991 - INFO - Path found with length 11
+2025-04-20 11:08:06,992 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:06,992 - INFO - Path found with length 8
+2025-04-20 11:08:06,992 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:06,994 - INFO - Path found with length 26
+2025-04-20 11:08:06,994 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:06,995 - INFO - Path found with length 12
+2025-04-20 11:08:06,995 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:06,996 - INFO - Path found with length 10
+2025-04-20 11:08:06,996 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:06,996 - INFO - Path found with length 7
+2025-04-20 11:08:06,996 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:06,997 - INFO - Path found with length 8
+2025-04-20 11:08:06,997 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:06,997 - INFO - Path found with length 3
+2025-04-20 11:08:06,997 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:06,998 - INFO - Path found with length 34
+2025-04-20 11:08:06,998 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:06,998 - INFO - Path found with length 3
+2025-04-20 11:08:06,999 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:06,999 - INFO - Path found with length 3
+2025-04-20 11:08:06,999 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:07,000 - INFO - Path found with length 8
+2025-04-20 11:08:07,000 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:07,000 - INFO - Path found with length 7
+2025-04-20 11:08:07,001 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,001 - INFO - Path found with length 7
+2025-04-20 11:08:07,001 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,002 - INFO - Path found with length 20
+2025-04-20 11:08:07,002 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:07,002 - INFO - Path found with length 4
+2025-04-20 11:08:07,002 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:07,003 - INFO - Path found with length 11
+2025-04-20 11:08:07,003 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,003 - INFO - Path found with length 7
+2025-04-20 11:08:07,003 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:07,004 - INFO - Path found with length 15
+2025-04-20 11:08:07,004 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:07,004 - INFO - Path found with length 9
+2025-04-20 11:08:07,004 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:07,005 - INFO - Path found with length 26
+2025-04-20 11:08:07,005 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:07,006 - INFO - Path found with length 12
+2025-04-20 11:08:07,007 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:07,007 - INFO - Path found with length 9
+2025-04-20 11:08:07,007 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:07,007 - INFO - Path found with length 15
+2025-04-20 11:08:07,007 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:07,007 - INFO - Path found with length 7
+2025-04-20 11:08:07,007 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:07,008 - INFO - Path found with length 11
+2025-04-20 11:08:07,008 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:07,009 - INFO - Path found with length 34
+2025-04-20 11:08:07,009 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:07,010 - INFO - Path found with length 3
+2025-04-20 11:08:07,010 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:07,010 - INFO - Path found with length 9
+2025-04-20 11:08:07,010 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:07,011 - INFO - Path found with length 10
+2025-04-20 11:08:07,011 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:07,011 - INFO - Path found with length 7
+2025-04-20 11:08:07,011 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:07,012 - INFO - Path found with length 11
+2025-04-20 11:08:07,012 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:07,013 - INFO - Path found with length 34
+2025-04-20 11:08:07,013 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:07,014 - INFO - Path found with length 3
+2025-04-20 11:08:07,014 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:07,014 - INFO - Path found with length 9
+2025-04-20 11:08:07,015 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:07,015 - INFO - Path found with length 10
+2025-04-20 11:08:07,015 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:07,016 - INFO - Path found with length 14
+2025-04-20 11:08:07,016 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:07,016 - INFO - Path found with length 11
+2025-04-20 11:08:07,016 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:07,017 - INFO - Path found with length 27
+2025-04-20 11:08:07,017 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:07,017 - INFO - Path found with length 12
+2025-04-20 11:08:07,017 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:07,018 - INFO - Path found with length 10
+2025-04-20 11:08:07,018 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:07,019 - INFO - Path found with length 14
+2025-04-20 11:08:07,019 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:07,019 - INFO - Path found with length 11
+2025-04-20 11:08:07,019 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:07,020 - INFO - Path found with length 8
+2025-04-20 11:08:07,020 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:07,022 - INFO - Path found with length 35
+2025-04-20 11:08:07,022 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:07,022 - INFO - Path found with length 12
+2025-04-20 11:08:07,023 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,023 - INFO - Path found with length 8
+2025-04-20 11:08:07,024 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:07,024 - INFO - Path found with length 3
+2025-04-20 11:08:07,024 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:07,025 - INFO - Path found with length 15
+2025-04-20 11:08:07,025 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:07,026 - INFO - Path found with length 7
+2025-04-20 11:08:07,026 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:07,027 - INFO - Path found with length 27
+2025-04-20 11:08:07,027 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:07,029 - INFO - Path found with length 12
+2025-04-20 11:08:07,029 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,029 - INFO - Path found with length 8
+2025-04-20 11:08:07,029 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:07,030 - INFO - Path found with length 3
+2025-04-20 11:08:07,030 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,030 - INFO - Path found with length 8
+2025-04-20 11:08:07,031 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,031 - INFO - Path found with length 7
+2025-04-20 11:08:07,031 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,032 - INFO - Path found with length 20
+2025-04-20 11:08:07,032 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:07,032 - INFO - Path found with length 11
+2025-04-20 11:08:07,032 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,033 - INFO - Path found with length 7
+2025-04-20 11:08:07,033 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,033 - INFO - Path found with length 10
+2025-04-20 11:08:07,033 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:07,034 - INFO - Path found with length 9
+2025-04-20 11:08:07,034 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,035 - INFO - Path found with length 3
+2025-04-20 11:08:07,035 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:07,036 - INFO - Path found with length 34
+2025-04-20 11:08:07,036 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:07,036 - INFO - Path found with length 11
+2025-04-20 11:08:07,036 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,036 - INFO - Path found with length 7
+2025-04-20 11:08:07,037 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,037 - INFO - Path found with length 10
+2025-04-20 11:08:07,037 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,037 - INFO - Path found with length 8
+2025-04-20 11:08:07,038 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:07,038 - INFO - Path found with length 3
+2025-04-20 11:08:07,039 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:07,040 - INFO - Path found with length 35
+2025-04-20 11:08:07,041 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:07,041 - INFO - Path found with length 12
+2025-04-20 11:08:07,042 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,042 - INFO - Path found with length 8
+2025-04-20 11:08:07,042 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:07,043 - INFO - Path found with length 11
+2025-04-20 11:08:07,043 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,043 - INFO - Path found with length 7
+2025-04-20 11:08:07,043 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:07,044 - INFO - Path found with length 15
+2025-04-20 11:08:07,044 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:07,045 - INFO - Path found with length 35
+2025-04-20 11:08:07,045 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:07,045 - INFO - Path found with length 3
+2025-04-20 11:08:07,045 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,046 - INFO - Path found with length 8
+2025-04-20 11:08:07,046 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:07,046 - INFO - Path found with length 7
+2025-04-20 11:08:07,046 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:07,046 - INFO - Path found with length 10
+2025-04-20 11:08:07,046 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:07,047 - INFO - Path found with length 14
+2025-04-20 11:08:07,047 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:07,048 - INFO - Path found with length 34
+2025-04-20 11:08:07,048 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:07,048 - INFO - Path found with length 3
+2025-04-20 11:08:07,048 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,049 - INFO - Path found with length 3
+2025-04-20 11:08:07,049 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:07,049 - INFO - Path found with length 11
+2025-04-20 11:08:07,050 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:07,050 - INFO - Path found with length 7
+2025-04-20 11:08:07,050 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:07,050 - INFO - Path found with length 10
+2025-04-20 11:08:07,051 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,051 - INFO - Path found with length 20
+2025-04-20 11:08:07,052 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:07,052 - INFO - Path found with length 18
+2025-04-20 11:08:07,052 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:07,053 - INFO - Path found with length 7
+2025-04-20 11:08:07,053 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:07,053 - INFO - Path found with length 11
+2025-04-20 11:08:07,053 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:07,054 - INFO - Path found with length 8
+2025-04-20 11:08:07,054 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:07,054 - INFO - Path found with length 9
+2025-04-20 11:08:07,054 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:07,055 - INFO - Path found with length 35
+2025-04-20 11:08:07,055 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:07,056 - INFO - Path found with length 11
+2025-04-20 11:08:07,056 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:07,056 - INFO - Path found with length 7
+2025-04-20 11:08:07,056 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:07,057 - INFO - Path found with length 9
+2025-04-20 11:08:07,057 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,057 - INFO - Path found with length 3
+2025-04-20 11:08:07,057 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,058 - INFO - Path found with length 14
+2025-04-20 11:08:07,058 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,059 - INFO - Path found with length 20
+2025-04-20 11:08:07,059 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:07,059 - INFO - Path found with length 18
+2025-04-20 11:08:07,060 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,060 - INFO - Path found with length 10
+2025-04-20 11:08:07,060 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:07,060 - INFO - Path found with length 7
+2025-04-20 11:08:07,061 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:07,061 - INFO - Path found with length 11
+2025-04-20 11:08:07,061 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:07,061 - INFO - Path found with length 3
+2025-04-20 11:08:07,061 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:07,062 - INFO - Path found with length 35
+2025-04-20 11:08:07,062 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:07,063 - INFO - Path found with length 4
+2025-04-20 11:08:07,063 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:07,063 - INFO - Path found with length 11
+2025-04-20 11:08:07,063 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:07,063 - INFO - Path found with length 7
+2025-04-20 11:08:07,064 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:07,064 - INFO - Path found with length 9
+2025-04-20 11:08:07,064 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:07,065 - INFO - Path found with length 15
+2025-04-20 11:08:07,065 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,065 - INFO - Path found with length 20
+2025-04-20 11:08:07,066 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:07,067 - INFO - Path found with length 18
+2025-04-20 11:08:07,067 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:07,067 - INFO - Path found with length 7
+2025-04-20 11:08:07,067 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:07,067 - INFO - Path found with length 7
+2025-04-20 11:08:07,067 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,068 - INFO - Path found with length 8
+2025-04-20 11:08:07,068 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:07,068 - INFO - Path found with length 3
+2025-04-20 11:08:07,068 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:07,069 - INFO - Path found with length 35
+2025-04-20 11:08:07,069 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:07,069 - INFO - Path found with length 4
+2025-04-20 11:08:07,069 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:07,069 - INFO - Path found with length 3
+2025-04-20 11:08:07,069 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:07,070 - INFO - Path found with length 9
+2025-04-20 11:08:07,070 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:07,070 - INFO - Path found with length 7
+2025-04-20 11:08:07,070 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,071 - INFO - Path found with length 7
+2025-04-20 11:08:07,071 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,072 - INFO - Path found with length 20
+2025-04-20 11:08:07,072 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:07,072 - INFO - Path found with length 4
+2025-04-20 11:08:07,072 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:07,072 - INFO - Path found with length 3
+2025-04-20 11:08:07,073 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,073 - INFO - Path found with length 8
+2025-04-20 11:08:07,073 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,073 - INFO - Path found with length 7
+2025-04-20 11:08:07,073 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,074 - INFO - Path found with length 10
+2025-04-20 11:08:07,074 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:07,075 - INFO - Path found with length 26
+2025-04-20 11:08:07,075 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:07,075 - INFO - Path found with length 3
+2025-04-20 11:08:07,075 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,075 - INFO - Path found with length 3
+2025-04-20 11:08:07,075 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,076 - INFO - Path found with length 14
+2025-04-20 11:08:07,076 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,077 - INFO - Path found with length 10
+2025-04-20 11:08:07,077 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:07,077 - INFO - Path found with length 7
+2025-04-20 11:08:07,077 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:07,079 - INFO - Path found with length 27
+2025-04-20 11:08:07,079 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:07,080 - INFO - Path found with length 18
+2025-04-20 11:08:07,080 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,080 - INFO - Path found with length 10
+2025-04-20 11:08:07,080 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:07,081 - INFO - Path found with length 7
+2025-04-20 11:08:07,081 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:07,081 - INFO - Path found with length 8
+2025-04-20 11:08:07,081 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,081 - INFO - Path found with length 3
+2025-04-20 11:08:07,082 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:07,082 - INFO - Path found with length 34
+2025-04-20 11:08:07,083 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:07,083 - INFO - Path found with length 11
+2025-04-20 11:08:07,083 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:07,083 - INFO - Path found with length 11
+2025-04-20 11:08:07,084 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,084 - INFO - Path found with length 14
+2025-04-20 11:08:07,084 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:07,085 - INFO - Path found with length 15
+2025-04-20 11:08:07,085 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:07,085 - INFO - Path found with length 9
+2025-04-20 11:08:07,085 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:07,086 - INFO - Path found with length 26
+2025-04-20 11:08:07,086 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:07,086 - INFO - Path found with length 4
+2025-04-20 11:08:07,087 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,087 - INFO - Path found with length 14
+2025-04-20 11:08:07,088 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:07,088 - INFO - Path found with length 15
+2025-04-20 11:08:07,088 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:07,089 - INFO - Path found with length 9
+2025-04-20 11:08:07,089 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:07,089 - INFO - Path found with length 7
+2025-04-20 11:08:07,089 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:07,090 - INFO - Path found with length 27
+2025-04-20 11:08:07,090 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:07,090 - INFO - Path found with length 4
+2025-04-20 11:08:07,090 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:07,091 - INFO - Path found with length 8
+2025-04-20 11:08:07,091 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:07,091 - INFO - Path found with length 10
+2025-04-20 11:08:07,091 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:07,092 - INFO - Path found with length 15
+2025-04-20 11:08:07,092 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,092 - INFO - Path found with length 8
+2025-04-20 11:08:07,092 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:07,093 - INFO - Path found with length 27
+2025-04-20 11:08:07,093 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:07,094 - INFO - Path found with length 18
+2025-04-20 11:08:07,094 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:07,095 - INFO - Path found with length 14
+2025-04-20 11:08:07,095 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:07,095 - INFO - Path found with length 11
+2025-04-20 11:08:07,095 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:07,096 - INFO - Path found with length 7
+2025-04-20 11:08:07,096 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:07,096 - INFO - Path found with length 9
+2025-04-20 11:08:07,097 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:07,097 - INFO - Path found with length 35
+2025-04-20 11:08:07,097 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:07,097 - INFO - Path found with length 11
+2025-04-20 11:08:07,097 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:07,098 - INFO - Path found with length 7
+2025-04-20 11:08:07,098 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,098 - INFO - Path found with length 8
+2025-04-20 11:08:07,098 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,099 - INFO - Path found with length 14
+2025-04-20 11:08:07,099 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:07,099 - INFO - Path found with length 15
+2025-04-20 11:08:07,100 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:07,100 - INFO - Path found with length 35
+2025-04-20 11:08:07,101 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:07,101 - INFO - Path found with length 11
+2025-04-20 11:08:07,101 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:07,101 - INFO - Path found with length 8
+2025-04-20 11:08:07,101 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:07,102 - INFO - Path found with length 15
+2025-04-20 11:08:07,102 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:07,103 - INFO - Path found with length 14
+2025-04-20 11:08:07,103 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:07,104 - INFO - Path found with length 8
+2025-04-20 11:08:07,104 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:07,105 - INFO - Path found with length 26
+2025-04-20 11:08:07,105 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:07,105 - INFO - Path found with length 3
+2025-04-20 11:08:07,105 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,105 - INFO - Path found with length 8
+2025-04-20 11:08:07,106 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,106 - INFO - Path found with length 7
+2025-04-20 11:08:07,106 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,106 - INFO - Path found with length 10
+2025-04-20 11:08:07,107 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,107 - INFO - Path found with length 8
+2025-04-20 11:08:07,107 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:07,108 - INFO - Path found with length 34
+2025-04-20 11:08:07,108 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:07,108 - INFO - Path found with length 12
+2025-04-20 11:08:07,108 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:07,109 - INFO - Path found with length 9
+2025-04-20 11:08:07,109 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,109 - INFO - Path found with length 8
+2025-04-20 11:08:07,109 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:07,110 - INFO - Path found with length 11
+2025-04-20 11:08:07,110 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,111 - INFO - Path found with length 14
+2025-04-20 11:08:07,111 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,112 - INFO - Path found with length 20
+2025-04-20 11:08:07,112 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:07,112 - INFO - Path found with length 11
+2025-04-20 11:08:07,113 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:07,113 - INFO - Path found with length 8
+2025-04-20 11:08:07,113 - INFO - Starting BFS search from (0, 3) to (2, 16)
+2025-04-20 11:08:07,114 - INFO - Path found with length 15
+2025-04-20 11:08:07,114 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,114 - INFO - Path found with length 10
+2025-04-20 11:08:07,114 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,115 - INFO - Path found with length 8
+2025-04-20 11:08:07,115 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:07,115 - INFO - Path found with length 34
+2025-04-20 11:08:07,115 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:07,115 - INFO - Path found with length 3
+2025-04-20 11:08:07,116 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,116 - INFO - Path found with length 8
+2025-04-20 11:08:07,116 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,116 - INFO - Path found with length 7
+2025-04-20 11:08:07,117 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:07,117 - INFO - Path found with length 14
+2025-04-20 11:08:07,117 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:07,118 - INFO - Path found with length 8
+2025-04-20 11:08:07,118 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:07,119 - INFO - Path found with length 26
+2025-04-20 11:08:07,119 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:07,119 - INFO - Path found with length 18
+2025-04-20 11:08:07,119 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,120 - INFO - Path found with length 10
+2025-04-20 11:08:07,120 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,120 - INFO - Path found with length 8
+2025-04-20 11:08:07,120 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:07,120 - INFO - Path found with length 3
+2025-04-20 11:08:07,121 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,121 - INFO - Path found with length 8
+2025-04-20 11:08:07,121 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:07,122 - INFO - Path found with length 27
+2025-04-20 11:08:07,122 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:07,122 - INFO - Path found with length 3
+2025-04-20 11:08:07,123 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:07,123 - INFO - Path found with length 9
+2025-04-20 11:08:07,123 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,124 - INFO - Path found with length 8
+2025-04-20 11:08:07,124 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,124 - INFO - Path found with length 14
+2025-04-20 11:08:07,124 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:07,125 - INFO - Path found with length 7
+2025-04-20 11:08:07,125 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:07,126 - INFO - Path found with length 27
+2025-04-20 11:08:07,127 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:07,127 - INFO - Path found with length 18
+2025-04-20 11:08:07,128 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:07,128 - INFO - Path found with length 15
+2025-04-20 11:08:07,128 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:07,129 - INFO - Path found with length 9
+2025-04-20 11:08:07,129 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,129 - INFO - Path found with length 8
+2025-04-20 11:08:07,129 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:07,130 - INFO - Path found with length 11
+2025-04-20 11:08:07,130 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:07,131 - INFO - Path found with length 27
+2025-04-20 11:08:07,131 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:07,131 - INFO - Path found with length 11
+2025-04-20 11:08:07,131 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:07,131 - INFO - Path found with length 8
+2025-04-20 11:08:07,132 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,132 - INFO - Path found with length 3
+2025-04-20 11:08:07,132 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,132 - INFO - Path found with length 14
+2025-04-20 11:08:07,132 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,133 - INFO - Path found with length 10
+2025-04-20 11:08:07,133 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:07,134 - INFO - Path found with length 26
+2025-04-20 11:08:07,134 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:07,134 - INFO - Path found with length 3
+2025-04-20 11:08:07,134 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:07,134 - INFO - Path found with length 9
+2025-04-20 11:08:07,135 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,135 - INFO - Path found with length 8
+2025-04-20 11:08:07,135 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:07,135 - INFO - Path found with length 11
+2025-04-20 11:08:07,135 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,136 - INFO - Path found with length 7
+2025-04-20 11:08:07,136 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,136 - INFO - Path found with length 20
+2025-04-20 11:08:07,136 - INFO - Starting BFS search from (0, 0) to (2, 2)
+2025-04-20 11:08:07,137 - INFO - Path found with length 4
+2025-04-20 11:08:07,137 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:07,137 - INFO - Path found with length 3
+2025-04-20 11:08:07,137 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,138 - INFO - Path found with length 8
+2025-04-20 11:08:07,138 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:07,138 - INFO - Path found with length 7
+2025-04-20 11:08:07,138 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:07,139 - INFO - Path found with length 10
+2025-04-20 11:08:07,139 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,139 - INFO - Path found with length 20
+2025-04-20 11:08:07,140 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:07,140 - INFO - Path found with length 12
+2025-04-20 11:08:07,140 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,140 - INFO - Path found with length 8
+2025-04-20 11:08:07,140 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,141 - INFO - Path found with length 14
+2025-04-20 11:08:07,141 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:07,141 - INFO - Path found with length 7
+2025-04-20 11:08:07,141 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:07,142 - INFO - Path found with length 8
+2025-04-20 11:08:07,142 - INFO - Starting BFS search from (0, 3) to (19, 19)
+2025-04-20 11:08:07,142 - INFO - Path found with length 35
+2025-04-20 11:08:07,143 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:07,143 - INFO - Path found with length 12
+2025-04-20 11:08:07,143 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:07,143 - INFO - Path found with length 7
+2025-04-20 11:08:07,144 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:07,144 - INFO - Path found with length 8
+2025-04-20 11:08:07,144 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,144 - INFO - Path found with length 3
+2025-04-20 11:08:07,145 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,145 - INFO - Path found with length 14
+2025-04-20 11:08:07,145 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,146 - INFO - Path found with length 20
+2025-04-20 11:08:07,146 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:07,146 - INFO - Path found with length 11
+2025-04-20 11:08:07,146 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:07,147 - INFO - Path found with length 7
+2025-04-20 11:08:07,147 - INFO - Starting BFS search from (4, 8) to (2, 16)
+2025-04-20 11:08:07,147 - INFO - Path found with length 10
+2025-04-20 11:08:07,147 - INFO - Starting BFS search from (2, 16) to (0, 3)
+2025-04-20 11:08:07,148 - INFO - Path found with length 15
+2025-04-20 11:08:07,148 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,148 - INFO - Path found with length 3
+2025-04-20 11:08:07,148 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:07,149 - INFO - Path found with length 34
+2025-04-20 11:08:07,149 - INFO - Starting BFS search from (0, 0) to (0, 11)
+2025-04-20 11:08:07,150 - INFO - Path found with length 11
+2025-04-20 11:08:07,150 - INFO - Starting BFS search from (0, 11) to (0, 3)
+2025-04-20 11:08:07,150 - INFO - Path found with length 8
+2025-04-20 11:08:07,150 - INFO - Starting BFS search from (0, 3) to (4, 8)
+2025-04-20 11:08:07,150 - INFO - Path found with length 9
+2025-04-20 11:08:07,151 - INFO - Starting BFS search from (4, 8) to (2, 2)
+2025-04-20 11:08:07,151 - INFO - Path found with length 8
+2025-04-20 11:08:07,152 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,152 - INFO - Path found with length 14
+2025-04-20 11:08:07,152 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,152 - INFO - Path found with length 20
+2025-04-20 11:08:07,153 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:07,153 - INFO - Path found with length 18
+2025-04-20 11:08:07,153 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,154 - INFO - Path found with length 10
+2025-04-20 11:08:07,154 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:07,154 - INFO - Path found with length 9
+2025-04-20 11:08:07,154 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,155 - INFO - Path found with length 3
+2025-04-20 11:08:07,155 - INFO - Starting BFS search from (2, 2) to (0, 11)
+2025-04-20 11:08:07,155 - INFO - Path found with length 11
+2025-04-20 11:08:07,155 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:07,156 - INFO - Path found with length 27
+2025-04-20 11:08:07,156 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:07,157 - INFO - Path found with length 18
+2025-04-20 11:08:07,157 - INFO - Starting BFS search from (2, 16) to (2, 2)
+2025-04-20 11:08:07,158 - INFO - Path found with length 14
+2025-04-20 11:08:07,158 - INFO - Starting BFS search from (2, 2) to (0, 3)
+2025-04-20 11:08:07,158 - INFO - Path found with length 3
+2025-04-20 11:08:07,158 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,159 - INFO - Path found with length 8
+2025-04-20 11:08:07,159 - INFO - Starting BFS search from (0, 11) to (4, 8)
+2025-04-20 11:08:07,159 - INFO - Path found with length 7
+2025-04-20 11:08:07,160 - INFO - Starting BFS search from (4, 8) to (19, 19)
+2025-04-20 11:08:07,161 - INFO - Path found with length 26
+2025-04-20 11:08:07,161 - INFO - Starting BFS search from (0, 0) to (4, 8)
+2025-04-20 11:08:07,161 - INFO - Path found with length 12
+2025-04-20 11:08:07,161 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:07,162 - INFO - Path found with length 9
+2025-04-20 11:08:07,162 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,162 - INFO - Path found with length 3
+2025-04-20 11:08:07,162 - INFO - Starting BFS search from (2, 2) to (2, 16)
+2025-04-20 11:08:07,163 - INFO - Path found with length 14
+2025-04-20 11:08:07,163 - INFO - Starting BFS search from (2, 16) to (0, 11)
+2025-04-20 11:08:07,163 - INFO - Path found with length 7
+2025-04-20 11:08:07,163 - INFO - Starting BFS search from (0, 11) to (19, 19)
+2025-04-20 11:08:07,164 - INFO - Path found with length 27
+2025-04-20 11:08:07,164 - INFO - Starting BFS search from (0, 0) to (2, 16)
+2025-04-20 11:08:07,165 - INFO - Path found with length 18
+2025-04-20 11:08:07,165 - INFO - Starting BFS search from (2, 16) to (4, 8)
+2025-04-20 11:08:07,165 - INFO - Path found with length 10
+2025-04-20 11:08:07,166 - INFO - Starting BFS search from (4, 8) to (0, 3)
+2025-04-20 11:08:07,166 - INFO - Path found with length 9
+2025-04-20 11:08:07,166 - INFO - Starting BFS search from (0, 3) to (0, 11)
+2025-04-20 11:08:07,166 - INFO - Path found with length 8
+2025-04-20 11:08:07,167 - INFO - Starting BFS search from (0, 11) to (2, 2)
+2025-04-20 11:08:07,167 - INFO - Path found with length 11
+2025-04-20 11:08:07,167 - INFO - Starting BFS search from (2, 2) to (19, 19)
+2025-04-20 11:08:07,168 - INFO - Path found with length 34
+2025-04-20 11:08:07,168 - INFO - Found good solution at generation 0: [(0, 3), (2, 2), (4, 8), (0, 11), (2, 16)]
+2025-04-20 11:08:07,168 - INFO - Optimised point order: [(0, 3), (2, 2), (4, 8), (0, 11), (2, 16)]
+2025-04-20 11:08:07,168 - INFO - Starting BFS search from (0, 0) to (0, 3)
+2025-04-20 11:08:07,168 - INFO - Path found with length 3
+2025-04-20 11:08:07,169 - INFO - Starting BFS search from (0, 3) to (2, 2)
+2025-04-20 11:08:07,169 - INFO - Path found with length 3
+2025-04-20 11:08:07,169 - INFO - Starting BFS search from (2, 2) to (4, 8)
+2025-04-20 11:08:07,170 - INFO - Path found with length 8
+2025-04-20 11:08:07,170 - INFO - Starting BFS search from (4, 8) to (0, 11)
+2025-04-20 11:08:07,170 - INFO - Path found with length 7
+2025-04-20 11:08:07,170 - INFO - Starting BFS search from (0, 11) to (2, 16)
+2025-04-20 11:08:07,171 - INFO - Path found with length 7
+2025-04-20 11:08:07,171 - INFO - Starting BFS search from (2, 16) to (19, 19)
+2025-04-20 11:08:07,171 - INFO - Path found with length 20
+2025-04-20 11:09:45,266 - INFO - PathFinder initialised with grid size 20x20
+2025-04-20 11:09:52,036 - INFO - Finding path through 2 intermediate points
+2025-04-20 11:09:52,036 - INFO - Optimising point order using genetic algorithm
+2025-04-20 11:09:52,036 - INFO - Starting BFS search from (0, 0) to (2, 15)
+2025-04-20 11:09:52,038 - INFO - Path found with length 17
+2025-04-20 11:09:52,039 - INFO - Starting BFS search from (2, 15) to (1, 13)
+2025-04-20 11:09:52,039 - INFO - Path found with length 3
+2025-04-20 11:09:52,039 - INFO - Starting BFS search from (1, 13) to (19, 19)
+2025-04-20 11:09:52,040 - INFO - Path found with length 24
+2025-04-20 11:09:52,040 - INFO - Starting BFS search from (0, 0) to (1, 13)
+2025-04-20 11:09:52,041 - INFO - Path found with length 14
+2025-04-20 11:09:52,041 - INFO - Starting BFS search from (1, 13) to (2, 15)
+2025-04-20 11:09:52,041 - INFO - Path found with length 3
+2025-04-20 11:09:52,041 - INFO - Starting BFS search from (2, 15) to (19, 19)
+2025-04-20 11:09:52,042 - INFO - Path found with length 21
+2025-04-20 11:09:52,042 - INFO - Found good solution at generation 0: [(1, 13), (2, 15)]
+2025-04-20 11:09:52,042 - INFO - Optimised point order: [(1, 13), (2, 15)]
+2025-04-20 11:10:08,430 - INFO - Finding path through 4 intermediate points
+2025-04-20 11:10:08,431 - INFO - Optimising point order using genetic algorithm
+2025-04-20 11:10:08,431 - INFO - Starting BFS search from (0, 0) to (2, 15)
+2025-04-20 11:10:08,431 - INFO - Path found with length 17
+2025-04-20 11:10:08,432 - INFO - Starting BFS search from (2, 15) to (1, 13)
+2025-04-20 11:10:08,432 - INFO - Path found with length 3
+2025-04-20 11:10:08,432 - INFO - Starting BFS search from (1, 13) to (0, 1)
+2025-04-20 11:10:08,433 - INFO - Path found with length 13
+2025-04-20 11:10:08,433 - INFO - Starting BFS search from (0, 1) to (8, 3)
+2025-04-20 11:10:08,433 - INFO - Path found with length 10
+2025-04-20 11:10:08,434 - INFO - Starting BFS search from (8, 3) to (19, 19)
+2025-04-20 11:10:08,434 - INFO - Path found with length 27
+2025-04-20 11:10:08,434 - INFO - Starting BFS search from (0, 0) to (2, 15)
+2025-04-20 11:10:08,435 - INFO - Path found with length 17
+2025-04-20 11:10:08,435 - INFO - Starting BFS search from (2, 15) to (1, 13)
+2025-04-20 11:10:08,435 - INFO - Path found with length 3
+2025-04-20 11:10:08,435 - INFO - Starting BFS search from (1, 13) to (8, 3)
+2025-04-20 11:10:08,436 - INFO - Path found with length 17
+2025-04-20 11:10:08,436 - INFO - Starting BFS search from (8, 3) to (0, 1)
+2025-04-20 11:10:08,436 - INFO - Path found with length 10
+2025-04-20 11:10:08,436 - INFO - Starting BFS search from (0, 1) to (19, 19)
+2025-04-20 11:10:08,437 - INFO - Path found with length 37
+2025-04-20 11:10:08,437 - INFO - Starting BFS search from (0, 0) to (8, 3)
+2025-04-20 11:10:08,438 - INFO - Path found with length 11
+2025-04-20 11:10:08,438 - INFO - Starting BFS search from (8, 3) to (2, 15)
+2025-04-20 11:10:08,439 - INFO - Path found with length 18
+2025-04-20 11:10:08,439 - INFO - Starting BFS search from (2, 15) to (0, 1)
+2025-04-20 11:10:08,440 - INFO - Path found with length 16
+2025-04-20 11:10:08,440 - INFO - Starting BFS search from (0, 1) to (1, 13)
+2025-04-20 11:10:08,440 - INFO - Path found with length 13
+2025-04-20 11:10:08,440 - INFO - Starting BFS search from (1, 13) to (19, 19)
+2025-04-20 11:10:08,441 - INFO - Path found with length 24
+2025-04-20 11:10:08,441 - INFO - Starting BFS search from (0, 0) to (0, 1)
+2025-04-20 11:10:08,441 - INFO - Path found with length 1
+2025-04-20 11:10:08,442 - INFO - Starting BFS search from (0, 1) to (2, 15)
+2025-04-20 11:10:08,442 - INFO - Path found with length 16
+2025-04-20 11:10:08,442 - INFO - Starting BFS search from (2, 15) to (1, 13)
+2025-04-20 11:10:08,442 - INFO - Path found with length 3
+2025-04-20 11:10:08,442 - INFO - Starting BFS search from (1, 13) to (8, 3)
+2025-04-20 11:10:08,443 - INFO - Path found with length 17
+2025-04-20 11:10:08,444 - INFO - Starting BFS search from (8, 3) to (19, 19)
+2025-04-20 11:10:08,445 - INFO - Path found with length 27
+2025-04-20 11:10:08,445 - INFO - Starting BFS search from (0, 0) to (0, 1)
+2025-04-20 11:10:08,446 - INFO - Path found with length 1
+2025-04-20 11:10:08,446 - INFO - Starting BFS search from (0, 1) to (1, 13)
+2025-04-20 11:10:08,446 - INFO - Path found with length 13
+2025-04-20 11:10:08,447 - INFO - Starting BFS search from (1, 13) to (8, 3)
+2025-04-20 11:10:08,447 - INFO - Path found with length 17
+2025-04-20 11:10:08,448 - INFO - Starting BFS search from (8, 3) to (2, 15)
+2025-04-20 11:10:08,449 - INFO - Path found with length 18
+2025-04-20 11:10:08,449 - INFO - Starting BFS search from (2, 15) to (19, 19)
+2025-04-20 11:10:08,450 - INFO - Path found with length 21
+2025-04-20 11:10:08,450 - INFO - Starting BFS search from (0, 0) to (2, 15)
+2025-04-20 11:10:08,450 - INFO - Path found with length 17
+2025-04-20 11:10:08,450 - INFO - Starting BFS search from (2, 15) to (8, 3)
+2025-04-20 11:10:08,451 - INFO - Path found with length 18
+2025-04-20 11:10:08,451 - INFO - Starting BFS search from (8, 3) to (1, 13)
+2025-04-20 11:10:08,452 - INFO - Path found with length 17
+2025-04-20 11:10:08,452 - INFO - Starting BFS search from (1, 13) to (0, 1)
+2025-04-20 11:10:08,452 - INFO - Path found with length 13
+2025-04-20 11:10:08,452 - INFO - Starting BFS search from (0, 1) to (19, 19)
+2025-04-20 11:10:08,453 - INFO - Path found with length 37
+2025-04-20 11:10:08,454 - INFO - Starting BFS search from (0, 0) to (8, 3)
+2025-04-20 11:10:08,454 - INFO - Path found with length 11
+2025-04-20 11:10:08,454 - INFO - Starting BFS search from (8, 3) to (1, 13)
+2025-04-20 11:10:08,455 - INFO - Path found with length 17
+2025-04-20 11:10:08,455 - INFO - Starting BFS search from (1, 13) to (2, 15)
+2025-04-20 11:10:08,455 - INFO - Path found with length 3
+2025-04-20 11:10:08,455 - INFO - Starting BFS search from (2, 15) to (0, 1)
+2025-04-20 11:10:08,456 - INFO - Path found with length 16
+2025-04-20 11:10:08,456 - INFO - Starting BFS search from (0, 1) to (19, 19)
+2025-04-20 11:10:08,457 - INFO - Path found with length 37
+2025-04-20 11:10:08,457 - INFO - Starting BFS search from (0, 0) to (0, 1)
+2025-04-20 11:10:08,457 - INFO - Path found with length 1
+2025-04-20 11:10:08,457 - INFO - Starting BFS search from (0, 1) to (8, 3)
+2025-04-20 11:10:08,457 - INFO - Path found with length 10
+2025-04-20 11:10:08,458 - INFO - Starting BFS search from (8, 3) to (1, 13)
+2025-04-20 11:10:08,458 - INFO - Path found with length 17
+2025-04-20 11:10:08,458 - INFO - Starting BFS search from (1, 13) to (2, 15)
+2025-04-20 11:10:08,458 - INFO - Path found with length 3
+2025-04-20 11:10:08,459 - INFO - Starting BFS search from (2, 15) to (19, 19)
+2025-04-20 11:10:08,459 - INFO - Path found with length 21
+2025-04-20 11:10:08,459 - INFO - Starting BFS search from (0, 0) to (1, 13)
+2025-04-20 11:10:08,460 - INFO - Path found with length 14
+2025-04-20 11:10:08,460 - INFO - Starting BFS search from (1, 13) to (8, 3)
+2025-04-20 11:10:08,461 - INFO - Path found with length 17
+2025-04-20 11:10:08,461 - INFO - Starting BFS search from (8, 3) to (2, 15)
+2025-04-20 11:10:08,461 - INFO - Path found with length 18
+2025-04-20 11:10:08,462 - INFO - Starting BFS search from (2, 15) to (0, 1)
+2025-04-20 11:10:08,462 - INFO - Path found with length 16
+2025-04-20 11:10:08,463 - INFO - Starting BFS search from (0, 1) to (19, 19)
+2025-04-20 11:10:08,464 - INFO - Path found with length 37
+2025-04-20 11:10:08,464 - INFO - Starting BFS search from (0, 0) to (1, 13)
+2025-04-20 11:10:08,464 - INFO - Path found with length 14
+2025-04-20 11:10:08,465 - INFO - Starting BFS search from (1, 13) to (2, 15)
+2025-04-20 11:10:08,465 - INFO - Path found with length 3
+2025-04-20 11:10:08,465 - INFO - Starting BFS search from (2, 15) to (0, 1)
+2025-04-20 11:10:08,466 - INFO - Path found with length 16
+2025-04-20 11:10:08,466 - INFO - Starting BFS search from (0, 1) to (8, 3)
+2025-04-20 11:10:08,467 - INFO - Path found with length 10
+2025-04-20 11:10:08,467 - INFO - Starting BFS search from (8, 3) to (19, 19)
+2025-04-20 11:10:08,468 - INFO - Path found with length 27
+2025-04-20 11:10:08,468 - INFO - Starting BFS search from (0, 0) to (2, 15)
+2025-04-20 11:10:08,468 - INFO - Path found with length 17
+2025-04-20 11:10:08,469 - INFO - Starting BFS search from (2, 15) to (8, 3)
+2025-04-20 11:10:08,469 - INFO - Path found with length 18
+2025-04-20 11:10:08,469 - INFO - Starting BFS search from (8, 3) to (0, 1)
+2025-04-20 11:10:08,470 - INFO - Path found with length 10
+2025-04-20 11:10:08,470 - INFO - Starting BFS search from (0, 1) to (1, 13)
+2025-04-20 11:10:08,470 - INFO - Path found with length 13
+2025-04-20 11:10:08,470 - INFO - Starting BFS search from (1, 13) to (19, 19)
+2025-04-20 11:10:08,471 - INFO - Path found with length 24
+2025-04-20 11:10:08,471 - INFO - Starting BFS search from (0, 0) to (1, 13)
+2025-04-20 11:10:08,472 - INFO - Path found with length 14
+2025-04-20 11:10:08,472 - INFO - Starting BFS search from (1, 13) to (2, 15)
+2025-04-20 11:10:08,472 - INFO - Path found with length 3
+2025-04-20 11:10:08,472 - INFO - Starting BFS search from (2, 15) to (8, 3)
+2025-04-20 11:10:08,473 - INFO - Path found with length 18
+2025-04-20 11:10:08,473 - INFO - Starting BFS search from (8, 3) to (0, 1)
+2025-04-20 11:10:08,473 - INFO - Path found with length 10
+2025-04-20 11:10:08,474 - INFO - Starting BFS search from (0, 1) to (19, 19)
+2025-04-20 11:10:08,475 - INFO - Path found with length 37
+2025-04-20 11:10:08,475 - INFO - Starting BFS search from (0, 0) to (0, 1)
+2025-04-20 11:10:08,475 - INFO - Path found with length 1
+2025-04-20 11:10:08,475 - INFO - Starting BFS search from (0, 1) to (2, 15)
+2025-04-20 11:10:08,476 - INFO - Path found with length 16
+2025-04-20 11:10:08,476 - INFO - Starting BFS search from (2, 15) to (8, 3)
+2025-04-20 11:10:08,476 - INFO - Path found with length 18
+2025-04-20 11:10:08,476 - INFO - Starting BFS search from (8, 3) to (1, 13)
+2025-04-20 11:10:08,477 - INFO - Path found with length 17
+2025-04-20 11:10:08,477 - INFO - Starting BFS search from (1, 13) to (19, 19)
+2025-04-20 11:10:08,478 - INFO - Path found with length 24
+2025-04-20 11:10:08,478 - INFO - Starting BFS search from (0, 0) to (8, 3)
+2025-04-20 11:10:08,478 - INFO - Path found with length 11
+2025-04-20 11:10:08,478 - INFO - Starting BFS search from (8, 3) to (0, 1)
+2025-04-20 11:10:08,479 - INFO - Path found with length 10
+2025-04-20 11:10:08,479 - INFO - Starting BFS search from (0, 1) to (1, 13)
+2025-04-20 11:10:08,479 - INFO - Path found with length 13
+2025-04-20 11:10:08,479 - INFO - Starting BFS search from (1, 13) to (2, 15)
+2025-04-20 11:10:08,479 - INFO - Path found with length 3
+2025-04-20 11:10:08,480 - INFO - Starting BFS search from (2, 15) to (19, 19)
+2025-04-20 11:10:08,480 - INFO - Path found with length 21
+2025-04-20 11:10:08,480 - INFO - Starting BFS search from (0, 0) to (2, 15)
+2025-04-20 11:10:08,481 - INFO - Path found with length 17
+2025-04-20 11:10:08,481 - INFO - Starting BFS search from (2, 15) to (0, 1)
+2025-04-20 11:10:08,482 - INFO - Path found with length 16
+2025-04-20 11:10:08,482 - INFO - Starting BFS search from (0, 1) to (8, 3)
+2025-04-20 11:10:08,482 - INFO - Path found with length 10
+2025-04-20 11:10:08,482 - INFO - Starting BFS search from (8, 3) to (1, 13)
+2025-04-20 11:10:08,483 - INFO - Path found with length 17
+2025-04-20 11:10:08,483 - INFO - Starting BFS search from (1, 13) to (19, 19)
+2025-04-20 11:10:08,484 - INFO - Path found with length 24
+2025-04-20 11:10:08,484 - INFO - Starting BFS search from (0, 0) to (8, 3)
+2025-04-20 11:10:08,484 - INFO - Path found with length 11
+2025-04-20 11:10:08,484 - INFO - Starting BFS search from (8, 3) to (2, 15)
+2025-04-20 11:10:08,485 - INFO - Path found with length 18
+2025-04-20 11:10:08,485 - INFO - Starting BFS search from (2, 15) to (1, 13)
+2025-04-20 11:10:08,485 - INFO - Path found with length 3
+2025-04-20 11:10:08,485 - INFO - Starting BFS search from (1, 13) to (0, 1)
+2025-04-20 11:10:08,486 - INFO - Path found with length 13
+2025-04-20 11:10:08,486 - INFO - Starting BFS search from (0, 1) to (19, 19)
+2025-04-20 11:10:08,487 - INFO - Path found with length 37
+2025-04-20 11:10:08,487 - INFO - Starting BFS search from (0, 0) to (0, 1)
+2025-04-20 11:10:08,487 - INFO - Path found with length 1
+2025-04-20 11:10:08,487 - INFO - Starting BFS search from (0, 1) to (8, 3)
+2025-04-20 11:10:08,487 - INFO - Path found with length 10
+2025-04-20 11:10:08,487 - INFO - Starting BFS search from (8, 3) to (2, 15)
+2025-04-20 11:10:08,488 - INFO - Path found with length 18
+2025-04-20 11:10:08,488 - INFO - Starting BFS search from (2, 15) to (1, 13)
+2025-04-20 11:10:08,488 - INFO - Path found with length 3
+2025-04-20 11:10:08,488 - INFO - Starting BFS search from (1, 13) to (19, 19)
+2025-04-20 11:10:08,489 - INFO - Path found with length 24
+2025-04-20 11:10:08,489 - INFO - Starting BFS search from (0, 0) to (1, 13)
+2025-04-20 11:10:08,489 - INFO - Path found with length 14
+2025-04-20 11:10:08,490 - INFO - Starting BFS search from (1, 13) to (8, 3)
+2025-04-20 11:10:08,490 - INFO - Path found with length 17
+2025-04-20 11:10:08,490 - INFO - Starting BFS search from (8, 3) to (0, 1)
+2025-04-20 11:10:08,491 - INFO - Path found with length 10
+2025-04-20 11:10:08,491 - INFO - Starting BFS search from (0, 1) to (2, 15)
+2025-04-20 11:10:08,491 - INFO - Path found with length 16
+2025-04-20 11:10:08,491 - INFO - Starting BFS search from (2, 15) to (19, 19)
+2025-04-20 11:10:08,492 - INFO - Path found with length 21
+2025-04-20 11:10:08,492 - INFO - Starting BFS search from (0, 0) to (1, 13)
+2025-04-20 11:10:08,492 - INFO - Path found with length 14
+2025-04-20 11:10:08,493 - INFO - Starting BFS search from (1, 13) to (0, 1)
+2025-04-20 11:10:08,493 - INFO - Path found with length 13
+2025-04-20 11:10:08,493 - INFO - Starting BFS search from (0, 1) to (8, 3)
+2025-04-20 11:10:08,493 - INFO - Path found with length 10
+2025-04-20 11:10:08,493 - INFO - Starting BFS search from (8, 3) to (2, 15)
+2025-04-20 11:10:08,494 - INFO - Path found with length 18
+2025-04-20 11:10:08,494 - INFO - Starting BFS search from (2, 15) to (19, 19)
+2025-04-20 11:10:08,495 - INFO - Path found with length 21
+2025-04-20 11:10:08,495 - INFO - Starting BFS search from (0, 0) to (2, 15)
+2025-04-20 11:10:08,495 - INFO - Path found with length 17
+2025-04-20 11:10:08,495 - INFO - Starting BFS search from (2, 15) to (0, 1)
+2025-04-20 11:10:08,496 - INFO - Path found with length 16
+2025-04-20 11:10:08,496 - INFO - Starting BFS search from (0, 1) to (1, 13)
+2025-04-20 11:10:08,496 - INFO - Path found with length 13
+2025-04-20 11:10:08,497 - INFO - Starting BFS search from (1, 13) to (8, 3)
+2025-04-20 11:10:08,497 - INFO - Path found with length 17
+2025-04-20 11:10:08,497 - INFO - Starting BFS search from (8, 3) to (19, 19)
+2025-04-20 11:10:08,498 - INFO - Path found with length 27
+2025-04-20 11:10:08,499 - INFO - Starting BFS search from (0, 0) to (8, 3)
+2025-04-20 11:10:08,499 - INFO - Path found with length 11
+2025-04-20 11:10:08,499 - INFO - Starting BFS search from (8, 3) to (0, 1)
+2025-04-20 11:10:08,501 - INFO - Path found with length 10
+2025-04-20 11:10:08,501 - INFO - Starting BFS search from (0, 1) to (2, 15)
+2025-04-20 11:10:08,502 - INFO - Path found with length 16
+2025-04-20 11:10:08,502 - INFO - Starting BFS search from (2, 15) to (1, 13)
+2025-04-20 11:10:08,502 - INFO - Path found with length 3
+2025-04-20 11:10:08,502 - INFO - Starting BFS search from (1, 13) to (19, 19)
+2025-04-20 11:10:08,503 - INFO - Path found with length 24
+2025-04-20 11:10:08,503 - INFO - Starting BFS search from (0, 0) to (1, 13)
+2025-04-20 11:10:08,503 - INFO - Path found with length 14
+2025-04-20 11:10:08,504 - INFO - Starting BFS search from (1, 13) to (0, 1)
+2025-04-20 11:10:08,504 - INFO - Path found with length 13
+2025-04-20 11:10:08,504 - INFO - Starting BFS search from (0, 1) to (2, 15)
+2025-04-20 11:10:08,505 - INFO - Path found with length 16
+2025-04-20 11:10:08,505 - INFO - Starting BFS search from (2, 15) to (8, 3)
+2025-04-20 11:10:08,505 - INFO - Path found with length 18
+2025-04-20 11:10:08,506 - INFO - Starting BFS search from (8, 3) to (19, 19)
+2025-04-20 11:10:08,507 - INFO - Path found with length 27
+2025-04-20 11:10:08,507 - INFO - Starting BFS search from (0, 0) to (8, 3)
+2025-04-20 11:10:08,507 - INFO - Path found with length 11
+2025-04-20 11:10:08,507 - INFO - Starting BFS search from (8, 3) to (1, 13)
+2025-04-20 11:10:08,508 - INFO - Path found with length 17
+2025-04-20 11:10:08,508 - INFO - Starting BFS search from (1, 13) to (0, 1)
+2025-04-20 11:10:08,508 - INFO - Path found with length 13
+2025-04-20 11:10:08,509 - INFO - Starting BFS search from (0, 1) to (2, 15)
+2025-04-20 11:10:08,509 - INFO - Path found with length 16
+2025-04-20 11:10:08,509 - INFO - Starting BFS search from (2, 15) to (19, 19)
+2025-04-20 11:10:08,510 - INFO - Path found with length 21
+2025-04-20 11:10:08,510 - INFO - Starting BFS search from (0, 0) to (0, 1)
+2025-04-20 11:10:08,510 - INFO - Path found with length 1
+2025-04-20 11:10:08,510 - INFO - Starting BFS search from (0, 1) to (1, 13)
+2025-04-20 11:10:08,511 - INFO - Path found with length 13
+2025-04-20 11:10:08,511 - INFO - Starting BFS search from (1, 13) to (2, 15)
+2025-04-20 11:10:08,511 - INFO - Path found with length 3
+2025-04-20 11:10:08,511 - INFO - Starting BFS search from (2, 15) to (8, 3)
+2025-04-20 11:10:08,512 - INFO - Path found with length 18
+2025-04-20 11:10:08,512 - INFO - Starting BFS search from (8, 3) to (19, 19)
+2025-04-20 11:10:08,513 - INFO - Path found with length 27
+2025-04-20 11:10:08,513 - INFO - Found good solution at generation 0: [(0, 1), (8, 3), (1, 13), (2, 15)]
+2025-04-20 11:10:08,513 - INFO - Optimised point order: [(0, 1), (8, 3), (1, 13), (2, 15)]
+2025-04-20 11:10:11,152 - INFO - Finding path through 3 intermediate points
+2025-04-20 11:10:11,153 - INFO - Optimising point order using genetic algorithm
+2025-04-20 11:10:11,153 - INFO - Starting BFS search from (0, 0) to (1, 13)
+2025-04-20 11:10:11,153 - INFO - Path found with length 14
+2025-04-20 11:10:11,154 - INFO - Starting BFS search from (1, 13) to (0, 1)
+2025-04-20 11:10:11,154 - INFO - Path found with length 13
+2025-04-20 11:10:11,154 - INFO - Starting BFS search from (0, 1) to (8, 3)
+2025-04-20 11:10:11,154 - INFO - Path found with length 10
+2025-04-20 11:10:11,154 - INFO - Starting BFS search from (8, 3) to (19, 19)
+2025-04-20 11:10:11,155 - INFO - Path found with length 27
+2025-04-20 11:10:11,156 - INFO - Starting BFS search from (0, 0) to (0, 1)
+2025-04-20 11:10:11,156 - INFO - Path found with length 1
+2025-04-20 11:10:11,156 - INFO - Starting BFS search from (0, 1) to (8, 3)
+2025-04-20 11:10:11,156 - INFO - Path found with length 10
+2025-04-20 11:10:11,156 - INFO - Starting BFS search from (8, 3) to (1, 13)
+2025-04-20 11:10:11,157 - INFO - Path found with length 17
+2025-04-20 11:10:11,157 - INFO - Starting BFS search from (1, 13) to (19, 19)
+2025-04-20 11:10:11,158 - INFO - Path found with length 24
+2025-04-20 11:10:11,158 - INFO - Starting BFS search from (0, 0) to (8, 3)
+2025-04-20 11:10:11,158 - INFO - Path found with length 11
+2025-04-20 11:10:11,158 - INFO - Starting BFS search from (8, 3) to (1, 13)
+2025-04-20 11:10:11,159 - INFO - Path found with length 17
+2025-04-20 11:10:11,159 - INFO - Starting BFS search from (1, 13) to (0, 1)
+2025-04-20 11:10:11,159 - INFO - Path found with length 13
+2025-04-20 11:10:11,160 - INFO - Starting BFS search from (0, 1) to (19, 19)
+2025-04-20 11:10:11,160 - INFO - Path found with length 37
+2025-04-20 11:10:11,161 - INFO - Starting BFS search from (0, 0) to (1, 13)
+2025-04-20 11:10:11,161 - INFO - Path found with length 14
+2025-04-20 11:10:11,161 - INFO - Starting BFS search from (1, 13) to (8, 3)
+2025-04-20 11:10:11,162 - INFO - Path found with length 17
+2025-04-20 11:10:11,162 - INFO - Starting BFS search from (8, 3) to (0, 1)
+2025-04-20 11:10:11,162 - INFO - Path found with length 10
+2025-04-20 11:10:11,162 - INFO - Starting BFS search from (0, 1) to (19, 19)
+2025-04-20 11:10:11,163 - INFO - Path found with length 37
+2025-04-20 11:10:11,163 - INFO - Starting BFS search from (0, 0) to (0, 1)
+2025-04-20 11:10:11,163 - INFO - Path found with length 1
+2025-04-20 11:10:11,164 - INFO - Starting BFS search from (0, 1) to (1, 13)
+2025-04-20 11:10:11,164 - INFO - Path found with length 13
+2025-04-20 11:10:11,164 - INFO - Starting BFS search from (1, 13) to (8, 3)
+2025-04-20 11:10:11,165 - INFO - Path found with length 17
+2025-04-20 11:10:11,165 - INFO - Starting BFS search from (8, 3) to (19, 19)
+2025-04-20 11:10:11,166 - INFO - Path found with length 27
+2025-04-20 11:10:11,166 - INFO - Starting BFS search from (0, 0) to (8, 3)
+2025-04-20 11:10:11,166 - INFO - Path found with length 11
+2025-04-20 11:10:11,166 - INFO - Starting BFS search from (8, 3) to (0, 1)
+2025-04-20 11:10:11,167 - INFO - Path found with length 10
+2025-04-20 11:10:11,167 - INFO - Starting BFS search from (0, 1) to (1, 13)
+2025-04-20 11:10:11,167 - INFO - Path found with length 13
+2025-04-20 11:10:11,167 - INFO - Starting BFS search from (1, 13) to (19, 19)
+2025-04-20 11:10:11,168 - INFO - Path found with length 24
+2025-04-20 11:10:11,168 - INFO - Found good solution at generation 0: [(0, 1), (8, 3), (1, 13)]
+2025-04-20 11:10:11,168 - INFO - Optimised point order: [(0, 1), (8, 3), (1, 13)]
+2025-04-20 11:10:30,425 - INFO - PathFinder initialised with grid size 10x10
+2025-04-20 11:10:40,650 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:10:50,789 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:11:02,362 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:26:25,110 - INFO - PathFinder initialised with grid size 10x10
+2025-04-20 11:26:33,296 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:26:33,296 - INFO - Starting BFS search from (0, 0) to (0, 7)
+2025-04-20 11:26:33,297 - INFO - Path found with length 7
+2025-04-20 11:26:33,297 - INFO - Starting BFS search from (0, 7) to (9, 9)
+2025-04-20 11:26:33,298 - INFO - Path found with length 11
+2025-04-20 11:26:36,102 - INFO - Finding path through 1 intermediate points
+2025-04-20 11:26:36,102 - INFO - Starting BFS search from (0, 0) to (0, 7)
+2025-04-20 11:26:36,102 - INFO - Path found with length 7
+2025-04-20 11:26:36,103 - INFO - Starting BFS search from (0, 7) to (9, 9)
+2025-04-20 11:26:36,103 - INFO - Path found with length 11
+2025-04-20 11:26:46,332 - INFO - Finding path through 0 intermediate points
+2025-04-20 11:26:46,332 - WARNING - No intermediate points provided
+2025-04-20 11:26:46,332 - INFO - Starting BFS search from (0, 0) to (9, 9)
+2025-04-20 11:26:46,333 - INFO - Path found with length 18

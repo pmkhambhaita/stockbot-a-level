@@ -182,7 +182,10 @@ class PathfinderGUI:
         self.root.grid_columnconfigure(0, weight=1)
         
         # Set default optimisation setting
-        self.optimise_order = False  # Default optimisation setting
+        self.optimise_order = True  # Default optimisation setting
+        
+        # Set default algorithm
+        self.algorithm = "bfs"  # Default algorithm
         
         # Create menu bar
         self.create_menu_bar()
@@ -230,13 +233,10 @@ class PathfinderGUI:
         # Add buttons in a 2x2 grid
         query_button = ttk.Button(button_frame, text="Query Item Id", command=self.query_stock, width=20)
         query_button.grid(row=0, column=0, padx=10, pady=5, sticky='w')
-        
         obstacle_button = ttk.Button(button_frame, text="Obstacle mode", width=20)
         obstacle_button.grid(row=0, column=1, padx=10, pady=5, sticky='e')
-        
         update_button = ttk.Button(button_frame, text="Update Quantity", command=self.update_stock, width=20)
         update_button.grid(row=1, column=0, padx=10, pady=5, sticky='w')
-        
         grid_button = ttk.Button(button_frame, text="Open grid visualisation", command=self.show_grid, width=20)
         grid_button.grid(row=1, column=1, padx=10, pady=5, sticky='e')
         
@@ -262,6 +262,25 @@ class PathfinderGUI:
         menu_bar.add_cascade(label="File", menu=file_menu)
         file_menu.add_command(label="Exit", command=self.root.quit)
         
+        # Create Algorithm menu
+        algorithm_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="Algorithm", menu=algorithm_menu)
+        
+        # Add algorithm selection
+        self.algorithm_var = tk.StringVar(value=self.algorithm)
+        algorithm_menu.add_radiobutton(
+            label="Breadth-First Search (BFS)", 
+            variable=self.algorithm_var,
+            value="bfs",
+            command=self.set_algorithm
+        )
+        algorithm_menu.add_radiobutton(
+            label="A* Search", 
+            variable=self.algorithm_var,
+            value="astar",
+            command=self.set_algorithm
+        )
+        
         # Create Options menu
         options_menu = Menu(menu_bar, tearoff=0)
         menu_bar.add_cascade(label="Options", menu=options_menu)
@@ -279,6 +298,16 @@ class PathfinderGUI:
         menu_bar.add_cascade(label="Help", menu=help_menu)
         help_menu.add_command(label="About", command=self.show_about)
 
+    def set_algorithm(self):
+        """Set the pathfinding algorithm"""
+        algorithm = self.algorithm_var.get()
+        self.algorithm = algorithm
+        self.path_finder.set_algorithm(algorithm)
+        
+        # Display message about algorithm change
+        algorithm_name = "Breadth-First Search" if algorithm == "bfs" else "A* Search"
+        self.output_text.insert(tk.END, f"Pathfinding algorithm set to: {algorithm_name}\n")
+        
     def toggle_optimisation(self):
         """Toggle the optimisation setting"""
         self.optimise_order = self.optimise_var.get()
@@ -316,6 +345,7 @@ class PathfinderGUI:
         ).pack(pady=10)
 
     # Update find_path method to use optimisation if enabled
+    # Update find_path method to use the selected algorithm
     def find_path(self):
         # Get and clean the input string from the entry field
         points_str = self.point_entry.get().strip()
