@@ -9,10 +9,10 @@ import queue           # For thread-safe data exchange
 import config
 import database
 
-class GridVisualizer(tk.Toplevel):
+class GridVisualiser(tk.Toplevel):
     def __init__(self, parent, grid_rows, grid_cols, path=None, start=None, end=None, points=None, db=None):
         super().__init__(parent)
-        self.title("Path Visualization")
+        self.title("Path visualisation")
         self.grid_rows = grid_rows
         self.grid_cols = grid_cols
         self.db = db  # Store database reference for stock checking
@@ -117,7 +117,7 @@ class GridVisualizer(tk.Toplevel):
             if (x, y) not in self.selected_points and (x, y) != start and (x, y) != end:
                 self.draw_cell(x, y, "#ff3333", True)  # Bright red
     
-    def clear_visualization(self):
+    def clear_visualisation(self):
         # Clear all colored cells but keep the grid and numbers
         self.canvas.delete("all")
         self.draw_grid()
@@ -173,7 +173,7 @@ class PathfinderGUI:
         self.root.title("StockBot")
         self.root.geometry("600x500")  # Adjusted size for cleaner layout
         
-        # Initialize threading components
+        # initialise threading components
         self.processing = False
         self.result_queue = queue.Queue()
         
@@ -181,8 +181,8 @@ class PathfinderGUI:
         self.root.grid_rowconfigure(2, weight=1)  # Output text area should expand
         self.root.grid_columnconfigure(0, weight=1)
         
-        # Set default optimization setting
-        self.optimize_order = False  # Default optimization setting
+        # Set default optimisation setting
+        self.optimise_order = False  # Default optimisation setting
         
         # Create menu bar
         self.create_menu_bar()
@@ -237,7 +237,7 @@ class PathfinderGUI:
         update_button = ttk.Button(button_frame, text="Update Quantity", command=self.update_stock, width=20)
         update_button.grid(row=1, column=0, padx=10, pady=5, sticky='w')
         
-        grid_button = ttk.Button(button_frame, text="Open grid visualization", command=self.show_grid, width=20)
+        grid_button = ttk.Button(button_frame, text="Open grid visualisation", command=self.show_grid, width=20)
         grid_button.grid(row=1, column=1, padx=10, pady=5, sticky='e')
         
         # Add Find Path button separately
@@ -247,11 +247,10 @@ class PathfinderGUI:
         # Initialise the pathfinding components with configured grid size
         self.grid = spa.Grid(rows, cols)
         self.path_finder = spa.PathFinder(self.grid)
-        self.path_visualiser = spa.PathVisualiser(self.grid)
         
-        # Initialize database with the same dimensions as the grid
+        # initialise database with the same dimensions as the grid
         self.db = database.InventoryDB(rows, cols)
-        self.db.populate_random_data()  # Initialize with random stock levels
+        self.db.populate_random_data()  # initialise with random stock levels
 
     def create_menu_bar(self):
         """Create the menu bar with options"""
@@ -267,12 +266,12 @@ class PathfinderGUI:
         options_menu = Menu(menu_bar, tearoff=0)
         menu_bar.add_cascade(label="Options", menu=options_menu)
         
-        # Add optimization toggle
-        self.optimize_var = tk.BooleanVar(value=self.optimize_order)
+        # Add optimisation toggle
+        self.optimise_var = tk.BooleanVar(value=self.optimise_order)
         options_menu.add_checkbutton(
-            label="Optimize Point Order", 
-            variable=self.optimize_var,
-            command=self.toggle_optimization
+            label="Optimise Point Order", 
+            variable=self.optimise_var,
+            command=self.toggle_optimisation
         )
         
         # Create Help menu
@@ -280,11 +279,11 @@ class PathfinderGUI:
         menu_bar.add_cascade(label="Help", menu=help_menu)
         help_menu.add_command(label="About", command=self.show_about)
 
-    def toggle_optimization(self):
-        """Toggle the optimization setting"""
-        self.optimize_order = self.optimize_var.get()
-        status = "enabled" if self.optimize_order else "disabled"
-        self.output_text.insert(tk.END, f"Point order optimization {status}\n")
+    def toggle_optimisation(self):
+        """Toggle the optimisation setting"""
+        self.optimise_order = self.optimise_var.get()
+        status = "enabled" if self.optimise_order else "disabled"
+        self.output_text.insert(tk.END, f"Point order optimisation {status}\n")
 
     def show_about(self):
         """Show about dialog"""
@@ -316,7 +315,7 @@ class PathfinderGUI:
             command=about_window.destroy
         ).pack(pady=10)
 
-    # Update find_path method to use optimization if enabled
+    # Update find_path method to use optimisation if enabled
     def find_path(self):
         # Get and clean the input string from the entry field
         points_str = self.point_entry.get().strip()
@@ -387,10 +386,10 @@ class PathfinderGUI:
             for x, y, index, quantity in valid_input_points:
                 if quantity > 0:
                     valid_points.append((x, y))
-                    self.points.append((x, y))  # Add to class points list for visualization
+                    self.points.append((x, y))  # Add to class points list for visualisation
                 else:
                     skipped_points.append((x, y, index))
-                    # Add to out-of-stock tracking if visualization window exists
+                    # Add to out-of-stock tracking if visualisation window exists
                     if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
                         # Only add to out-of-stock if it was already at 0 before this run
                         self.viz_window.out_of_stock_positions.add((x, y))
@@ -403,10 +402,10 @@ class PathfinderGUI:
             if not valid_points:
                 self.output_text.insert(tk.END, "No valid points with stock available. Finding direct path from start to end.\n")
                 path = self.path_finder.find_path_through_points(start_node, [], end_node)
-                valid_points = []  # Empty list for visualization
+                valid_points = []  # Empty list for visualisation
             else:
                 # Only use optimisation if we have more than 1 point and it's enabled
-                use_optimisation = self.optimize_order and len(valid_points) > 1
+                use_optimisation = self.optimise_order and len(valid_points) > 1
                 
                 try:
                     # Find path through all valid points
@@ -414,12 +413,12 @@ class PathfinderGUI:
                         start_node, 
                         valid_points, 
                         end_node,
-                        optimize_order=use_optimisation
+                        optimise_order=use_optimisation
                     )
                 except Exception as e:
                     # If optimisation fails, try again without it
                     self.output_text.insert(tk.END, f"Optimisation failed: {str(e)}. Trying without optimisation.\n")
-                    path = self.path_finder.find_path_through_points(start_node, valid_points, end_node, optimize_order=False)
+                    path = self.path_finder.find_path_through_points(start_node, valid_points, end_node, optimise_order=False)
             
             if path:
                 # Decrement stock for each valid intermediate point
@@ -432,8 +431,8 @@ class PathfinderGUI:
                 self.output_text.delete(1.0, tk.END)
                 self.output_text.insert(tk.END, f"Total path length: {path_length} steps\n")
                 
-                # If optimization was used, show that in the output
-                if self.optimize_order and len(valid_points) > 1:
+                # If optimisation was used, show that in the output
+                if self.optimise_order and len(valid_points) > 1:
                     self.output_text.insert(tk.END, "Point order was optimised for shortest path\n")
                 
                 # Convert path to position numbers
@@ -444,9 +443,9 @@ class PathfinderGUI:
                 path_str = " -> ".join([str(idx) for idx in path_indices])
                 self.output_text.insert(tk.END, f"Path: {path_str}\n")
                 
-                # If visualization window doesn't exist, create it
+                # If visualisation window doesn't exist, create it
                 if not hasattr(self, 'viz_window') or not self.viz_window or not self.viz_window.winfo_exists():
-                    self.viz_window = GridVisualizer(
+                    self.viz_window = GridVisualiser(
                         self.root, 
                         self.grid.rows, 
                         self.grid.cols, 
@@ -458,7 +457,7 @@ class PathfinderGUI:
                     )
                 else:
                     # If window exists, clear it and update with new path
-                    self.viz_window.clear_visualization()
+                    self.viz_window.clear_visualisation()
                     self.viz_window.path = path
                     self.viz_window.start = start_node
                     self.viz_window.end = end_node
@@ -483,9 +482,9 @@ class PathfinderGUI:
         self.output_text.delete(1.0, tk.END)
         self.output_text.insert(tk.END, "Cleared all points\n")
         
-        # Clear visualization but keep window open
+        # Clear visualisation but keep window open
         if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
-            self.viz_window.clear_visualization()
+            self.viz_window.clear_visualisation()
 
     # Update query_stock and update_stock methods to work with the new interface
     def query_stock(self):
@@ -546,7 +545,7 @@ class PathfinderGUI:
                         self.db.update_quantity(index, new_qty)
                         self.output_text.insert(tk.END, f"Updated stock for position {index} to {new_qty}\n")
                         
-                        # Update visualization if window exists
+                        # Update visualisation if window exists
                         if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
                             x, y = spa.index_to_coordinates(index, self.grid.cols)
                             
@@ -556,7 +555,7 @@ class PathfinderGUI:
                                 self.viz_window.out_of_stock_positions.discard((x, y))
                             
                             if self.viz_window.path:
-                                self.viz_window.clear_visualization()
+                                self.viz_window.clear_visualisation()
                                 self.viz_window.visualize_path(
                                     self.viz_window.path,
                                     self.viz_window.start,
@@ -564,7 +563,7 @@ class PathfinderGUI:
                                     self.viz_window.points
                                 )
                             else:
-                                self.viz_window.clear_visualization()
+                                self.viz_window.clear_visualisation()
                         
                         qty_popup.destroy()
                     except ValueError:
@@ -580,9 +579,9 @@ class PathfinderGUI:
         ttk.Button(pos_popup, text="Next", command=get_quantity).pack(pady=5)
 
     def show_grid(self):
-        # Create or show visualization window
+        # Create or show visualisation window
         if not hasattr(self, 'viz_window') or not self.viz_window or not self.viz_window.winfo_exists():
-            self.viz_window = GridVisualizer(
+            self.viz_window = GridVisualiser(
                 self.root, 
                 self.grid.rows, 
                 self.grid.cols,

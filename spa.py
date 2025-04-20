@@ -74,7 +74,7 @@ class PathFinder:
         logger.warning(f"No path found between {start} and {end}")
         return None
 
-    def find_path_through_points(self, start, points, end, optimize_order=False):
+    def find_path_through_points(self, start, points, end, optimise_order=False):
         """
         Finds a path that visits all intermediate points
         
@@ -82,7 +82,7 @@ class PathFinder:
         - start: Starting position
         - points: List of intermediate points to visit
         - end: End position
-        - optimize_order: Whether to optimize the order of points using genetic algorithm
+        - optimise_order: Whether to optimise the order of points using genetic algorithm
         """
         logger.info(f"Finding path through {len(points)} intermediate points")
         
@@ -90,26 +90,26 @@ class PathFinder:
             logger.warning("No intermediate points provided")
             return self.bfs(start, end)
                 
-        # If optimize_order is True, find the optimal order to visit points
-        if optimize_order and len(points) > 1:
+        # If optimise_order is True, find the optimal order to visit points
+        if optimise_order and len(points) > 1:
             try:
-                # Add timeout for optimization
+                # Add timeout for optimisation
                 import time
                 start_time = time.time()
                 
                 # Make a copy of points to avoid modifying the original
                 points_copy = list(points)
-                optimized_points = self.optimize_point_order(start, points_copy, end)
+                optimised_points = self.optimise_point_order(start, points_copy, end)
                 
-                # Check if optimization took too long
+                # Check if optimisation took too long
                 if time.time() - start_time > 10.0:  # 10 seconds max
-                    logger.warning("Optimization took too long, using original order")
+                    logger.warning("Optimisation took too long, using original order")
                     # Continue with original points
                 else:
-                    points = optimized_points
-                    logger.info(f"Optimized point order: {points}")
+                    points = optimised_points
+                    logger.info(f"Optimised point order: {points}")
             except Exception as e:
-                logger.error(f"Optimization failed: {str(e)}")
+                logger.error(f"Optimisation failed: {str(e)}")
                 # Continue with original points
                 logger.info("Using original point order")
 
@@ -143,20 +143,20 @@ class PathFinder:
         logger.info(f"Complete path found with length {len(full_path)}")
         return full_path
 
-    def optimize_point_order(self, start, points, end):
+    def optimise_point_order(self, start, points, end):
         """
         Optimizes the order of points to minimize total path length
         using a genetic algorithm approach
         """
-        logger.info("Optimizing point order using genetic algorithm")
+        logger.info("Optimising point order using genetic algorithm")
         
-        # If only one point, no optimization needed
+        # If only one point, no optimisation needed
         if len(points) <= 1:
             return points
             
-        # Safety check - limit the number of points to optimize
+        # Safety check - limit the number of points to optimise
         if len(points) > 10:
-            logger.warning(f"Too many points ({len(points)}) for optimization, limiting to first 10")
+            logger.warning(f"Too many points ({len(points)}) for optimisation, limiting to first 10")
             points = points[:10]
             
         # Create initial population (different permutations of points)
@@ -186,9 +186,9 @@ class PathFinder:
         
         # For each generation
         for gen in range(generations):
-            # Check for timeout - overall optimization should not take more than 5 seconds
+            # Check for timeout - overall optimisation should not take more than 5 seconds
             if time.time() - start_time > 5.0:
-                logger.warning(f"Timeout reached during optimization at generation {gen}")
+                logger.warning(f"Timeout reached during optimisation at generation {gen}")
                 break
                 
             # Calculate fitness for each permutation (total path length)
@@ -293,7 +293,7 @@ class PathFinder:
             return fitness_scores[0][1]
         else:
             # If something went wrong, return original order
-            logger.warning("Optimization failed, returning original order")
+            logger.warning("Optimisation failed, returning original order")
             return points
             
     def ordered_crossover(self, parent1, parent2):
@@ -340,54 +340,6 @@ class PathFinder:
         idx1, idx2 = random.sample(range(len(permutation)), 2)
         permutation[idx1], permutation[idx2] = permutation[idx2], permutation[idx1]
 
-# PathVisualiser class handles the visual representation of the path
-class PathVisualiser:
-    def __init__(self, grid_in):
-        # Store reference to the grid
-        self.grid = grid_in
-        logger.info(f"PathVisualiser initialised with grid size {grid_in.rows}x{grid_in.cols}")
-
-    def visualise_path(self, path, start, end, points=None):
-        # Creates a visual representation of the path using ASCII characters
-        # [ ] represents empty cells
-        # [=] represents path segments
-        # [*] represents start, end, and intermediate points
-        if points is None:
-            points = []
-        if not path:
-            logger.error("Cannot visualise: path is empty or None")
-            return
-
-        logger.info("Starting path visualisation")
-        try:
-            # Create empty visual grid
-            visual_grid = [['[ ]' for _ in range(self.grid.cols)] for _ in range(self.grid.rows)]
-
-            # Mark path segments
-            for (x, y) in path:
-                visual_grid[x][y] = '[=]'
-
-            # Mark start and end points
-            sx, sy = start
-            ex, ey = end
-            visual_grid[sx][sy] = '[*]'
-            visual_grid[ex][ey] = '[*]'
-            
-            # Mark intermediate points
-            for x, y in points:
-                valid, _ = validate_point(x, y, self.grid.rows, self.grid.cols, True)
-                if valid:
-                    visual_grid[x][y] = '[*]'
-                else:
-                    logger.warning(f"Point ({x}, {y}) is out of bounds and will be skipped")
-
-            # Display the grid
-            for row in visual_grid:
-                print(' '.join(row))
-            
-            logger.info("Path visualisation completed")
-        except Exception as _e_:
-            logger.error(f"Error during visualisation: {str(_e_)}")
 
 def validate_point(x, y, rows, cols, allow_start_end=False):
     """Validates if a point is within bounds and optionally checks for start/end points"""
