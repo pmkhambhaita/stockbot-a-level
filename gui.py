@@ -379,9 +379,7 @@ class PathfinderGUI:
         try:
             # Define start and end points of the grid
             start_node = (0, 0)
-            end_node = (self.grid.rows - 1, self.grid.cols - 1)
-            
-            # Inside find_path method, modify the section where we process valid points:
+            end_node = (self.grid.rows - 1, self.grid.cols - 1)            
             # Filter out points with zero stock before pathfinding
             valid_points = []
             skipped_points = []
@@ -407,23 +405,21 @@ class PathfinderGUI:
                 path = self.path_finder.find_path_through_points(start_node, [], end_node)
                 valid_points = []  # Empty list for visualization
             else:
-                # Find path through all valid points, using optimization if enabled
-                path = self.path_finder.find_path_through_points(
-                    start_node, 
-                    valid_points, 
-                    end_node,
-                    optimize_order=self.optimize_order
-                )
+                # Only use optimisation if we have more than 1 point and it's enabled
+                use_optimisation = self.optimize_order and len(valid_points) > 1
                 
-                # If optimization was used, update the points list for visualization
-                if self.optimize_order and path and len(valid_points) > 1:
-                    # Extract the actual order of points from the path
-                    # This is a bit complex as we need to identify which points in the path
-                    # correspond to our original valid_points
-                    self.points = []
-                    for point in valid_points:
-                        if point in path:
-                            self.points.append(point)
+                try:
+                    # Find path through all valid points
+                    path = self.path_finder.find_path_through_points(
+                        start_node, 
+                        valid_points, 
+                        end_node,
+                        optimize_order=use_optimisation
+                    )
+                except Exception as e:
+                    # If optimisation fails, try again without it
+                    self.output_text.insert(tk.END, f"Optimisation failed: {str(e)}. Trying without optimisation.\n")
+                    path = self.path_finder.find_path_through_points(start_node, valid_points, end_node, optimize_order=False)
             
             if path:
                 # Decrement stock for each valid intermediate point
@@ -438,7 +434,7 @@ class PathfinderGUI:
                 
                 # If optimization was used, show that in the output
                 if self.optimize_order and len(valid_points) > 1:
-                    self.output_text.insert(tk.END, "Point order was optimized for shortest path\n")
+                    self.output_text.insert(tk.END, "Point order was optimised for shortest path\n")
                 
                 # Convert path to position numbers
                 path_indices = [spa.coordinates_to_index(x, y, self.grid.cols) 
