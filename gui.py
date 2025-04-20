@@ -1,6 +1,6 @@
 # Import required libraries for GUI, file operations and system functions
 import tkinter as tk
-from tkinter import ttk  # Themed widgets for enhanced GUI appearance
+from tkinter import ttk, Menu  # Themed widgets for enhanced GUI appearance
 import spa              # Custom module for pathfinding algorithms
 import io              # For redirecting stdout to capture visualisation
 import sys             # For system-level operations like stdout manipulation
@@ -181,6 +181,12 @@ class PathfinderGUI:
         self.root.grid_rowconfigure(2, weight=1)  # Output text area should expand
         self.root.grid_columnconfigure(0, weight=1)
         
+        # Set default optimization setting
+        self.optimize_order = False  # Default optimization setting
+        
+        # Create menu bar
+        self.create_menu_bar()
+        
         # Create and configure the top frame for input elements
         input_frame = ttk.Frame(root)
         input_frame.grid(row=0, column=0, pady=10, padx=10, sticky='ew')
@@ -247,7 +253,70 @@ class PathfinderGUI:
         self.db = database.InventoryDB(rows, cols)
         self.db.populate_random_data()  # Initialize with random stock levels
 
-    # Update find_path method to parse points directly from entry field
+    def create_menu_bar(self):
+        """Create the menu bar with options"""
+        menu_bar = Menu(self.root)
+        self.root.config(menu=menu_bar)
+        
+        # Create File menu
+        file_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="File", menu=file_menu)
+        file_menu.add_command(label="Exit", command=self.root.quit)
+        
+        # Create Options menu
+        options_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="Options", menu=options_menu)
+        
+        # Add optimization toggle
+        self.optimize_var = tk.BooleanVar(value=self.optimize_order)
+        options_menu.add_checkbutton(
+            label="Optimize Point Order", 
+            variable=self.optimize_var,
+            command=self.toggle_optimization
+        )
+        
+        # Create Help menu
+        help_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="Help", menu=help_menu)
+        help_menu.add_command(label="About", command=self.show_about)
+
+    def toggle_optimization(self):
+        """Toggle the optimization setting"""
+        self.optimize_order = self.optimize_var.get()
+        status = "enabled" if self.optimize_order else "disabled"
+        self.output_text.insert(tk.END, f"Point order optimization {status}\n")
+
+    def show_about(self):
+        """Show about dialog"""
+        about_window = tk.Toplevel(self.root)
+        about_window.title("About StockBot")
+        about_window.geometry("300x200")
+        
+        ttk.Label(
+            about_window, 
+            text="StockBot Pathfinding System",
+            font=("Arial", 12, "bold")
+        ).pack(pady=10)
+        
+        ttk.Label(
+            about_window, 
+            text="A warehouse navigation system\nwith stock management capabilities.",
+            justify="center"
+        ).pack(pady=5)
+        
+        ttk.Label(
+            about_window, 
+            text="© 2025 StockBot Team",
+            font=("Arial", 8)
+        ).pack(pady=20)
+        
+        ttk.Button(
+            about_window, 
+            text="Close", 
+            command=about_window.destroy
+        ).pack(pady=10)
+
+    # Update find_path method to use optimization if enabled
     def find_path(self):
         # Get and clean the input string from the entry field
         points_str = self.point_entry.get().strip()
@@ -338,8 +407,23 @@ class PathfinderGUI:
                 path = self.path_finder.find_path_through_points(start_node, [], end_node)
                 valid_points = []  # Empty list for visualization
             else:
-                # Find path through all valid points
-                path = self.path_finder.find_path_through_points(start_node, valid_points, end_node)
+                # Find path through all valid points, using optimization if enabled
+                path = self.path_finder.find_path_through_points(
+                    start_node, 
+                    valid_points, 
+                    end_node,
+                    optimize_order=self.optimize_order
+                )
+                
+                # If optimization was used, update the points list for visualization
+                if self.optimize_order and path and len(valid_points) > 1:
+                    # Extract the actual order of points from the path
+                    # This is a bit complex as we need to identify which points in the path
+                    # correspond to our original valid_points
+                    self.points = []
+                    for point in valid_points:
+                        if point in path:
+                            self.points.append(point)
             
             if path:
                 # Decrement stock for each valid intermediate point
@@ -352,9 +436,9 @@ class PathfinderGUI:
                 self.output_text.delete(1.0, tk.END)
                 self.output_text.insert(tk.END, f"Total path length: {path_length} steps\n")
                 
-                # No longer need to update path distance display
-                # path_distance_var = tk.StringVar(value=str(path_length))
-                # self.path_distance.config(textvariable=path_distance_var)
+                # If optimization was used, show that in the output
+                if self.optimize_order and len(valid_points) > 1:
+                    self.output_text.insert(tk.END, "Point order was optimized for shortest path\n")
                 
                 # Convert path to position numbers
                 path_indices = [spa.coordinates_to_index(x, y, self.grid.cols) 
