@@ -233,7 +233,7 @@ class PathfinderGUI:
         # Add buttons in a 2x2 grid
         query_button = ttk.Button(button_frame, text="Query Item Id", command=self.query_stock, width=20)
         query_button.grid(row=0, column=0, padx=10, pady=5, sticky='w')
-        obstacle_button = ttk.Button(button_frame, text="Obstacle mode", width=20)
+        obstacle_button = ttk.Button(button_frame, text="Obstacle mode", command=self.toggle_obstacle_mode, width=20)
         obstacle_button.grid(row=0, column=1, padx=10, pady=5, sticky='e')
         update_button = ttk.Button(button_frame, text="Update Quantity", command=self.update_stock, width=20)
         update_button.grid(row=1, column=0, padx=10, pady=5, sticky='w')
@@ -387,8 +387,13 @@ class PathfinderGUI:
                 # Convert to coordinates (0-based)
                 x, y = spa.index_to_coordinates(index, self.grid.cols)
                 
+                # Check if position is an obstacle
+                if self.grid.is_obstacle(x, y):
+                    self.output_text.insert(tk.END, f"Error: Position {index} is an obstacle and cannot be used as a point\n")
+                    continue
+                
                 # Validate the point
-                valid, error = spa.validate_point(x, y, self.grid.rows, self.grid.cols)
+                valid, error = spa.validate_point(x, y, self.grid.rows, self.grid.cols, obstacles=self.grid.obstacles)
                 if not valid:
                     self.output_text.insert(tk.END, f"Error: {error}\n")
                     continue
@@ -635,3 +640,64 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def toggle_obstacle_mode(self):
+    """Handle obstacle mode to add or remove obstacles"""
+    # Create popup for obstacle input
+    obstacle_popup = tk.Toplevel(self.root)
+    obstacle_popup.title("Obstacle Mode")
+    obstacle_popup.geometry("300x150")
+    
+    ttk.Label(
+        obstacle_popup, 
+        text="Enter position number to toggle obstacle status:",
+        wraplength=250
+    ).pack(pady=5)
+    
+    obstacle_entry = ttk.Entry(obstacle_popup)
+    obstacle_entry.pack(pady=5)
+    
+    def toggle_obstacle():
+        try:
+            index = int(obstacle_entry.get())
+            
+            # Validate index range
+            if not (1 <= index <= self.grid.rows * self.grid.cols):
+                messagebox.showerror("Error", f"Position {index} out of range (1-{self.grid.rows * self.grid.cols})")
+                return
+            
+            # Convert to coordinates (0-based)
+            x, y = spa.index_to_coordinates(index, self.grid.cols)
+            
+            # Check if it's a start or end point
+            if (x, y) == (0, 0) or (x, y) == (self.grid.rows - 1, self.grid.cols - 1):
+                messagebox.showerror("Error", "Cannot set start or end point as an obstacle")
+                return
+            
+            # Toggle obstacle status
+            if self.grid.is_obstacle(x, y):
+                self.grid.remove_obstacle(x, y)
+                self.output_text.insert(tk.END, f"Removed obstacle at position {index}\n")
+            else:
+                self.grid.add_obstacle(x, y)
+                self.output_text.insert(tk.END, f"Added obstacle at position {index}\n")
+            
+            # Update visualization if window exists
+            if hasattr(self, 'viz_window') and self.viz_window and self.viz_window.winfo_exists():
+                self.viz_window.update_obstacles(self.grid.obstacles)
+            
+        except ValueError:
+            messagebox.showerror("Error", "Please enter a valid number")
+    
+    ttk.Button(
+        obstacle_popup, 
+        text="Toggle Obstacle", 
+        command=toggle_obstacle
+    ).pack(pady=5)
+    
+    ttk.Button(
+        obstacle_popup, 
+        text="Close", 
+        command=obstacle_popup.destroy
+    ).pack(pady=5)
