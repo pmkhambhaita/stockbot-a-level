@@ -1,6 +1,6 @@
 # Import required libraries for GUI, file operations and system functions
 import tkinter as tk
-from tkinter import ttk, Menu  # Themed widgets for enhanced GUI appearance
+from tkinter import ttk, Menu, messagebox # Themed widgets for enhanced GUI appearance
 import spa              # Custom module for pathfinding algorithms
 import io              # For redirecting stdout to capture visualisation
 import sys             # For system-level operations like stdout manipulation

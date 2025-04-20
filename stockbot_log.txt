@@ -4541,3 +4541,4 @@
 2025-04-20 11:56:58,299 - WARNING - No intermediate points provided
 2025-04-20 11:56:58,299 - INFO - Starting BFS search from (0, 0) to (9, 9)
 2025-04-20 11:56:58,299 - INFO - Path found with length 19
+2025-04-20 11:57:40,298 - INFO - PathFinder initialised with grid size 10x10
