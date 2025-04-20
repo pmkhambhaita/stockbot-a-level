@@ -24,6 +24,26 @@ class Grid:
         self.cols = cols_grid
         # Initialise empty grid with specified dimensions
         self.grid = [[0 for _ in range(cols_grid)] for _ in range(rows_grid)]
+        # Track obstacles
+        self.obstacles = set()
+        
+    def add_obstacle(self, row, col):
+        """Add an obstacle at the specified position"""
+        if 0 <= row < self.rows and 0 <= col < self.cols:
+            self.obstacles.add((row, col))
+            return True
+        return False
+        
+    def remove_obstacle(self, row, col):
+        """Remove an obstacle from the specified position"""
+        if (row, col) in self.obstacles:
+            self.obstacles.remove((row, col))
+            return True
+        return False
+        
+    def is_obstacle(self, row, col):
+        """Check if a position contains an obstacle"""
+        return (row, col) in self.obstacles
 
 # PathFinder class implements the pathfinding algorithm
 class PathFinder:
